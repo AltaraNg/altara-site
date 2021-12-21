@@ -10,7 +10,7 @@
         py-16
         md:pl-24 md:pr-16
         px-8
-        md:px-0 md:grid
+        md:px-0 
         flex flex-col
       "
     >
@@ -50,13 +50,11 @@
         class="
           bg-brand
           px-7
-          md:py-1
+          md:py-3
           py-3
-          md:mx-24
-          mx-0
+          mr-56
           rounded-lg
           font-semibold
-          md:justify-self-end
           text-white text-sm
           hover:shadow-lg
         "
