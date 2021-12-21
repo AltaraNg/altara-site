@@ -52,7 +52,7 @@
           px-7
           md:py-3
           py-3
-          mr-56
+          md:mr-56
           rounded-lg
           font-semibold
           text-white text-sm
