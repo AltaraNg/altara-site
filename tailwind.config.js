@@ -1,4 +1,5 @@
 module.exports = {
+<<<<<<< HEAD
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
     extend: {
@@ -16,3 +17,14 @@ module.exports = {
   },
   plugins: [],
 };
+=======
+  mode: 'jit',
+  purge: ['./public/**/*.html', './src/**/*.{vue,js}'],
+  presets: [],
+  darkMode: false, // or 'media' or 'class'
+  variants: {
+    extend: {},
+  },
+  plugins: [],
+}
+>>>>>>> ea236a7ff7ff8be56491fae5cac3e220f0fbd215

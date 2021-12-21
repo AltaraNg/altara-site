@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+<<<<<<< HEAD
     "autoprefixer": "^9.8.8",
     "core-js": "^3.6.5",
     "postcss": "^7.0.39",
@@ -16,6 +17,14 @@
     "vue-cli-plugin-tailwind": "^2.2.18",
     "vue-router": "^4.0.12",
     "vue3-smooth-scroll": "^0.8.1"
+=======
+    "@tailwindcss/postcss7-compat": "^2.2.17",
+    "autoprefixer": "^9",
+    "core-js": "^3.6.5",
+    "postcss": "^7",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
+    "vue": "^3.0.0"
+>>>>>>> ea236a7ff7ff8be56491fae5cac3e220f0fbd215
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -24,7 +33,11 @@
     "@vue/compiler-sfc": "^3.0.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0"
+    "eslint-plugin-vue": "^7.0.0",
+    "node-sass": "^7.0.0",
+    "sass": "^1.45.1",
+    "sass-loader": "10.1.1",
+    "vue-cli-plugin-tailwind": "~2.2.18"
   },
   "eslintConfig": {
     "root": true,

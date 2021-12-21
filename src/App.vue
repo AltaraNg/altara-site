@@ -15,4 +15,12 @@ export default{
     foot_er
   }
 }
+<<<<<<< HEAD
 </script>
+=======
+</script>
+
+<style>
+
+</style>
+>>>>>>> ea236a7ff7ff8be56491fae5cac3e220f0fbd215
