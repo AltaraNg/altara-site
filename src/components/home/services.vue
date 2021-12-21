@@ -26,7 +26,7 @@
             text-center
             md:text-3xl
             text-2xl
-            font-bold
+            font-black
             md:leading-14
             leading-12
           "
@@ -77,7 +77,7 @@
             text-center
             md:text-3xl
             text-2xl
-            font-bold
+            font-black
             md:leading-14
             leading-12
           "
@@ -127,7 +127,7 @@
             text-center
             md:text-3xl
             text-2xl
-            font-bold
+            font-black
             md:leading-14
             leading-12
           "

@@ -21,7 +21,7 @@
           text-2xl
           md:text-left
           text-center
-          font-bold
+          font-black
           leading-13
           md:mb-10
         "
@@ -36,11 +36,11 @@
       </p>
       <div class="flex items-center md:mb-10 mb-5">
         <phone />
-        <span class="ml-5 text-sm font-semibold">+234 812 3456 789</span>
+        <span class="ml-5 text-sm font-bold">+234 812 3456 789</span>
       </div>
       <div class="flex items-center md:mb-10 mb-5">
         <email />
-        <span class="ml-5 text-sm font-semibold">hello@altara.com</span>
+        <span class="ml-5 text-sm font-bold">hello@altara.com</span>
       </div>
       <div class="flex space-x-8 mb-10 md:mb-0 justify-center md:justify-start">
         <facebook />
@@ -65,7 +65,7 @@
         h-fit
       "
     >
-      <p class="font-semibold md:text-left text-center">Send us a Message</p>
+      <p class="font-bold md:text-left text-center">Send us a Message</p>
       <input type="text" placeholder="Name" class="border-b w-full w-full" />
       <input type="text" placeholder="Email" class="border-b w-full" />
       <input type="text" placeholder="Phone Number" class="border-b w-full" />
@@ -106,7 +106,7 @@
           md:mx-24
           mx-0
           rounded-lg
-          font-semibold
+          font-bold
           justify-self-end
           text-white text-sm
           hover:shadow-lg

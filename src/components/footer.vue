@@ -16,23 +16,23 @@
     </div>
     <div class="flex my-10 md:my-0 w-full justiy-between">
       <div class="md:w-1/2 w-1/2 flex flex-col md:space-y-5 space-y-2">
-        <p class="font-semibold hover:underline md:mb-4 mb-1 text-sm">
+        <p class="font-bold hover:underline md:mb-4 mb-1 text-sm">
           Services
         </p>
         <a class="text-xs md:text-sm"
-          ><span class="text-brand font-bold">Altara </span>Product</a
+          ><span class="text-brand font-black">Altara </span>Product</a
         >
         <a class="text-xs md:text-sm"
-          ><span class="text-brand font-bold">Altara </span>E-Loan</a
+          ><span class="text-brand font-black">Altara </span>E-Loan</a
         >
         <a class="text-xs md:text-sm"
-          ><span class="text-brand font-bold">Altara </span>Rent</a
+          ><span class="text-brand font-black">Altara </span>Rent</a
         >
       </div>
       <div
         class="md:w-1/2 w-1/2 flex flex-col items-start md:space-y-6 space-y-2"
       >
-        <p class="font-semibold hover:underline md:mb-4 mb-1">Reach Us</p>
+        <p class="font-bold hover:underline md:mb-4 mb-1">Reach Us</p>
         <div class="flex items-center">
           <email class="hidden md:block mr-2" />
           <p class="text-sm">hello@altara.com</p>

@@ -1,8 +1,7 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import "./index.css";
-import "../src/style.css";
-import "../src/main.css";
+import "./assets/css/style.css";
 import router from "./router";
 import VueSmoothScroll from "vue3-smooth-scroll";
 

@@ -1,6 +1,6 @@
 <template>
   <div id="banner"></div>
-  <div class="h-fit flex flex-col md:flex-row bg-brand25">
+  <div class="h-fit flex flex-col md:flex-row bg-blue-50 md:items-center">
     <div
       class="
         w-full
@@ -18,7 +18,7 @@
         class="
           md:text-5xl
           text-4xl
-          font-bold
+          font-black
           md:text-left
           text-center
           tracking-wider
@@ -54,7 +54,7 @@
           py-3
           md:mr-56
           rounded-lg
-          font-semibold
+          font-bold
           text-white text-sm
           hover:shadow-lg
         "
