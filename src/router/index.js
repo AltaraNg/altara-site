@@ -3,26 +3,26 @@ const routes = [
  {
     path: "/",
     component: () =>
-      import(/*webpackChunkName: 'product'*/ "../components/home"),
+      import(/*webpackChunkName: 'product'*/ "../components/Home"),
     name: "home",
   },
   {
     path: "/about-us",
     component: () =>
-      import(/*webpackChunkName: 'product'*/ "../components/about_us.vue"),
+      import(/*webpackChunkName: 'product'*/ "../components/AboutUs.vue"),
     name: "about_us",
   },
 
   {
     path: "/how-it-works",
     component: () =>
-      import(/*webpackChunkName: 'cart'*/ "../components/how_it_works.vue"),
+      import(/*webpackChunkName: 'cart'*/ "../components/HowItWorks.vue"),
     name: "how_it_works",
   },
   {
     path: "/impact",
     component: () =>
-      import(/*webpackChunkName: 'checkout'*/ "../components/impact.vue"),
+      import(/*webpackChunkName: 'checkout'*/ "../components/Impact.vue"),
     name: "impact",
   },
 ];

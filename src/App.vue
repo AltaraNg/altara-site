@@ -1,18 +1,18 @@
 <template>
   <div class="">
-  <nav_bar class="sticky top-0"/>
+  <NavBar class="sticky top-0"/>
     <router-view/>
-  <foot_er/>
+  <Footer/>
   </div>
 </template>
 
 <script>
-import nav_bar from "./components/nav_bar.vue"
-import foot_er from "./components/footer.vue"
+import NavBar from "./components/NavBar.vue"
+import Footer from "./components/Footer.vue"
 export default{
   components:{
-    nav_bar,
-    foot_er
+    NavBar,
+    Footer
   }
 }
 </script>
