@@ -10,7 +10,6 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "vue": "^3.0.0",
-    "vue-cli-plugin-tailwind": "^2.2.18",
     "vue-router": "^4.0.12",
     "vue3-smooth-scroll": "^0.8.1"
   },

@@ -117,15 +117,7 @@ export default {
   methods:{
      toggleHamburger() {
       this.state = !this.state;
-      console.log(this.$refs.hamburger);
     },
-    // clickaway(e){
-    //   const el1 = this.$refs.hamburger
-    //   const el2 = this.$refs.closeModal
-    //     if (!(el.contains(e.target as Node)) && !(el2.contains(e.target as Node))){
-    //    state.value= false
-    //  }  
-    // }
   }
 };
 </script>
