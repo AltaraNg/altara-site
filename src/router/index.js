@@ -3,7 +3,7 @@ const routes = [
  {
     path: "/",
     component: () =>
-      import(/*webpackChunkName: 'product'*/ "../components/Home"),
+      import(/*webpackChunkName: 'product'*/ "../components/HomePage"),
     name: "home",
   },
   {
@@ -22,7 +22,7 @@ const routes = [
   {
     path: "/impact",
     component: () =>
-      import(/*webpackChunkName: 'checkout'*/ "../components/Impact.vue"),
+      import(/*webpackChunkName: 'checkout'*/ "../components/ImpactUs.vue"),
     name: "impact",
   },
 ];

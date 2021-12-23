@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import Banner from './Banner.vue'
-import Services from './Services.vue'
+import Banner from './BannerSection.vue'
+import Services from './ServiceSection.vue'
 import ContactUs from './ContactUs.vue'
 export default {
   components:{
