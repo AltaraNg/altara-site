@@ -66,9 +66,9 @@
       "
     >
       <p class="font-bold md:text-left text-center">Send us a Message</p>
-      <input type="text" placeholder="Name" class="border-b w-full w-full" />
-      <input type="text" placeholder="Email" class="border-b w-full" />
-      <input type="text" placeholder="Phone Number" class="border-b w-full" />
+      <input type="text" placeholder="Name" class="border-b w-full px-3 py-2 rounded-full " />
+      <input type="text" placeholder="Email" class="border-b w-full px-3 py-2 rounded-full" />
+      <input type="text" placeholder="Phone Number" class="border-b w-full px-3 py-2 rounded-full" />
       <div>
         <label class="text-gray-600 text-sm"
           >Preferred method of communication</label
@@ -96,7 +96,7 @@
           </div>
         </div>
       </div>
-      <input type="text" placeholder="Message" class="border-b w-full" />
+      <input type="text" placeholder="Message" class="border-b w-full px-3 py-2 rounded-full" />
       <button
         type="submit"
         class="
