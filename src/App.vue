@@ -1,20 +1,18 @@
 <template>
-  <div class="bg-red-500">Test</div>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="">
+  <NavBar class="sticky top-0"/>
+    <router-view/>
+  <Footer/>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+import NavBar from "./components/NavBar.vue"
+import Footer from "./components/FooterSection.vue"
+export default{
+  components:{
+    NavBar,
+    Footer
   }
 }
 </script>
-
-<style>
-
-</style>
