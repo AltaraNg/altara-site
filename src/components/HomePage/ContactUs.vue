@@ -96,14 +96,13 @@
           </div>
         </div>
       </div>
-      <input type="text" placeholder="Message" class="border-b w-full px-3 py-2 rounded-full" />
+      <textarea type="text" rows="4" placeholder="Message" class="border w-full px-3 py-2 rounded" ></textarea>
       <button
         type="submit"
         class="
           bg-brand
           px-7
           py-3
-          md:mx-24
           mx-0
           rounded-lg
           font-bold
