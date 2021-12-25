@@ -30,7 +30,7 @@
       >
     </div>
     <div>
-      <button
+      <router-link
         class="
           hidden
           md:flex
@@ -40,10 +40,12 @@
           rounded-full
           text-white text-sm
           hover:shadow-lg
+          cursor-pointer
         "
+        :to="{ name: 'signup' }" exact
       >
         Sign up
-      </button>
+      </router-link>
     </div>
     <div class="block md:hidden cursor-pointer">
       <img src="../assets/images/menu.png" class="w-6 h-6"   @click="toggleHamburger" ref="hamburger" />
@@ -87,20 +89,21 @@
       <router-link :to="{ name: 'impact' }" exact class="cursor-pointer"
         >Impacts</router-link
       >
-       <button
+       <router-link
         class="
-          hidden
-          md:flex
+          flex
           bg-brand
           px-7
           py-1.5
           rounded-full
           text-white text-sm
           hover:shadow-lg
+          cursor-pointer
         "
+        :to="{ name: 'signup' }" exact
       >
         Sign up
-      </button>
+      </router-link>
     </div>
 
     </div>

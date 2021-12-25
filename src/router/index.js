@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 const routes = [
- {
+  {
     path: "/",
     component: () =>
       import(/*webpackChunkName: 'product'*/ "../components/HomePage"),
@@ -24,6 +24,12 @@ const routes = [
     component: () =>
       import(/*webpackChunkName: 'checkout'*/ "../components/ImpactUs.vue"),
     name: "impact",
+  },
+  {
+    path: "/signup",
+    component: () =>
+      import(/*webpackChunkName: 'checkout'*/ "../components/SignUp.vue"),
+    name: "signup",
   },
 ];
 
