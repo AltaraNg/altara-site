@@ -1,5 +1,5 @@
 <template>
-  <div class="py-10 px-5 md:px-0">
+  <div class="py-10 px-5 md:px-10">
     <div id="service"></div>
     <div
       class="
@@ -7,6 +7,8 @@
         md:flex-row
         w-full
         md:py-8
+        pb-5
+        md:pb-0
         h-fit
         flex
         items-start
@@ -16,9 +18,9 @@
     >
       <img
         src="../../assets/images/altara_product.png"
-        class="w-full ml-8 md:ml-0 md:w-1/2"
+        class="w-full ml-8 md:ml-0 md:w-3/5"
       />
-      <div class="w-full md:w-1/2 md:mt-10 pl-10">
+      <div class="w-full md:w-2/5 md:mt-10 pl-8 md:pl-0 ">
         <h1
           class="
             text-brand
@@ -54,7 +56,8 @@
         flex flex-col-reverse
         md:flex-row-reverse
         w-full
-        py-4
+        py-10
+        md:py-0
         h-fit
         flex
         items-start
@@ -67,9 +70,9 @@
     >
       <img
         src="../../assets/images/altara_loans.png"
-        class="md:w-1/3 w-4/5 ml-16 md:ml-0 object-contain"
+        class=" md:max-w-lg w-4/5 ml-16 md:ml-0 object-contain"
       />
-      <div class="md:w-1/2 w-full mt-10 md:pl-24 pl-10">
+      <div class="md:w-1/2 w-full mt-10 md:pl-24 pl-8 md:pl-0">
         <h1
           class="
             text-brand
@@ -105,6 +108,8 @@
         flex flex-col-reverse
         md:flex-row
         w-full
+        pt-10
+        md:pt-16
         py-4
         h-fit
         md:pl-24
@@ -117,9 +122,9 @@
     >
       <img
         src="../../assets/images/altara_rent.png"
-        class="md:w-1/3 w-4/5 ml-16 md:ml-0 object-contain pl-"
+        class="md:max-w-lg w-4/5 ml-16 md:ml-0 object-contain pl-"
       />
-      <div class="md:w-1/2 w-full mt-10 pl-10">
+      <div class="md:w-1/2 w-full mt-10 pl-8 md:pl-16">
         <h1
           class="
             text-brand
