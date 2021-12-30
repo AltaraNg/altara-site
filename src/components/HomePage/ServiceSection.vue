@@ -1,6 +1,7 @@
 <template>
-  <div class="py-10 px-5 md:px-10">
-    <div id="service"></div>
+  <div class="py-10 px-5 md:px-10 flex flex-col justify-center items-center ">
+    <div class="md:max-w-5xl">
+            <div id="service"></div>
     <div
       class="
         flex flex-col-reverse
@@ -154,6 +155,8 @@
         </p>
       </div>
     </div>
+    </div>
+
   </div>
 </template>
 

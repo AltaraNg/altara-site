@@ -50,7 +50,8 @@
     <div class="block md:hidden cursor-pointer">
       <img src="../assets/images/menu.png" class="w-6 h-6"   @click="toggleHamburger" ref="hamburger" />
     </div>
-    <div
+    <transition name="mobile-nav">
+          <div
       
       class="
       bg-white
@@ -106,6 +107,8 @@
       </router-link>
     </div>
 
+    </transition>
+  
     </div>
 
 </template>
@@ -121,9 +124,36 @@ export default {
      toggleHamburger() {
       this.state = !this.state;
     },
-  }
+    clickaway($event){
+        const el1 = this.$refs.hamburger
+        const el2 = this.$refs.closeModal
+      if (!(el1.contains($event.target)) && !(el2.contains($event.target))){
+      this.state = false
+     }  
+    
+    }
+  },
+   mounted() {
+      document.addEventListener('click', this.clickaway)
+    },
+    unmounted(){
+      document.removeEventListener('click', this.clickaway)
+    }
+  
 };
 </script>
 
 <style>
+.mobile-nav-enter-active,
+.mobile-nav-leave-active{
+  transition: 1s ease all;
+}
+
+.mobile-nav-enter-from,
+.mobile-nav-leave-to{
+  transform: translateY(-250px);
+}
+.mobile-nav-enter-to{
+  transform: translateX(0)
+}
 </style>

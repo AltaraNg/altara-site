@@ -40,7 +40,7 @@
       </div>
       <div class="flex items-center md:mb-10 mb-5">
         <email />
-        <span class="ml-5 text-sm font-bold">hello@altara.com</span>
+        <span class="ml-5 text-sm font-bold">admin@altaracredit.com</span>
       </div>
       <div class="flex space-x-8 mb-10 md:mb-0 justify-center md:justify-start">
         <facebook />
