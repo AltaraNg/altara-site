@@ -35,7 +35,7 @@
         <p class="font-bold hover:underline md:mb-4 mb-1">Reach Us</p>
         <div class="flex items-center">
           <email class="hidden md:block mr-2" />
-          <p class="text-sm">hello@altara.com</p>
+          <p class="text-sm">admin@altaracredit.com</p>
         </div>
         <div class="flex items-center">
           <phone class="hidden md:block mr-2" />
