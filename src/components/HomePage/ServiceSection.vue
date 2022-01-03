@@ -1,6 +1,6 @@
 <template>
   <div class="py-10 px-5 md:px-10 flex flex-col justify-center items-center ">
-    <div class="md:max-w-5xl">
+    <div class="lg:max-w-5xl max-w-none">
             <div id="service"></div>
     <div
       class="
