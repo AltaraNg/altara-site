@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="cursor-pointer">
         <div class="flex justify-between" @click="isOpen = !isOpen" >
     <p>{{title }}</p>
     <close/>

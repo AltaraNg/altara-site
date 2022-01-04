@@ -1,5 +1,5 @@
 <template>
-  <div class="h-fit bg-blue-50 py-16 px-24">
+  <div class="h-fit bg-blue-50 py-16 md:px-24 px-3">
     <h1
       class="
         text-brand text-lg
@@ -16,7 +16,7 @@
       <div class="w-full md:w-1/2">
         <img src="../../assets/images/faq.png" />
       </div>
-      <div class="w-full md:w-1/2">
+      <div class="w-full md:w-1/2 md:px-0 px-3">
         <div
           class="bg-blue-100 text-brand font-bold shadow-lg p-3 rounded my-1"
           v-for="faq in faqs"
