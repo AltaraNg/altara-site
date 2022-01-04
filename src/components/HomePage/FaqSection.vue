@@ -23,7 +23,7 @@
           :key="faq.id"
         >
           <Accordion :title="faq.question">
-            <div class="pt-6 mt-1 text-gray-800">
+            <div class=" mt-1 text-gray-600">
               <p>
                 {{ faq.answer }}
               </p>
