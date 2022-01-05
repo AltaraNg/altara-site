@@ -84,6 +84,7 @@ export default {
   components: {
     heading, innovation,impact,scale,community
   },
+  title: 'About Us | Altara Credit Limited'
 };
 </script>
 
