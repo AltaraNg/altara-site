@@ -8,6 +8,6 @@ import titleMixin from "./mixins/titleMixin";
 const app = createApp(App);
 app.use(router);
 app.use(VueSmoothScroll);
-Vue.mixin(titleMixin);
+app.mixin(titleMixin);
 app.mount("#app");
 
