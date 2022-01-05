@@ -6,7 +6,7 @@
 
 <script>
 export default {
-
+  title: 'Impacts | Altara Credit Limited'
 }
 </script>
 
