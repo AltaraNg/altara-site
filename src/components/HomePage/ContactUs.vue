@@ -70,6 +70,17 @@
       <input type="text" placeholder="Email" class="border-b w-full px-3 py-2 rounded-full" />
       <input type="text" placeholder="Phone Number" class="border-b w-full px-3 py-2 rounded-full" />
       <div>
+      <select name="reasons" id="reasons" class="border w-full px-3 py-2 rounded-full mt-4" >
+         <option value="default" class="text-gray-500" disabled selected>How can we help ?</option>
+        <option class="text-gray-600 text-sm" value="product">Need a product</option>
+        <option class="text-gray-600 text-sm" value="cash">Need a cash loan</option>
+        <option class="text-gray-600 text-sm" value="rent">Need a Rent Loan</option>
+        <option class="text-gray-600 text-sm" value="payment_issue">Payment Issue</option>
+        <option class="text-gray-600 text-sm" value="partnership">Get in contact about business partnership</option>
+        <option class="text-gray-600 text-sm" value="general_enquiry">General Enquiry</option>
+      </select>
+      </div>
+      <div>
         <label class="text-gray-600 text-sm"
           >Preferred method of communication</label
         >
