@@ -16,7 +16,8 @@ export default {
     Services,
     ContactUs,
     FAQ
-  }
+  },
+  title: 'Buy now Pay Later | Altara Credit Limited'
 
 }
 </script>

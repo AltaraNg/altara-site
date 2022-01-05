@@ -6,7 +6,7 @@
 
 <script>
 export default {
-
+  title: 'How It Works | Altara Credit Limited'
 }
 </script>
 
