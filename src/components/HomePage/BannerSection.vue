@@ -18,7 +18,7 @@
         class="
           md:text-5xl
           text-4xl
-          fontweight
+          font-black
           md:text-left
           text-center
           tracking-wider
@@ -78,7 +78,5 @@ export default {
 </script>
 
 <style>
-.fontweight{
-  font-weight: bolder;
-}
+
 </style>
