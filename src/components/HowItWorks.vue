@@ -4,7 +4,7 @@
         <img src="../assets/images/customer1.jpg" class="md:w-1/2"/>
         <img src="../assets/images/customer2.jpg" class="md:w-1/2"/>
     </div>
-     <carousel :items-to-show="1" autoplay="4000" transition="800" wrap-around = true class="hidden md:block overflow-hidden">
+     <carousel :items-to-show="1" :autoplay=4000 :transition=800 :wrap-around = true class="hidden md:block overflow-hidden">
     <slide v-for="slide in slides" :key="slide">
      <img :src="slide" class= " object-center h-99 w-full object-cover" />
     </slide>
