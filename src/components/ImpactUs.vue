@@ -19,8 +19,8 @@
    </div>
    <div class="my-10 ">
      <heading title="OUR IMPACT"/>
-     <div class="mt-20 mx-36 flex justify-between items-center md:flex-row flex-col">
-        <div class="h-96 w-96">
+     <div class="mt-20 mx-36 mb-16 md:mb-0 flex justify-between items-center md:flex-row flex-col space-y-16 md:space-y-0 ">
+        <div class="md:h-96 h-64 md:w-96 w-64">
     <vue3-chart-js
         :id="doughnutChart1.id"
         :type="doughnutChart1.type"
@@ -28,7 +28,7 @@
         @before-render="beforeRenderLogic"
     ></vue3-chart-js>
   </div>
-   <div class="h-96 w-96">
+   <div class="md:h-96 h-64 md:w-96 w-64">
     <vue3-chart-js
         :id="doughnutChart2.id"
         :type="doughnutChart2.type"
@@ -37,8 +37,8 @@
     ></vue3-chart-js>
   </div>
      </div>
-          <div class="mt-36 mx-36 flex justify-between items-center md:flex-row flex- col">
-        <div class="h-96 w-96">
+          <div class="md:mt-36 mx-36 flex justify-between items-center md:flex-row flex-col space-y-16 md:space-y-0 ">
+        <div class="md:h-96 h-64 md:w-96 w-64">
     <vue3-chart-js
         :id="doughnutChart3.id"
         :type="doughnutChart3.type"
@@ -46,7 +46,7 @@
         @before-render="beforeRenderLogic"
     ></vue3-chart-js>
   </div>
-   <div class="h-96 w-96">
+   <div class="md:h-96 h-64 md:w-96 w-64">
     <vue3-chart-js
         :id="doughnutChart4.id"
         :type="doughnutChart4.type"
