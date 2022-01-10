@@ -17,8 +17,8 @@
       <img src="../assets/logo.png" />
     </router-link>
     <div class="space-x-10 text-xs md:text-sm hidden md:flex">
-      <a class="cursor-pointer" href="#service" v-smooth-scroll>Services</a>
-      <a class="cursor-pointer" href="#contact" v-smooth-scroll>Contact Us</a>
+      <router-link class="cursor-pointer" :to="{ name: 'home', hash: '#service' }"  >Services</router-link>
+      <router-link class="cursor-pointer" :to="{ name: 'home', hash: '#contact' }" >Contact Us</router-link>
       <router-link :to="{ name: 'about_us' }" exact class="cursor-pointer"
         >About us</router-link
       >
@@ -79,8 +79,8 @@
         class="absolute md:right-16 md:top-16 w-6 top-5 right-5 cursor-pointer text-white fill-current"
         @click="toggleHamburger"  ref="closeModal"
       />
-       <a class="cursor-pointer" href="#service" v-smooth-scroll>Services</a>
-      <a class="cursor-pointer" href="#contact" v-smooth-scroll>Contact Us</a>
+       <router-link class="cursor-pointer"  :to="{ name: 'home', hash: '#service' }" >Services</router-link>
+      <router-link class="cursor-pointer" :to="{ name: 'home', hash: '#contact' }" >Contact Us</router-link>
       <router-link :to="{ name: 'about_us' }" exact class="cursor-pointer"
         >About us</router-link
       >

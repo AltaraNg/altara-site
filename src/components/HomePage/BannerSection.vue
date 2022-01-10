@@ -16,12 +16,11 @@
     >
       <h1
         class="
-          md:text-5xl
-          text-4xl
+          md:text-7xl
+          text-5xl
           font-black
           md:text-left
           text-center
-          tracking-wider
           md:leading-12
           leading-10
           text-brand
