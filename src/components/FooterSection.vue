@@ -5,8 +5,8 @@
     <div class="md:w-1/3 w-full md:space-y-8 space-y-5">
       <img src="../assets/logo.png" />
       <p class="md:text-sm text-xs text-white">
-        Lorem ipsum dolor amet, consectetur adipiscing elit. Eget nisl nunc quam
-        ac sed turpis volutpat. Cursus sed massa non nisi, placerat.
+         A leading technology driven platform that enables pay later for multiple
+        services
       </p>
       <div class="flex justify-center md:justify-start space-x-8">
         <facebook />
