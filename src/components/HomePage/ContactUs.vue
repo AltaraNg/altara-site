@@ -53,12 +53,12 @@
       method="POST"
       data-netlify="true"
       class="
-        md:w-2/5
+        md:w-1/2
         w-full
-        pb-20
-        space-y-12
+        pb-10
+        space-y-8
         bg-white
-        rounded
+        rounded-lg
         shadow-lg
         px-8
         pt-8

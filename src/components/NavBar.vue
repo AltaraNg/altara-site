@@ -43,6 +43,7 @@
           cursor-pointer
         "
         :to="{ name: 'signup' }" exact
+        v-if="flag== 'beta'"
       >
         Sign up
       </router-link>
@@ -102,6 +103,7 @@
           cursor-pointer
         "
         :to="{ name: 'signup' }" exact
+        v-if="flag== 'beta'"
       >
         Sign up
       </router-link>
@@ -117,7 +119,8 @@
 export default {
   data(){
     return{
-      state:false
+      state:false,
+      flag: localStorage.getItem('flag'),
     }
   },
   methods:{

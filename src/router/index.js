@@ -48,8 +48,4 @@ const router = createRouter({
   },
 });
 
-//   const router = new VueRouter({
-//     Routes // short for `routes: routes`
-//   })
-
 export default router;
