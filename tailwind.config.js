@@ -15,9 +15,9 @@ module.exports = {
       height: {
         99: "30rem",
       },
-      width:{
-        98: "29rem"
-      }
+      width: {
+        98: "29rem",
+      },
     },
   },
   plugins: [],

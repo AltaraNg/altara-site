@@ -21,17 +21,44 @@
         "
       >
         <div class="text-white flex flex-col items-center">
-          <p class="font-black md:text-5xl text-4xl leading-7 mb-2">>16,000</p>
+          <vue3-autocounter
+            class="font-black md:text-5xl text-4xl leading-7 mb-2"
+            ref="counter"
+            :startAmount="15950"
+            prefix=">"
+            :endAmount="16000"
+            :duration="3"
+            separator=","
+            :autoinit="true"
+          />
           <p class="text-sm tracking-wider font-black">Customers Served</p>
         </div>
         <div class="text-white flex flex-col items-center">
           <p class="font-black md:text-5xl text-4xl leading-7 mb-2">
-            15 of 1768
+            15 of
+            <vue3-autocounter
+              class="font-black md:text-5xl text-4xl leading-7 mb-2"
+              ref="counter"
+              :startAmount="1718"
+              :endAmount="1768"
+              :duration="3"
+              separator=","
+              :autoinit="true"
+            />
           </p>
           <p class="text-sm tracking-wider font-black">Communities</p>
         </div>
         <div class="text-white flex flex-col items-center">
-          <p class="font-black md:text-5xl text-4xl leading-7 mb-2">80,000+</p>
+          <vue3-autocounter
+            class="font-black md:text-5xl text-4xl leading-7 mb-2"
+            ref="counter"
+            :startAmount="79950"
+            suffix="+"
+            :endAmount="80000"
+            :duration="3"
+            separator=","
+            :autoinit="true"
+          />
           <p class="text-sm tracking-wider font-black">Lives Touched</p>
         </div>
       </div>
@@ -59,7 +86,6 @@
             :id="doughnutChart1.id"
             :type="doughnutChart1.type"
             :data="doughnutChart1.data"
-            @before-render="beforeRenderLogic"
           ></vue3-chart-js>
         </div>
         <div class="h-64 lg:w-1/5 w-64 mb-0">
@@ -67,7 +93,6 @@
             :id="doughnutChart2.id"
             :type="doughnutChart2.type"
             :data="doughnutChart2.data"
-            @before-render="beforeRenderLogic"
           ></vue3-chart-js>
         </div>
         <div class="h-64 lg:w-1/5 w-64 md:mb-28 mb-0">
@@ -75,7 +100,6 @@
             :id="doughnutChart3.id"
             :type="doughnutChart3.type"
             :data="doughnutChart3.data"
-            @before-render="beforeRenderLogic"
           ></vue3-chart-js>
         </div>
         <div class="h-64 lg:w-1/5 w-64 md:mb-28 mb-0">
@@ -83,7 +107,6 @@
             :id="doughnutChart4.id"
             :type="doughnutChart4.type"
             :data="doughnutChart4.data"
-            @before-render="beforeRenderLogic"
           ></vue3-chart-js>
         </div>
       </div>
@@ -142,10 +165,12 @@ import testimonial1 from "../assets/images/testimonial_1.png";
 import testimonial2 from "../assets/images/testimonial_2.png";
 import "vue3-carousel/dist/carousel.css";
 import "../assets/css/carousel.css";
+import Vue3autocounter from "vue3-autocounter";
 import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
 export default {
   title: "Impacts | Altara Credit Limited",
   components: {
+    "vue3-autocounter": Vue3autocounter,
     heading,
     Vue3ChartJs,
     testimonial,
@@ -223,11 +248,6 @@ export default {
         },
       },
     };
-  },
-  methods: {
-    beforeRenderLogic(e) {
-      console.log(e);
-    },
   },
 };
 </script>
