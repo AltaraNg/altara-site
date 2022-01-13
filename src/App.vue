@@ -1,8 +1,10 @@
 <template>
-  <div class="">
-  <NavBar class="sticky top-0"/>
-    <router-view/>
-  <Footer/>
+  <div class="flex flex-col min-h-screen">
+  <NavBar class="sticky top-0 z-50"/>
+    <div class="flex-grow">
+     <router-view/> 
+    </div> 
+  <Footer class=""/>
   </div>
 </template>
 
