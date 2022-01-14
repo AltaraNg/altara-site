@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-center w-fit -space-y-3">
+  <div class="flex  flex-col items-center w-full   sm:-space-y-3 md:-space-y-0   ">
     <div
       class="
         shadow-md
@@ -8,7 +8,7 @@
         justify-between
         border
         rounded-md
-        h-48
+        h-60
         p-6
         md:w-98
         w-fit
