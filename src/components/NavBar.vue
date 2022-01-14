@@ -34,7 +34,7 @@
         >How it works</router-link
       >
       <router-link :to="{ name: 'impact' }" exact class="cursor-pointer"
-        >Impacts</router-link
+        >Impact</router-link
       >
     </div>
     <div>
@@ -121,7 +121,7 @@
           >How it works</router-link
         >
         <router-link :to="{ name: 'impact' }" exact class="cursor-pointer"
-          >Impacts</router-link
+          >Impact</router-link
         >
         <router-link
           class="

@@ -64,12 +64,12 @@
       </div>
     </div>
     <div class="my-10">
-      <heading title="OUR IMPACT" />
+      <heading title="CUSTOMER DEMOGRAPHICS" fontSize="md:text-sm text-xs" width="w-9/12" />
       <div
         class="
           mx-36
           md:mx-16
-          mb-16
+          mb-36
           md:mb-0
           flex
           md:flex-wrap
@@ -77,32 +77,36 @@
           items-center
           md:flex-row
           flex-col
-          space-y-16
+          space-y-36
           md:space-y-0
         "
       >
-        <div class="h-64 lg:w-1/5 w-64 md:my-28 mb-0">
+        <div class="h-52 flex flex-col items-center lg:w-1/5 w-64 md:my-28 mb-0">
+        <p class="mb-2 text-gray-700 font-bold">Gender</p>
           <vue3-chart-js
             :id="doughnutChart1.id"
             :type="doughnutChart1.type"
             :data="doughnutChart1.data"
           ></vue3-chart-js>
         </div>
-        <div class="h-64 lg:w-1/5 w-64 mb-0">
+        <div class="h-52 flex flex-col items-center lg:w-1/5 w-64 mb-0">
+          <p class="mb-2 text-gray-700 font-bold">Sector</p>
           <vue3-chart-js
             :id="doughnutChart2.id"
             :type="doughnutChart2.type"
             :data="doughnutChart2.data"
           ></vue3-chart-js>
         </div>
-        <div class="h-64 lg:w-1/5 w-64 md:mb-28 mb-0">
+        <div class="h-52 flex flex-col items-center lg:w-1/5 w-64 md:mb-28 mb-0">
+          <p class="mb-2 text-gray-700 font-bold">Banking Payment</p>
           <vue3-chart-js
             :id="doughnutChart3.id"
             :type="doughnutChart3.type"
             :data="doughnutChart3.data"
           ></vue3-chart-js>
         </div>
-        <div class="h-64 lg:w-1/5 w-64 md:mb-28 mb-0">
+        <div class="h-52 flex flex-col items-center lg:w-1/5 w-64 md:mb-28 mb-0">
+          <p class="mb-2 text-gray-700 font-bold">Usage</p>
           <vue3-chart-js
             :id="doughnutChart4.id"
             :type="doughnutChart4.type"
@@ -189,7 +193,7 @@ export default {
           image: testimonial1,
         },
         {
-          heading: "Quality Showroom Products",
+          heading: "Quality Pick-Up Centers Products",
           testimony:
             "“I more or less saw Altara like a second home, they always accord me so much respect whenever I’m around and I love the ambience... imagine I have to pay for school fees, house rents and other expenses and I still have to buy these products at cash and carry, I would have been so broke”",
           image: testimonial2,
