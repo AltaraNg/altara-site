@@ -22,27 +22,25 @@
     </div>
     <form
       name="contact"
-      method="post"
+      method="POST"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       class="md:w-1/2 w-full pb-10 space-y-8 bg-white rounded-lg shadow-lg px-8 pt-8 h-fit"
     >
       <p class="font-bold md:text-left text-center">Send us a Message</p>
       <input type="hidden" name="form-name" value="contact" />
-      <input type="text" placeholder="Name" class="border-b w-full px-3 py-2 rounded-full" />
-      <input type="text" placeholder="Email" class="border-b w-full px-3 py-2 rounded-full" />
-      <input type="text" placeholder="Phone Number" class="border-b w-full px-3 py-2 rounded-full" />
-      <div>
-        <select name="reasons" id="reasons" class="border w-full px-3 py-2 rounded-full mt-4">
-          <option value="default" class="text-gray-500" disabled selected>How can we help ?</option>
-          <option class="text-gray-600 text-sm" value="product">Need a product</option>
-          <option class="text-gray-600 text-sm" value="cash">Need a cash loan</option>
-          <option class="text-gray-600 text-sm" value="rent">Need a Rent Loan</option>
-          <option class="text-gray-600 text-sm" value="payment_issue">Payment Issue</option>
-          <option class="text-gray-600 text-sm" value="partnership">Get in contact about business partnership</option>
-          <option class="text-gray-600 text-sm" value="general_enquiry">General Enquiry</option>
-        </select>
-      </div>
+      <input type="text" placeholder="Name" name="name" class="border-b w-full px-3 py-2 rounded-full" />
+      <input type="text" placeholder="Email" name="email" class="border-b w-full px-3 py-2 rounded-full" />
+      <input type="text" placeholder="Phone Number" name="phone" class="border-b w-full px-3 py-2 rounded-full" />
+      <select name="reasons" id="reasons" class="border w-full px-3 py-2 rounded-full mt-4">
+        <option value="default" class="text-gray-500" disabled selected>How can we help ?</option>
+        <option class="text-gray-600 text-sm" value="product">Need a product</option>
+        <option class="text-gray-600 text-sm" value="cash">Need a cash loan</option>
+        <option class="text-gray-600 text-sm" value="rent">Need a Rent Loan</option>
+        <option class="text-gray-600 text-sm" value="payment_issue">Payment Issue</option>
+        <option class="text-gray-600 text-sm" value="partnership">Get in contact about business partnership</option>
+        <option class="text-gray-600 text-sm" value="general_enquiry">General Enquiry</option>
+      </select>
       <div>
         <label class="text-gray-600 text-sm">Preferred method of communication</label>
         <div class="flex space-x-8 mt-3 text-gray-600 text-sm">
@@ -56,7 +54,7 @@
           </div>
         </div>
       </div>
-      <textarea type="text" rows="4" placeholder="Message" class="border w-full px-3 py-2 rounded"></textarea>
+      <textarea type="text" rows="4" placeholder="Message" name="message" class="border w-full px-3 py-2 rounded"></textarea>
       <button type="submit" class="bg-brand px-7 py-3 mx-0 rounded-lg font-bold justify-self-end text-white text-sm hover:shadow-lg">
         Send
       </button>
