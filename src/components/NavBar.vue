@@ -43,6 +43,11 @@
           hidden
           md:flex
           bg-brand
+          border-white
+          hover:bg-white 
+          hover:text-brand
+          font-semibold
+          border
           px-7
           py-1.5
           rounded-full
@@ -52,7 +57,7 @@
         "
         :to="{ name: 'signup' }"
         exact
-        v-if="flag == 'beta'"
+       
       >
         Sign up
       </router-link>
@@ -136,7 +141,6 @@
           "
           :to="{ name: 'signup' }"
           exact
-          v-if="flag == 'beta'"
         >
           Sign up
         </router-link>
@@ -150,7 +154,6 @@ export default {
   data() {
     return {
       state: false,
-      flag: localStorage.getItem("flag"),
     };
   },
   methods: {
