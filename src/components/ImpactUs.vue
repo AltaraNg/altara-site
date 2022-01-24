@@ -198,6 +198,11 @@ export default {
             "“I more or less saw Altara like a second home, they always accord me so much respect whenever I’m around and I love the ambience... imagine I have to pay for school fees, house rents and other expenses and I still have to buy these products at cash and carry, I would have been so broke”",
           image: testimonial2,
         },
+        {
+          heading: "Instant Home Setup",
+          testimony: "“You guys are one of the best thing that has happened to me, you practically help set up my home... The ease of deducting the money from my account as against coming to the showroom all the time",
+          image: testimonial2,
+        }
       ],
       doughnutChart1: {
         id: "doughnut",

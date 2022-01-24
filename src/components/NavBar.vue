@@ -28,10 +28,10 @@
         >Contact Us</router-link
       >
       <router-link :to="{ name: 'about_us' }" exact class="cursor-pointer"
-        >About us</router-link
+        >About Us</router-link
       >
       <router-link :to="{ name: 'how_it_works' }" exact class="cursor-pointer"
-        >How it works</router-link
+        >How It Works</router-link
       >
       <router-link :to="{ name: 'impact' }" exact class="cursor-pointer"
         >Impact</router-link
@@ -120,10 +120,10 @@
           >Contact Us</router-link
         >
         <router-link :to="{ name: 'about_us' }" exact class="cursor-pointer"
-          >About us</router-link
+          >About Us</router-link
         >
         <router-link :to="{ name: 'how_it_works' }" exact class="cursor-pointer"
-          >How it works</router-link
+          >How It Works</router-link
         >
         <router-link :to="{ name: 'impact' }" exact class="cursor-pointer"
           >Impact</router-link
