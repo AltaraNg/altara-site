@@ -16,11 +16,11 @@
             backdrop-blur-md
           "
         >
-          <!-- <p class="text-white font-black md:text-2xl text-sm text-right">
+          <p class="text-white font-black md:text-2xl text-sm text-right">
             Non- Salaried Worker
-          </p> -->
+          </p>
         </div>
-        <img src="../assets/images/non-salaried.png" class="md:rounded-lg" />
+        <img src="../assets/images/non-salaried.png" class="md:rounded-lg h-96" />
       </div>
       <div class="md:w-5/12 relative">
         <div
@@ -35,11 +35,11 @@
             backdrop-blur-md
           "
         >
-          <!-- <p class="text-white font-black md:text-2xl text-sm text-right">
+          <p class="text-white font-black md:text-2xl text-sm text-right">
             Salaried Worker
-          </p> -->
+          </p>
         </div>
-        <img src="../assets/images/customer2.jpg" class="md:rounded-lg" />
+        <img src="../assets/images/salaried.jpg" class="md:rounded-lg h-96" />
       </div>
     </div>
 
