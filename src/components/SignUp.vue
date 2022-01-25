@@ -27,7 +27,7 @@
         <option class="text-gray-600 text-sm" value="product">Altara Product</option>
           </select>
                <select  name="phone_number" placeholder="Phone Number" class="bg-white rounded-full md:w-2/5 text-gray-400  h-10 shadow-lg px-2 py-1 border border-brand ">
-          <option value="default" class="text-gray-500" disabled selected>Services you are interested in?</option>
+          <option value="default" class="text-gray-500" disabled selected>Employment Status</option>
         <option class="text-gray-600 text-sm" value="salaried">Salaried</option>
         <option class="text-gray-600 text-sm" value="non_salaried">Non-Salaried</option>
           </select>
