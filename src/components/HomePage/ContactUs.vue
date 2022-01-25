@@ -22,9 +22,8 @@
     </div>
     <form
       name="contact"
-      method="POST"
-      data-netlify="true"
-      data-netlify-honeypot="bot-field"
+      action="https://formspree.io/f/xzbodaol"
+       method="POST"
       class="md:w-1/2 w-full pb-10 space-y-8 bg-white rounded-lg shadow-lg px-8 pt-8 h-fit"
     >
       <p class="font-bold md:text-left text-center">Send us a Message</p>

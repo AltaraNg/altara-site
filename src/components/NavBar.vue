@@ -28,10 +28,10 @@
         >Contact Us</router-link
       >
       <router-link :to="{ name: 'about_us' }" exact class="cursor-pointer"
-        >About us</router-link
+        >About Us</router-link
       >
       <router-link :to="{ name: 'how_it_works' }" exact class="cursor-pointer"
-        >How it works</router-link
+        >How It Works</router-link
       >
       <router-link :to="{ name: 'impact' }" exact class="cursor-pointer"
         >Impact</router-link
@@ -43,6 +43,11 @@
           hidden
           md:flex
           bg-brand
+          border-white
+          hover:bg-white 
+          hover:text-brand
+          font-semibold
+          border
           px-7
           py-1.5
           rounded-full
@@ -52,7 +57,7 @@
         "
         :to="{ name: 'signup' }"
         exact
-        v-if="flag == 'beta'"
+       
       >
         Sign up
       </router-link>
@@ -115,10 +120,10 @@
           >Contact Us</router-link
         >
         <router-link :to="{ name: 'about_us' }" exact class="cursor-pointer"
-          >About us</router-link
+          >About Us</router-link
         >
         <router-link :to="{ name: 'how_it_works' }" exact class="cursor-pointer"
-          >How it works</router-link
+          >How It Works</router-link
         >
         <router-link :to="{ name: 'impact' }" exact class="cursor-pointer"
           >Impact</router-link
@@ -136,7 +141,6 @@
           "
           :to="{ name: 'signup' }"
           exact
-          v-if="flag == 'beta'"
         >
           Sign up
         </router-link>
@@ -150,7 +154,6 @@ export default {
   data() {
     return {
       state: false,
-      flag: localStorage.getItem("flag"),
     };
   },
   methods: {
