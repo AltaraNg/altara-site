@@ -24,9 +24,9 @@
           <vue3-autocounter
             class="font-black md:text-5xl text-4xl leading-7 mb-2"
             ref="counter"
-            :startAmount="15950"
+            :startAmount="21950"
             prefix=">"
-            :endAmount="16000"
+            :endAmount="22000"
             :duration="3"
             separator=","
             :autoinit="true"
