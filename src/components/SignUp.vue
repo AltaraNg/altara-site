@@ -107,7 +107,7 @@
         </div>
       </form>
     </div>
-    <Modal v-if="!form_sent" title="Sign Up Successfull!">
+    <Modal v-if="form_sent" title="Sign Up Successfull!">
      <template v-slot:svg>
        <img src="../assets/images/success.png" class="w-28 h-28"/>
      </template>
