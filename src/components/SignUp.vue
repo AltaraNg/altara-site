@@ -10,93 +10,93 @@
         <h1 class="text-center text-brand font-black leading-7 md:text-3xl text-lg">
           Lets get started
           <br />
-          <span class="text-gray-400 font-normal md:text-sm text-xs">Create a new account</span>
+          <span class="font-normal md:text-sm text-xs">Create a new account</span>
         </h1>
       </div>
       <form class="space-y-6" @submit.prevent="sendEmail" method="POST">
         <div
           class="flex md:flex-row flex-col justify-evenly w-full px-6 md:px-0 space-y-5 md:space-y-0"
         >
-          <input
-            type="text"
-            name="first_name"
-            v-model="first_name"
-            placeholder="First Name"
-            class="bg-white rounded-full md:w-2/5 h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
-          />
-          <input
-            type="text"
-            name="last_name"
-            v-model="last_name"
-            placeholder="Last Name"
-            class="bg-white rounded-full md:w-2/5 h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
-          />
+          <div class="flex flex-col md:w-2/5">
+            <label for="full_name" class="mb-0.5 ml-2 text-sm">Full Name:</label>
+            <input
+              type="text"
+              name="full_name"
+              v-model="full_name"
+              class="bg-white rounded-full h-10 text-sm shadow-lg px-2 py-1 border border-brand"
+            />
+          </div>
+          <div class="flex flex-col md:w-2/5">
+            <label for="phone_number" class="mb-0.5 ml-2 text-sm">Phone Number:</label>
+            <input
+              type="text"
+              name="phone_number"
+              v-model="phone_number"
+              class="bg-white rounded-full h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
+            />
+          </div>
         </div>
         <div
-          class="flex md:flex-row flex-col justify-evenly w-full px-6 md:px-0 space-y-5 md:space-y-0"
+          class="flex md:flex-row flex-col justify-evenly items-center w-full px-6 md:px-0 space-y-5 md:space-y-0"
         >
-          <input
-            type="text"
-            name="phone_number"
-            v-model="phone_number"
-            placeholder="Phone Number"
-            class="bg-white rounded-full md:w-2/5 w-full h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
-          />
-          <input
-            type="text"
-            name="email"
-            v-model="email"
-            placeholder="Email"
-            class="bg-white rounded-full md:w-2/5 w-full h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
-          />
-        </div>
-        <div
-          class="flex md:flex-row flex-col justify-evenly w-full px-6 md:px-0 space-y-5 md:space-y-0"
-        >
-          <input
-            type="text"
-            name="address"
-            v-model="address"
-            placeholder="Address"
-            class="bg-white rounded-full md:w-2/5 h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
-          />
-          <input
-            type="text"
-            name="product_name_or_loan_amount"
-            v-model="product_name_or_loan_amount"
-            placeholder="Product Name or Loan Amount"
-            class="bg-white rounded-full md:w-2/5 h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
-          />
-        </div>
-        <div
-          class="flex md:flex-row flex-col justify-evenly w-full px-6 md:px-0 space-y-5 md:space-y-0"
-        >
-          <select
-            name="services_you_are_interested_in"
-            v-model="services_you_are_interested_in"
-            placeholder="Services you are interested in?"
-            class="bg-white rounded-full md:w-2/5 text-gray-400 h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
+          <div
+            class="flex flex-col"
+            :class="location == 'other' ? 'md:w-2/5 w-full ' : ' w-full md:mx-8'"
           >
-            <option
-              value="default"
-              class="text-gray-500"
-              disabled
-              selected
-            >Services you are interested in?</option>
-            <option class="text-gray-600 text-sm" value="rent">ALtara Rent</option>
-            <option class="text-gray-600 text-sm" value="e_loan">Altara E-loan</option>
-            <option class="text-gray-600 text-sm" value="product">Altara Product</option>
-          </select>
-          <select
-            name="employment_status"
-            v-model="employment_status"
-            placeholder="Employment Status"
-            class="bg-white rounded-full md:w-2/5 text-gray-400 h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
-          >
-            <option value="default" class="text-gray-500" disabled selected>Employment Status</option>
-            <option class="text-gray-600 text-sm" value="salaried">Salaried</option>
-            <option class="text-gray-600 text-sm" value="non_salaried">Non-Salaried</option>
-          </select>
+            <label for="location" class="mb-0.5 ml-2 text-sm md:text-base">Location:</label>
+            <select
+              name="location"
+              v-model="location"
+              class="bg-white rounded-full h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
+            >
+              <option value="default" class disabled selected>Location</option>
+              <option class="text-sm" value="Lagos">Lagos State</option>
+              <option class="text-sm" value="Oyo">Oyo State</option>
+              <option class="text-sm" value="Kwara">Kwara State</option>
+              <option class="text-sm" value="other">Other</option>
+            </select>
+          </div>
+          <div class="flex flex-col md:w-2/5 w-full" v-if="location == 'other'">
+            <label for="services_you_are_interested_in" class="mb-0.5 ml-2 text-sm">Enter State</label>
+            <input
+              type="text"
+              name="other_state"
+              v-model="other_state"
+              class="bg-white rounded-full w-full h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
+            />
+          </div>
+        </div>
+        <div
+          class="flex md:flex-row flex-col justify-evenly w-full px-6 md:px-0 space-y-5 md:space-y-0"
+        >
+          <div class="flex flex-col md:w-2/5">
+            <label
+              for="services_you_are_interested_in"
+              class="mb-0.5 ml-2 text-sm"
+            >Services you are interested in?</label>
+            <select
+              name="services_you_are_interested_in"
+              v-model="services_you_are_interested_in"
+              class="bg-white rounded-full h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
+            >
+              <option value="default" class disabled selected>Services you are interested in?</option>
+              <option class="text-sm" value="rent">Altara Rent</option>
+              <option class="text-sm" value="e_loan">Altara E-loan</option>
+              <option class="text-sm" value="product">Altara Product</option>
+            </select>
+          </div>
+          <div class="flex flex-col md:w-2/5">
+            <label for="employment_status" class="mb-0.5 ml-2 text-sm">Employment Status:</label>
+            <select
+              name="employment_status"
+              v-model="employment_status"
+              class="bg-white rounded-full h-10 text-sm shadow-lg px-2 py-1 border border-brand"
+            >
+              <option value="default" class disabled selected>Employment Status</option>
+              <option class="text-sm" value="employed">Employed</option>
+              <option class="text-sm" value="self_employed">Self Employed</option>
+            </select>
+          </div>
         </div>
         <div class="w-full flex justify-center">
           <button
@@ -108,12 +108,13 @@
       </form>
     </div>
     <Modal v-if="form_sent" title="Sign Up Successfull!">
-     <template v-slot:svg>
-       <img src="../assets/images/success.png" class="w-28 h-28"/>
-     </template>
-    
+      <template v-slot:svg>
+        <img src="../assets/images/success.png" class="w-28 h-28" />
+      </template>
+      <template v-slot:text>
+        <p class="text-center">We will reach out to you shortly</p>
+      </template>
     </Modal>
-
   </div>
 </template>
 <script>
@@ -122,49 +123,43 @@ import background from '../assets/images/background_picture.png'
 import Modal from '../components/general/modal.vue'
 export default {
   title: 'Sign Up| Altara Credit Limited',
-  components:{
+  components: {
     Modal
   },
   data() {
     return {
       background,
-      first_name: "",
-      last_name: "",
+      full_name: "",
+      location: "",
+      other_state: "",
       phone_number: "",
-      email: "",
-      address: "",
-      product_name_or_loan_amount: "",
       services_you_are_interested_in: "",
       employment_status: "",
-      form_sent:false
+      form_sent: false
 
     }
   },
   methods: {
     disabled() {
       return (
-        !this.first_name || !this.last_name || !this.phone_number || !this.email || !this.address || !this.product_name_or_loan_amount || !this.services_you_are_interested_in || !this.employment_status
+        !this.full_name || !this.phone_number || !this.location || !this.services_you_are_interested_in || !this.employment_status
       )
     },
     sendEmail() {
       axios.post('https://formspree.io/f/xgedolqe', {
-        first_name: this.first_name,
-        last_name: this.last_name,
-         phone_number: this.phone_number,
-        email: this.email,
-         address: this.address,
-        product_name_or_laon_amount: this.product_name_or_loan_amount,
-         services_you_are_interested_in: this.services_you_are_interested_in,
+        full_name: this.full_name,
+        phone_number: this.phone_number,
+        location: this.location,
+        other_state: this.other_state,
+        services_you_are_interested_in: this.services_you_are_interested_in,
         employment_status: this.employment_status,
       }).then((response) => {
-        this.first_name = '';
-        this.last_name = '';
+        this.full_name = '';
         this.phone_number = '';
-        this.email = '';
-        this.address = '';
-        this.product_name_or_loan_amount = '';
+        this.location = '';
+        this.other_state = '';
         this.services_you_are_interested_in = '';
-        this.employment_status=''
+        this.employment_status = ''
         this.form_sent = true;
         //i redirect my app to '/sameRoute' route once payload completed.  
         this.$router.push({ path: '/signup' });
@@ -172,11 +167,15 @@ export default {
       }).catch((error) => {
         if (error) {
           console.error('There was an error!', error);
-          
+
         }
-});
-},
-},
+      });
+    },
+  },
 };
 
 </script>
+<style>
+button:disabled{
+  background-color: #c2d2dd;
+}</style>
