@@ -59,6 +59,7 @@
           font-bold
           text-white text-sm
           hover:shadow-lg
+          text-center
         "
       >
         How It Works
