@@ -252,7 +252,7 @@ export default {
           datasets: [
             {
               backgroundColor: ["#074A74", "rgba(7,74,116,0.7)"],
-              data: [21, 72.7],
+              data: [30, 70],
             },
           ],
         },
