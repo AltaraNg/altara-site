@@ -8,7 +8,7 @@
       </p>
       <div class="flex items-center md:mb-10 mb-5">
         <phone />
-        <span class="ml-5 text-sm font-bold">+234 812 3456 789</span>
+        <span class="ml-5 text-sm font-bold">+234 905 5493 652</span>
       </div>
       <div class="flex items-center md:mb-10 mb-5">
         <email />

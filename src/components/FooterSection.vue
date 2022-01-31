@@ -39,7 +39,7 @@
         </div>
         <div class="flex items-center">
           <phone class="hidden md:block mr-2" />
-          <p class="text-sm">+234 812 3456 789</p>
+          <p class="text-sm">+234 905 5493 652</p>
         </div>
         <div class="flex items-center">
           <location class="hidden md:block mr-2" />
