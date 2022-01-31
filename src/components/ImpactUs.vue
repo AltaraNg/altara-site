@@ -82,7 +82,7 @@
         "
       >
         <div class="h-52 flex flex-col items-center lg:w-1/5 w-64 md:my-28 mb-0">
-        <p class="mb-2 text-gray-700 font-bold">Gender</p>
+        <p class="mb-2 text-gray-700 font-bold">Gender(%)</p>
           <vue3-chart-js
             :id="doughnutChart1.id"
             :type="doughnutChart1.type"
@@ -90,7 +90,7 @@
           ></vue3-chart-js>
         </div>
         <div class="h-52 flex flex-col items-center lg:w-1/5 w-64 mb-0">
-          <p class="mb-2 text-gray-700 font-bold">Sector</p>
+          <p class="mb-2 text-gray-700 font-bold">Sector(%)</p>
           <vue3-chart-js
             :id="doughnutChart2.id"
             :type="doughnutChart2.type"
@@ -98,7 +98,7 @@
           ></vue3-chart-js>
         </div>
         <div class="h-52 flex flex-col items-center lg:w-1/5 w-64 md:mb-28 mb-0">
-          <p class="mb-2 text-gray-700 font-bold">Banking Payment</p>
+          <p class="mb-2 text-gray-700 font-bold">Banking Payment(%)</p>
           <vue3-chart-js
             :id="doughnutChart3.id"
             :type="doughnutChart3.type"
@@ -106,7 +106,7 @@
           ></vue3-chart-js>
         </div>
         <div class="h-52 flex flex-col items-center lg:w-1/5 w-64 md:mb-28 mb-0">
-          <p class="mb-2 text-gray-700 font-bold">Usage</p>
+          <p class="mb-2 text-gray-700 font-bold">Usage(%)</p>
           <vue3-chart-js
             :id="doughnutChart4.id"
             :type="doughnutChart4.type"
