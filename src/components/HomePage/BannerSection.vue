@@ -48,7 +48,7 @@
         A leading technology driven platform that enables pay later for multiple
         services
       </p>
-      <button
+      <router-link :to="{ name: 'how_it_works' }" exact
         class="
           bg-brand
           px-7
@@ -59,10 +59,11 @@
           font-bold
           text-white text-sm
           hover:shadow-lg
+          text-center
         "
       >
         How It Works
-      </button>
+      </router-link>
     </div>
     <div class="w-full md:w-1/2 md:px-10 md:pt-5 px-5 pt-5">
       <bannerSVG />

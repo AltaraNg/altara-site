@@ -62,7 +62,7 @@ export default {
         {
           id: 4,
           question: "Where is Altara Located?",
-          answer: "We currently have several branches across Oyo and Kware including major cities such as Ibadan, Ogbomosho & Ilorin. We are growing quickly and expanding to more communities near you.",
+          answer: "We currently have several branches across Oyo and Kwara including major cities such as Ibadan, Ogbomosho & Ilorin. We are growing quickly and expanding to more communities near you.",
         },
 
       ],

@@ -82,7 +82,7 @@
         "
       >
         <div class="h-52 flex flex-col items-center lg:w-1/5 w-64 md:my-28 mb-0">
-        <p class="mb-2 text-gray-700 font-bold">Gender</p>
+        <p class="mb-2 text-gray-700 font-bold">Gender(%)</p>
           <vue3-chart-js
             :id="doughnutChart1.id"
             :type="doughnutChart1.type"
@@ -90,7 +90,7 @@
           ></vue3-chart-js>
         </div>
         <div class="h-52 flex flex-col items-center lg:w-1/5 w-64 mb-0">
-          <p class="mb-2 text-gray-700 font-bold">Sector</p>
+          <p class="mb-2 text-gray-700 font-bold">Sector(%)</p>
           <vue3-chart-js
             :id="doughnutChart2.id"
             :type="doughnutChart2.type"
@@ -98,7 +98,7 @@
           ></vue3-chart-js>
         </div>
         <div class="h-52 flex flex-col items-center lg:w-1/5 w-64 md:mb-28 mb-0">
-          <p class="mb-2 text-gray-700 font-bold">Banking Payment</p>
+          <p class="mb-2 text-gray-700 font-bold">Banking Payment(%)</p>
           <vue3-chart-js
             :id="doughnutChart3.id"
             :type="doughnutChart3.type"
@@ -106,7 +106,7 @@
           ></vue3-chart-js>
         </div>
         <div class="h-52 flex flex-col items-center lg:w-1/5 w-64 md:mb-28 mb-0">
-          <p class="mb-2 text-gray-700 font-bold">Usage</p>
+          <p class="mb-2 text-gray-700 font-bold">Usage(%)</p>
           <vue3-chart-js
             :id="doughnutChart4.id"
             :type="doughnutChart4.type"
@@ -167,6 +167,7 @@ import Vue3ChartJs from "@j-t-mcc/vue3-chartjs";
 import testimonial from "./general/testimonial.vue";
 import testimonial1 from "../assets/images/testimonial_1.png";
 import testimonial2 from "../assets/images/testimonial_2.png";
+import testimonial3 from "../assets/images/testimonial3.png";
 import "vue3-carousel/dist/carousel.css";
 import "../assets/css/carousel.css";
 import Vue3autocounter from "vue3-autocounter";
@@ -201,7 +202,7 @@ export default {
         {
           heading: "Instant Home Setup",
           testimony: "“You guys are one of the best thing that has happened to me, you practically help set up my home... The ease of deducting the money from my account as against coming to the showroom all the time",
-          image: testimonial2,
+          image: testimonial3,
         }
       ],
       doughnutChart1: {
@@ -212,7 +213,7 @@ export default {
           datasets: [
             {
               backgroundColor: ["#074A74", "rgba(7,74,116,0.7)"],
-              data: [70, 30],
+              data: [57.3, 42.7],
             },
           ],
         },
@@ -225,7 +226,7 @@ export default {
           datasets: [
             {
               backgroundColor: ["#074A74", "rgba(7,74,116,0.7)"],
-              data: [40, 60],
+              data: [76.7, 23.3],
             },
           ],
         },
@@ -238,7 +239,7 @@ export default {
           datasets: [
             {
               backgroundColor: ["#074A74", "rgba(7,74,116,0.7)"],
-              data: [25, 75],
+              data: [72.3, 27.7],
             },
           ],
         },
@@ -251,7 +252,7 @@ export default {
           datasets: [
             {
               backgroundColor: ["#074A74", "rgba(7,74,116,0.7)"],
-              data: [35, 65],
+              data: [30, 70],
             },
           ],
         },
