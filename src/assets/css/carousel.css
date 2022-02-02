@@ -1,0 +1,19 @@
+:root {
+  /* Color */
+  --vc-clr-primary: #074A74;
+  --vc-clr-secondary: #627a8a;
+  --vc-clr-white: #ffffff;
+}
+.carousel__prev {
+  top: 50%;
+  left: 0;
+  margin-left: 25px;
+  transform: translate(-50%, -50%);
+}
+
+.carousel__next {
+  top: 50%;
+  right: 0;
+  margin-right: 25px;
+  transform: translate(50%, -50%);
+}
