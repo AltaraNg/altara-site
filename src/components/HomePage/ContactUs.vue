@@ -104,7 +104,8 @@ export default {
       phone_number: "",
       preferred_method_of_communication: "",
       message: "",
-      form_sent: false
+      form_sent: false,
+      formURL: "https://script.google.com/macros/s/AKfycbwqLwAuXqbs87sO7eYGYfv3vtCZLpByzG8KXaNpX4kVXYep6i0rzzyPt9bXDI-_qoGh3g/exec"
 
     }
   },
@@ -115,7 +116,7 @@ export default {
       )
     },
     sendEmail() {
-      axios.post('https://formspree.io/f/xzbodaol', {
+      axios.post(this.formURL, {
         full_name: this.full_name,
         phone_number: this.phone_number,
         email: this.email,
