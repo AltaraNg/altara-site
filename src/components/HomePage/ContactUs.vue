@@ -85,8 +85,8 @@ import email from "../../assets/svgs/email.vue";
 import facebook from "../../assets/svgs/facebook.vue";
 import twitter from "../../assets/svgs/twitter.vue";
 import linkedin from "../../assets/svgs/linkedin.vue";
-import axios from 'axios'
 import Modal from '../general/modal.vue'
+import { Apiservice } from "../../services/apiService";
 export default {
   components: {
     phone,
@@ -105,7 +105,7 @@ export default {
       preferred_method_of_communication: "",
       message: "",
       form_sent: false,
-      formURL: "https://script.google.com/macros/s/AKfycbwqLwAuXqbs87sO7eYGYfv3vtCZLpByzG8KXaNpX4kVXYep6i0rzzyPt9bXDI-_qoGh3g/exec"
+      formURL: "https://script.google.com/macros/s/AKfycbz_agnXpA70-PH6JYaF_PklZfBjlV-1-AhtGtnHeu6PUurOuC3KJWREgvrN6Yriu_Zv/exec"
 
     }
   },
@@ -115,15 +115,19 @@ export default {
         !this.full_name || !this.phone_number || !this.email || !this.how_can_we_help  || !this.message
       )
     },
-    sendEmail() {
-      axios.post(this.formURL, {
+    
+    sendEmail(){
+      const api = new Apiservice()
+      var data= {
         full_name: this.full_name,
         phone_number: this.phone_number,
         email: this.email,
         how_can_we_help: this.how_can_we_help,
         preferred_method_of_communication: this.preferred_method_of_communication,
-        message: this.message,
-      }).then((response) => {
+        message: this.message
+      }
+      
+      api.post(this.formURL, data, true ).then((response)=>{
         this.full_name = '';
         this.phone_number = '';
         this.email = '';
@@ -140,7 +144,7 @@ export default {
 
         }
       });
-    },
+    }
   },
 };
 </script>
