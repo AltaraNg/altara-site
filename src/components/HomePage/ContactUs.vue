@@ -105,7 +105,7 @@ export default {
       preferred_method_of_communication: "",
       message: "",
       form_sent: false,
-      formURL: process.env.NODE_ENV == "development" ? process.env.VUE_APP_URL_CONTACT_STAGING : process.env.VUE_APP_URL_CONTACT_PRODUCTION
+      formURL: process.env.VUE_APP_URL_CONTACT_STAGING
 
     }
   },

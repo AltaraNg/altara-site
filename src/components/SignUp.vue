@@ -136,7 +136,7 @@ export default {
       services_you_are_interested_in: "",
       employment_status: "",
       form_sent: false,
-      formURL: process.env.NODE_ENV == "development" ? process.env.VUE_APP_URL_SIGNUP_STAGING : process.env.VUE_APP_URL_SIGNUP_PRODUCTION
+      formURL: process.env.VUE_APP_URL_SIGNUP_STAGING
 
     }
   },
