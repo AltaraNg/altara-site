@@ -86,7 +86,7 @@ import facebook from "../../assets/svgs/facebook.vue";
 import twitter from "../../assets/svgs/twitter.vue";
 import linkedin from "../../assets/svgs/linkedin.vue";
 import Modal from '../general/modal.vue'
-import { Apiservice } from "../../services/apiService";
+import { Apiservice } from "../../services/apiService"
 export default {
   components: {
     phone,
@@ -105,7 +105,7 @@ export default {
       preferred_method_of_communication: "",
       message: "",
       form_sent: false,
-      formURL: "https://script.google.com/macros/s/AKfycbz_agnXpA70-PH6JYaF_PklZfBjlV-1-AhtGtnHeu6PUurOuC3KJWREgvrN6Yriu_Zv/exec"
+      formURL: process.env.NODE_ENV == "development" ? process.env.VUE_APP_URL_CONTACT_STAGING : process.env.VUE_APP_URL_CONTACT_PRODUCTION
 
     }
   },
