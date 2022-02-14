@@ -105,7 +105,7 @@ export default {
       preferred_method_of_communication: "",
       message: "",
       form_sent: false,
-      formURL: process.env.VUE_APP_URL_CONTACT_STAGING
+      formURL: process.env.VUE_APP_URL_CONTACT
 
     }
   },

@@ -34,7 +34,6 @@ export class Apiservice {
     try {
       let result = await this.api_connector.get(url, this.requestConfig);
       this.resetRequestConfig();
-      console.log(result.data);
       return result.data;
     } catch (error) {
       this.handleErrors(error);
@@ -62,8 +61,6 @@ export class Apiservice {
         this.requestConfig
       );
       this.resetRequestConfig();
-
-      console.log("success", result);
 
       return result.data;
     } catch (error) {
