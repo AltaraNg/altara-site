@@ -118,9 +118,9 @@
   </div>
 </template>
 <script>
-import axios from 'axios'
 import background from '../assets/images/background_picture.png'
 import Modal from '../components/general/modal.vue'
+import { Apiservice } from "../services/apiService";
 export default {
   title: 'Sign Up| Altara Credit Limited',
   components: {
@@ -135,7 +135,8 @@ export default {
       phone_number: "",
       services_you_are_interested_in: "",
       employment_status: "",
-      form_sent: false
+      form_sent: false,
+      formURL: process.env.VUE_APP_URL_SIGNUP
 
     }
   },
@@ -146,14 +147,16 @@ export default {
       )
     },
     sendEmail() {
-      axios.post('https://formspree.io/f/xgedolqe', {
+      const api = new Apiservice()
+      var data= {
         full_name: this.full_name,
         phone_number: this.phone_number,
         location: this.location,
         other_state: this.other_state,
         services_you_are_interested_in: this.services_you_are_interested_in,
         employment_status: this.employment_status,
-      }).then((response) => {
+      }
+      api.post(this.formURL, data, true).then((response) => {
         this.full_name = '';
         this.phone_number = '';
         this.location = '';

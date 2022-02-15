@@ -85,8 +85,8 @@ import email from "../../assets/svgs/email.vue";
 import facebook from "../../assets/svgs/facebook.vue";
 import twitter from "../../assets/svgs/twitter.vue";
 import linkedin from "../../assets/svgs/linkedin.vue";
-import axios from 'axios'
 import Modal from '../general/modal.vue'
+import { Apiservice } from "../../services/apiService"
 export default {
   components: {
     phone,
@@ -104,7 +104,8 @@ export default {
       phone_number: "",
       preferred_method_of_communication: "",
       message: "",
-      form_sent: false
+      form_sent: false,
+      formURL: process.env.VUE_APP_URL_CONTACT
 
     }
   },
@@ -114,15 +115,19 @@ export default {
         !this.full_name || !this.phone_number || !this.email || !this.how_can_we_help  || !this.message
       )
     },
-    sendEmail() {
-      axios.post('https://formspree.io/f/xzbodaol', {
+    
+    sendEmail(){
+      const api = new Apiservice()
+      var data= {
         full_name: this.full_name,
         phone_number: this.phone_number,
         email: this.email,
         how_can_we_help: this.how_can_we_help,
         preferred_method_of_communication: this.preferred_method_of_communication,
-        message: this.message,
-      }).then((response) => {
+        message: this.message
+      }
+      
+      api.post(this.formURL, data, true ).then((response)=>{
         this.full_name = '';
         this.phone_number = '';
         this.email = '';
@@ -139,7 +144,7 @@ export default {
 
         }
       });
-    },
+    }
   },
 };
 </script>
