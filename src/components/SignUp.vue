@@ -102,8 +102,10 @@
           <button
             type="submit"
             :disabled="disabled()"
-            class="bg-brand md:px-7 px-4 md:py-3 py-2 mx-0 rounded-full font-black md:absolute md:right-12 text-white text-sm hover:shadow-lg"
-          >Create Account</button>
+            class="bg-brand flex items-center justify-center md:px-7 px-4 md:py-3 py-2 mx-0 rounded-full font-black md:absolute md:right-12 text-white text-sm hover:shadow-lg"
+          >
+          <loaderVue v-if="loader"/>
+          Create Account</button>
         </div>
       </form>
     </div>
@@ -121,13 +123,15 @@
 import background from '../assets/images/background_picture.png'
 import Modal from '../components/general/modal.vue'
 import { Apiservice } from "../services/apiService";
+import loaderVue from '../assets/svgs/loader.vue';
 export default {
   title: 'Sign Up| Altara Credit Limited',
   components: {
-    Modal
+    Modal, loaderVue
   },
   data() {
     return {
+      loader : false,
       background,
       full_name: "",
       location: "",
@@ -156,6 +160,7 @@ export default {
         services_you_are_interested_in: this.services_you_are_interested_in,
         employment_status: this.employment_status,
       }
+      this.loader = true
       api.post(this.formURL, data, true).then((response) => {
         this.full_name = '';
         this.phone_number = '';
