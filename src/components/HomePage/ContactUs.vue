@@ -191,6 +191,7 @@ export default {
         this.preferred_method_of_communication = '';
         this.message = ''
         this.form_sent = true;
+        this.loader = false;
         //i redirect my app to '/sameRoute' route once payload completed.  
         this.$router.push({ name: 'home', hash: '#contact' });
         console.log(response)

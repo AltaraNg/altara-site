@@ -140,7 +140,7 @@ export default {
       services_you_are_interested_in: "",
       employment_status: "",
       form_sent: false,
-      formURL: process.env.VUE_APP_URL_SIGNUP
+      formURL:process.env.VUE_APP_URL_SIGNUP
 
     }
   },
@@ -169,6 +169,7 @@ export default {
         this.services_you_are_interested_in = '';
         this.employment_status = ''
         this.form_sent = true;
+        this.loader = false
         //i redirect my app to '/sameRoute' route once payload completed.  
         this.$router.push({ path: '/signup' });
         console.log(response)
