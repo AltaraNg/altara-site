@@ -161,7 +161,7 @@ export default {
         employment_status: this.employment_status,
       }
       this.loader = true
-      api.post(this.formURL, data, true).then((response) => {
+      api.post(this.formURL, data, true).then(() => {
         this.full_name = '';
         this.phone_number = '';
         this.location = '';
@@ -172,10 +172,9 @@ export default {
         this.loader = false
         //i redirect my app to '/sameRoute' route once payload completed.  
         this.$router.push({ path: '/signup' });
-        console.log(response)
       }).catch((error) => {
         if (error) {
-          console.error('There was an error!', error);
+          alert('There was an error!', error);
 
         }
       });
