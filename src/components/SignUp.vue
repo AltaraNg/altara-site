@@ -17,7 +17,7 @@
         <div
           class="flex md:flex-row flex-col justify-evenly w-full px-6 md:px-0 space-y-5 md:space-y-0"
         >
-          <div class="flex flex-col w-full md:mx-8">
+          <div class="flex flex-col w-full md:mx-9">
             <label for="full_name" class="mb-0.5 ml-2 text-sm">Full Name: *</label>
             <input
               type="text"

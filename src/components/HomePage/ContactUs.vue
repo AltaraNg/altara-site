@@ -58,6 +58,28 @@
           class="border-2 w-full px-3 py-2 rounded-full"
         />
       </div>
+        <div>
+        <label for="location" class="ml-3">Area: *</label>
+        <select
+          name="area"
+          v-model="area"
+          class="border-2 w-full px-3 py-2 rounded-full"
+        >
+          <option value="default" class disabled>Area</option>
+          <option class="text-sm" value="Apata">Apata, Ibadan</option>
+          <option class="text-sm" value="Dugbe">Dugbe, Ibadan</option>
+          <option class="text-sm" value="Gate">Gate, Ibadan</option>
+          <option class="text-sm" value="Bodija">Bodija, Ibadan</option>
+          <option class="text-sm" value="Iwo">Iwo Road, Ibadan</option>
+          <option class="text-sm" value="Challenge">Challenge, Ibadan</option>
+          <option class="text-sm" value="Iyana_church">Iyana church, Ibadan</option>
+          <option class="text-sm" value="Oyo">Oyo Town</option>
+          <option class="text-sm" value="Ogbomosho">Ogbomosho</option>
+          <option class="text-sm" value="Yoruba_Road">Yoruba Road, Ilorin</option>
+          <option class="text-sm" value="Gambari">Gambari, Ilorin</option>
+          <option class="text-sm" value="Taiwo_Road">Taiwo Road, Ilorin</option>
+        </select>
+      </div>
       <div class="mt-4">
         <label for="how_can_we_help" class="ml-3">How can we help ? *</label>
         <select
@@ -117,8 +139,7 @@
         class="flex items-center justify-center space-x-3 bg-brand px-7 py-3 mx-0 rounded-lg font-bold justify-self-end text-white text-sm hover:shadow-lg"
         :disabled="disabled()"
       >
-        <loader v-if="loading"/>
-        Send
+        <loader v-if="loading" />Send
       </button>
     </form>
   </div>
@@ -156,6 +177,7 @@ export default {
       loading:false,
       full_name: "",
       email: "",
+      area:"",
       how_can_we_help: "",
       phone_number: "",
       preferred_method_of_communication: "",
@@ -167,7 +189,7 @@ export default {
   methods: {
     disabled() {
       return (
-        !this.full_name || !this.phone_number || !this.email || !this.how_can_we_help || !this.message
+        !this.full_name || !this.phone_number || !this.email || !this.area || !this.how_can_we_help || !this.message
       )
     },
     sendEmail() {
@@ -176,16 +198,18 @@ export default {
         full_name: this.full_name,
         phone_number: this.phone_number,
         email: this.email,
+        area:this.area,
         how_can_we_help: this.how_can_we_help,
         preferred_method_of_communication: this.preferred_method_of_communication,
         message: this.message,
         date: new Date().toLocaleString()
       }
-        this.loading = true
+      this.loading = true
       api.post(this.formURL, data, true).then(() => {
         this.full_name = '';
         this.phone_number = '';
         this.email = '';
+        this.area = '';
         this.how_can_we_help = '';
         this.preferred_method_of_communication = '';
         this.message = ''
