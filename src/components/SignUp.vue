@@ -18,7 +18,7 @@
           class="flex md:flex-row flex-col justify-evenly w-full px-6 md:px-0 space-y-5 md:space-y-0"
         >
           <div class="flex flex-col w-full md:mx-8">
-            <label for="full_name" class="mb-0.5 ml-2 text-sm">Full Name: <span class="text-red-500" v-if="full_name == ''">*</span></label>
+            <label for="full_name" class="mb-0.5 ml-2 text-sm">Full Name: *</label>
             <input
               type="text"
               name="full_name"
@@ -32,7 +32,7 @@
           class="flex md:flex-row flex-col justify-evenly items-center w-full px-6 md:px-0 space-y-5 md:space-y-0"
         >
         <div class="flex flex-col md:w-2/5 w-full">
-            <label for="phone_number" class="mb-0.5 ml-2 text-sm">Phone Number: <span class="text-red-500" v-if="phone_number == ''">*</span></label>
+            <label for="phone_number" class="mb-0.5 ml-2 text-sm">Phone Number: *</label>
             <input
               type="number"
               name="phone_number"
@@ -44,25 +44,25 @@
             class="flex flex-col md:w-2/5 w-full "
             
           >
-            <label for="location" class="mb-0.5 ml-2 text-sm md:text-base">Area: <span class="text-red-500" v-if="area == ''">*</span></label>
+            <label for="location" class="mb-0.5 ml-2 text-sm md:text-base">Area: *</label>
             <select
               name="area"
               v-model="area"
               class="bg-white rounded-full h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
             >
               <option value="default" class disabled >Area</option>
-              <option class="text-sm" value="Lagos">Apata, Ibadan</option>
-              <option class="text-sm" value="Oyo">Dugbe, Ibadan</option>
-              <option class="text-sm" value="Kwara">Gate, Ibadan</option>
-              <option class="text-sm" value="other">Bodija, Ibadan</option>
-              <option class="text-sm" value="other">Iwo Road, Ibadan</option>
-              <option class="text-sm" value="other">Challenge, Ibadan</option>
-              <option class="text-sm" value="other">Iyana church, Ibadan</option>
-              <option class="text-sm" value="other">Oyo Town</option>
-              <option class="text-sm" value="other">Ogbomosho</option>
-              <option class="text-sm" value="other">Yoruba Road, Ilorin</option>
-              <option class="text-sm" value="other">Gambari, Ilorin</option>
-              <option class="text-sm" value="other">Taiwo Road, Ilorin</option>
+              <option class="text-sm" value="Apata_Ibadan">Apata, Ibadan</option>
+              <option class="text-sm" value="Dugbe_Ibadan">Dugbe, Ibadan</option>
+              <option class="text-sm" value="Gate_Ibadan">Gate, Ibadan</option>
+              <option class="text-sm" value="Bodija_Ibadan">Bodija, Ibadan</option>
+              <option class="text-sm" value="Iwo_Ibadan">Iwo Road, Ibadan</option>
+              <option class="text-sm" value="Challenge_Ibadan">Challenge, Ibadan</option>
+              <option class="text-sm" value="Iyana_church_Ibadan">Iyana church, Ibadan</option>
+              <option class="text-sm" value="Oyo_town">Oyo Town</option>
+              <option class="text-sm" value="Ogbomosho">Ogbomosho</option>
+              <option class="text-sm" value="Yoruba_Road_Ilorin">Yoruba Road, Ilorin</option>
+              <option class="text-sm" value="Gambari_Ilorin">Gambari, Ilorin</option>
+              <option class="text-sm" value="Taiwo_Road_Ilorin">Taiwo Road, Ilorin</option>
             </select>
           </div>
           
@@ -74,7 +74,7 @@
             <label
               for="services_you_are_interested_in"
               class="mb-0.5 ml-2 text-sm"
-            >Services you are interested in? <span class="text-red-500" v-if="services_you_are_interested_in == ''">*</span></label>
+            >Services you are interested in?  *</label>
             <select
               name="services_you_are_interested_in"
               v-model="services_you_are_interested_in"
@@ -87,7 +87,7 @@
             </select>
           </div>
           <div class="flex flex-col md:w-2/5">
-            <label for="employment_status" class="mb-0.5 ml-2 text-sm">Employment Status: <span class="text-red-500" v-if="employment_status == ''">*</span></label>
+            <label for="employment_status" class="mb-0.5 ml-2 text-sm">Employment Status: *</label>
             <select
               name="employment_status"
               v-model="employment_status"
