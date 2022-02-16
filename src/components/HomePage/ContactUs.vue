@@ -32,7 +32,7 @@
     >
       <p class="font-bold md:text-left text-center">Send us a Message</p>
       <div>
-        <label for="full_name" class="ml-3">Full Name*</label>
+        <label for="full_name" class="ml-3">Full Name *</label>
         <input
           type="text"
           name="full_name"
@@ -41,7 +41,7 @@
         />
       </div>
       <div>
-        <label for="email" class="ml-3">Email </label>
+        <label for="email" class="ml-3">Email *</label>
         <input
           type="text"
           name="email"
