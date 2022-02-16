@@ -52,7 +52,7 @@ export default {
         {
           id: 2,
           question: "What type of customers do Altara serve?",
-          answer: "Are there restrictions on what I can buy or the amount I can loan? We have calculators and approval criteria tailored to suit individual's earning capacity.",
+          answer: "We serve customers who are salaried and non salaried, above 18, male and female who live in any of our operating communities",
         },
         {
           id: 3,
