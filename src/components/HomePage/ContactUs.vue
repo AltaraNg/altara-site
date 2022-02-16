@@ -32,7 +32,7 @@
     >
       <p class="font-bold md:text-left text-center">Send us a Message</p>
       <div>
-        <label for="full_name" class="ml-3">Full Name</label>
+        <label for="full_name" class="ml-3">Full Name <span class="text-red-500" v-if="full_name == ''">*</span></label>
         <input
           type="text"
           name="full_name"
@@ -41,7 +41,7 @@
         />
       </div>
       <div>
-        <label for="email" class="ml-3">Email</label>
+        <label for="email" class="ml-3">Email <span class="text-red-500" v-if="email == ''">*</span></label>
         <input
           type="text"
           name="email"
@@ -50,7 +50,7 @@
         />
       </div>
       <div>
-        <label for="phone_number" class="ml-3">Phone Number</label>
+        <label for="phone_number" class="ml-3">Phone Number <span class="text-red-500" v-if="phone_number == ''">*</span></label>
         <input
           type="text"
           name="phone_number"
@@ -59,7 +59,7 @@
         />
       </div>
       <div class="mt-4">
-        <label for="how_can_we_help" class="ml-3">How can we help ?</label>
+        <label for="how_can_we_help" class="ml-3">How can we help ? <span class="text-red-500" v-if="how_can_we_help == ''">*</span></label>
         <select
           name="how_can_we_help"
           id="how_can_we_help"
@@ -78,7 +78,7 @@
         </select>
       </div>
       <div class="ml-3">
-        <label>Preferred method of communication</label>
+        <label>Preferred method of communication <span class="text-red-500" v-if="preferred_method_of_communication == ''">*</span></label>
         <div class="flex space-x-8 mt-3 text-gray-600 text-sm">
           <div class="flex items-center">
             <input
@@ -162,7 +162,6 @@ export default {
       message: "",
       form_sent: false,
       formURL: process.env.VUE_APP_URL_CONTACT
-
     }
   },
   methods: {
@@ -171,7 +170,6 @@ export default {
         !this.full_name || !this.phone_number || !this.email || !this.how_can_we_help || !this.message
       )
     },
-
     sendEmail() {
       const api = new Apiservice()
       var data = {
@@ -180,7 +178,8 @@ export default {
         email: this.email,
         how_can_we_help: this.how_can_we_help,
         preferred_method_of_communication: this.preferred_method_of_communication,
-        message: this.message
+        message: this.message,
+        date: new Date().toLocaleString()
       }
         this.loading = true
       api.post(this.formURL, data, true).then(() => {
@@ -214,5 +213,4 @@ export default {
 button:disabled {
   background-color: #c2d2dd;
 }
-
 </style>
