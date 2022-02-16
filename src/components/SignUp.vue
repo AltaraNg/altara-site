@@ -51,18 +51,18 @@
               class="bg-white rounded-full h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
             >
               <option value="default" class disabled >Area</option>
-              <option class="text-sm" value="Apata_Ibadan">Apata, Ibadan</option>
-              <option class="text-sm" value="Dugbe_Ibadan">Dugbe, Ibadan</option>
-              <option class="text-sm" value="Gate_Ibadan">Gate, Ibadan</option>
-              <option class="text-sm" value="Bodija_Ibadan">Bodija, Ibadan</option>
-              <option class="text-sm" value="Iwo_Ibadan">Iwo Road, Ibadan</option>
-              <option class="text-sm" value="Challenge_Ibadan">Challenge, Ibadan</option>
-              <option class="text-sm" value="Iyana_church_Ibadan">Iyana church, Ibadan</option>
-              <option class="text-sm" value="Oyo_town">Oyo Town</option>
+              <option class="text-sm" value="Apata">Apata, Ibadan</option>
+              <option class="text-sm" value="Dugbe">Dugbe, Ibadan</option>
+              <option class="text-sm" value="Gate">Gate, Ibadan</option>
+              <option class="text-sm" value="Bodija">Bodija, Ibadan</option>
+              <option class="text-sm" value="Iwo">Iwo Road, Ibadan</option>
+              <option class="text-sm" value="Challenge">Challenge, Ibadan</option>
+              <option class="text-sm" value="Iyana_church">Iyana church, Ibadan</option>
+              <option class="text-sm" value="Oyo">Oyo Town</option>
               <option class="text-sm" value="Ogbomosho">Ogbomosho</option>
-              <option class="text-sm" value="Yoruba_Road_Ilorin">Yoruba Road, Ilorin</option>
-              <option class="text-sm" value="Gambari_Ilorin">Gambari, Ilorin</option>
-              <option class="text-sm" value="Taiwo_Road_Ilorin">Taiwo Road, Ilorin</option>
+              <option class="text-sm" value="Yoruba_Road">Yoruba Road, Ilorin</option>
+              <option class="text-sm" value="Gambari">Gambari, Ilorin</option>
+              <option class="text-sm" value="Taiwo_Road">Taiwo Road, Ilorin</option>
             </select>
           </div>
           
