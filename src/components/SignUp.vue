@@ -17,8 +17,8 @@
         <div
           class="flex md:flex-row flex-col justify-evenly w-full px-6 md:px-0 space-y-5 md:space-y-0"
         >
-          <div class="flex flex-col md:w-2/5">
-            <label for="full_name" class="mb-0.5 ml-2 text-sm">Full Name:</label>
+          <div class="flex flex-col w-full md:mx-9">
+            <label for="full_name" class="mb-0.5 ml-2 text-sm">Full Name: *</label>
             <input
               type="text"
               name="full_name"
@@ -26,45 +26,46 @@
               class="bg-white rounded-full h-10 text-sm shadow-lg px-2 py-1 border border-brand"
             />
           </div>
-          <div class="flex flex-col md:w-2/5">
-            <label for="phone_number" class="mb-0.5 ml-2 text-sm">Phone Number:</label>
+          
+        </div>
+        <div
+          class="flex md:flex-row flex-col justify-evenly items-center w-full px-6 md:px-0 space-y-5 md:space-y-0"
+        >
+        <div class="flex flex-col md:w-2/5 w-full">
+            <label for="phone_number" class="mb-0.5 ml-2 text-sm">Phone Number: *</label>
             <input
-              type="text"
+              type="number"
               name="phone_number"
               v-model="phone_number"
               class="bg-white rounded-full h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
             />
           </div>
-        </div>
-        <div
-          class="flex md:flex-row flex-col justify-evenly items-center w-full px-6 md:px-0 space-y-5 md:space-y-0"
-        >
           <div
-            class="flex flex-col"
-            :class="location == 'other' ? 'md:w-2/5 w-full ' : ' w-full md:mx-8'"
+            class="flex flex-col md:w-2/5 w-full "
+            
           >
-            <label for="location" class="mb-0.5 ml-2 text-sm md:text-base">Location:</label>
+            <label for="location" class="mb-0.5 ml-2 text-sm md:text-base">Area: *</label>
             <select
-              name="location"
-              v-model="location"
+              name="area"
+              v-model="area"
               class="bg-white rounded-full h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
             >
-              <option value="default" class disabled selected>Location</option>
-              <option class="text-sm" value="Lagos">Lagos State</option>
-              <option class="text-sm" value="Oyo">Oyo State</option>
-              <option class="text-sm" value="Kwara">Kwara State</option>
-              <option class="text-sm" value="other">Other</option>
+              <option value="default" class disabled >Area</option>
+              <option class="text-sm" value="Apata">Apata, Ibadan</option>
+              <option class="text-sm" value="Dugbe">Dugbe, Ibadan</option>
+              <option class="text-sm" value="Gate">Gate, Ibadan</option>
+              <option class="text-sm" value="Bodija">Bodija, Ibadan</option>
+              <option class="text-sm" value="Iwo">Iwo Road, Ibadan</option>
+              <option class="text-sm" value="Challenge">Challenge, Ibadan</option>
+              <option class="text-sm" value="Iyana_church">Iyana church, Ibadan</option>
+              <option class="text-sm" value="Oyo">Oyo Town</option>
+              <option class="text-sm" value="Ogbomosho">Ogbomosho</option>
+              <option class="text-sm" value="Yoruba_Road">Yoruba Road, Ilorin</option>
+              <option class="text-sm" value="Gambari">Gambari, Ilorin</option>
+              <option class="text-sm" value="Taiwo_Road">Taiwo Road, Ilorin</option>
             </select>
           </div>
-          <div class="flex flex-col md:w-2/5 w-full" v-if="location == 'other'">
-            <label for="services_you_are_interested_in" class="mb-0.5 ml-2 text-sm">Enter State</label>
-            <input
-              type="text"
-              name="other_state"
-              v-model="other_state"
-              class="bg-white rounded-full w-full h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
-            />
-          </div>
+          
         </div>
         <div
           class="flex md:flex-row flex-col justify-evenly w-full px-6 md:px-0 space-y-5 md:space-y-0"
@@ -73,7 +74,7 @@
             <label
               for="services_you_are_interested_in"
               class="mb-0.5 ml-2 text-sm"
-            >Services you are interested in?</label>
+            >Services you are interested in?  *</label>
             <select
               name="services_you_are_interested_in"
               v-model="services_you_are_interested_in"
@@ -86,7 +87,7 @@
             </select>
           </div>
           <div class="flex flex-col md:w-2/5">
-            <label for="employment_status" class="mb-0.5 ml-2 text-sm">Employment Status:</label>
+            <label for="employment_status" class="mb-0.5 ml-2 text-sm">Employment Status: *</label>
             <select
               name="employment_status"
               v-model="employment_status"
@@ -134,20 +135,18 @@ export default {
       loader : false,
       background,
       full_name: "",
-      location: "",
-      other_state: "",
+      area:"",
       phone_number: "",
       services_you_are_interested_in: "",
       employment_status: "",
       form_sent: false,
-      formURL:process.env.VUE_APP_URL_SIGNUP
-
+      formURL: process.env.VUE_APP_URL_SIGNUP
     }
   },
   methods: {
     disabled() {
       return (
-        !this.full_name || !this.phone_number || !this.location || !this.services_you_are_interested_in || !this.employment_status
+        !this.full_name || !this.phone_number || !this.area || !this.services_you_are_interested_in || !this.employment_status
       )
     },
     sendEmail() {
@@ -155,17 +154,16 @@ export default {
       var data= {
         full_name: this.full_name,
         phone_number: this.phone_number,
-        location: this.location,
-        other_state: this.other_state,
+        area:this.area,
         services_you_are_interested_in: this.services_you_are_interested_in,
         employment_status: this.employment_status,
+        date: new Date().toLocaleString()
       }
       this.loader = true
       api.post(this.formURL, data, true).then(() => {
         this.full_name = '';
         this.phone_number = '';
-        this.location = '';
-        this.other_state = '';
+        this.area= '',
         this.services_you_are_interested_in = '';
         this.employment_status = ''
         this.form_sent = true;
@@ -175,13 +173,12 @@ export default {
       }).catch((error) => {
         if (error) {
           throw error
-
         }
       });
     },
   },
+ 
 };
-
 </script>
 <style>
 button:disabled{
