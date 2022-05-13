@@ -1,7 +1,7 @@
 <template>
   <Banner/>
-  <Services/>
   <AchievementsVue/>
+  <Services/>
   <FAQ/>
   <ContactUs/>
 </template>
