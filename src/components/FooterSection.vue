@@ -9,7 +9,7 @@
         services
       </p>
       <div class="flex justify-center md:justify-start space-x-8">
-        <a href="https://www.facebook.com/AltaraCreditLimited" class="cursor-pointer"><facebook /></a>
+        <a href="https://www.facebook.com/AltaraCreditLimited" class="cursor-pointer" target=_blank><facebook /></a>
         <twitter />
         <linkedin />
       </div>

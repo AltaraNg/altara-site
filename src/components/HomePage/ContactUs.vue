@@ -19,7 +19,7 @@
         <span class="ml-5 text-sm font-bold">admin@altaracredit.com</span>
       </div>
       <div class="flex space-x-8 mb-10 md:mb-0 justify-center md:justify-start">
-        <a href="https://www.facebook.com/AltaraCreditLimited" class="cursor-pointer"><facebook /></a>
+        <a href="https://www.facebook.com/AltaraCreditLimited" class="cursor-pointer" target=_blank><facebook /></a>
         <twitter />
         <linkedin />
       </div>
