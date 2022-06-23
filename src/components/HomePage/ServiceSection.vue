@@ -99,8 +99,7 @@
           "
         >
           Quick-to-process loans on multiple payment plans. Plan options include
-          6-month, 9-month and 12-month payment plans of up to One Million Naira
-          (₦1,000,000).
+          6-month, 9-month and 12-month payment plans of up to N120,000 as a first time customer.
         </p>
       </div>
     </div>
