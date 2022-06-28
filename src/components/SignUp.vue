@@ -4,9 +4,9 @@
   >
     <img :src="background" class="hidden md:block" />
     <div
-      class="md:absolute top-6 h-fit md:w-5/12 w-11/12 md:mx-0 md:pb-32 pb-8 opacity-90 bg-white md:py-12 py-6 rounded-lg shadow-2xl"
+      class="md:absolute top-6 h-fit md:w-5/12 w-11/12 md:mx-0 md:pb-10 pb-8 opacity-90 bg-white md:py-12 py-6 rounded-lg shadow-2xl"
     >
-      <div class="md:mb-10 mb-5">
+      <div class=" mb-5">
         <h1
           class="text-center text-brand font-black leading-7 md:text-3xl text-lg"
         >
@@ -81,9 +81,9 @@
           </div>
         </div>
         <div
-          class="flex md:flex-row flex-col justify-evenly w-full px-6 md:px-0 space-y-5 md:space-y-0"
+          class="flex md:flex-row md:flex-wrap items-start  flex-col justify-evenly w-full px-6 md:px-0 space-y-5 md:space-y-0"
         >
-          <div class="flex flex-col md:w-2/5">
+          <div class="flex flex-col md:w-2/5 md:mb-6 w-full">
             <label
               for="services_you_are_interested_in"
               class="mb-0.5 ml-2 text-sm"
@@ -102,14 +102,13 @@
               <option class="text-sm" value="product">Altara Product</option>
             </select>
           </div>
-          <div
-            class="flex flex-col md:w-2/5"
+          <div class="flex flex-col md:w-2/5 md:mb-6 w-full"
             v-if="services_you_are_interested_in"
           >
             <label
               for="services_you_are_interested_in"
               class="mb-0.5 ml-2 text-sm"
-              >{{ checkService("Product *", "Cash *") }}</label
+              >{{ checkService("Product *", "Amount *", "Amount *") }}</label
             >
             <select
               name="further_details"
@@ -117,19 +116,19 @@
               class="bg-white rounded-full h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
             >
               <option value="default" class disabled selected>
-                {{ checkService("Product", "Cash") }}
+                {{ checkService("Product", "Amount", "Amount") }}
               </option>
               <option
                 class="text-sm"
                 :value="type.details"
-                v-for="type in checkService(products, amounts)"
+                v-for="type in checkService(products, loans, rents)"
                 :key="type.details"
               >
                 {{ type.details }}
               </option>
             </select>
           </div>
-          <div class="flex flex-col md:w-2/5">
+          <div class="flex flex-col md:w-2/5 md:mb-6 w-full">
             <label for="employment_status" class="mb-0.5 ml-2 text-sm"
               >Employment Status: *</label
             >
@@ -147,17 +146,18 @@
               </option>
             </select>
           </div>
-        </div>
-        <div class="w-full flex justify-center">
+          <div class="flex flex-col md:w-2/5 md:mb-6 w-full pt-4">
           <button
             type="submit"
             :disabled="disabled()"
-            class="bg-brand flex items-center justify-center md:px-7 px-4 md:py-3 py-2 mx-0 rounded-full font-black md:absolute md:right-12 text-white text-sm hover:shadow-lg"
+            class="bg-brand flex items-center justify-center md:px-7 px-4 md:py-3 py-2 mx-0 rounded-full font-black  text-white text-sm hover:shadow-lg"
           >
             <loaderVue v-if="loader" />
             Create Account
           </button>
+           </div>
         </div>
+       
       </form>
     </div>
     <Modal v-if="form_sent" title="Sign Up Successfull!">
@@ -189,10 +189,15 @@ export default {
       area: "",
       phone_number: "",
       services_you_are_interested_in: "",
-      amounts: [
-        { details: "10,000 - 50,000" },
-        { details: "50,000 - 100,000" },
+      loans: [
+        { details: "70,000 - 80,000" },
+        { details: "80,000 - 100,000" },
         { details: "100,000 - 120,000" },
+      ],
+      rents: [
+        { details: "100,000 - 200,000" },
+        { details: "200,000 - 300,000" },
+        { details: "300,000 - 500,000" },
       ],
       products: [
         { details: "Phones" },
@@ -224,8 +229,8 @@ export default {
         !this.employment_status || !this.further_details
       );
     },
-    checkService(product, cash) {
-      return this.services_you_are_interested_in == "product"  ? product : cash;
+    checkService(product, loan, rent) {
+      return this.services_you_are_interested_in == "product"  ? product : this.services_you_are_interested_in == "e_loan"  ? loan : rent;
     },
     sendEmail() {
       const api = new Apiservice();
