@@ -165,7 +165,7 @@
         <img src="../assets/images/success.png" class="w-28 h-28" />
       </template>
       <template v-slot:text>
-        <p class="text-center">We will reach out to you shortly</p>
+        <p class="text-center">We will reach out to you within 48 hours</p>
       </template>
     </Modal>
   </div>
