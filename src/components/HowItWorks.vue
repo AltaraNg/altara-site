@@ -103,27 +103,27 @@
             </div>
             <div class="flex w-full mt-10 mb-5">
               <div
-                class="w-1/2 p-5 flex-col text-brand"
+                class="w-1/2 p-4 flex-col text-brand"
                 style="background-color: #d9d9d9"
               >
                 <p class="md:text-sm text-xs text-center font-normal mb-1">
                   Your downpayment
                 </p>
                 <p
-                  class="lg:text-4xl md:text-3xl text-lg text-center font-black"
+                  class="md:text-3xl text-lg text-center font-black"
                 >
                  {{actualDownpayment}}
                 </p>
               </div>
               <div
-                class="w-1/2 p-5 flex-col text-white"
+                class="w-1/2 p-4 flex-col text-white"
                 style="background-color: rgba(7, 74, 116, 0.63)"
               >
                 <p class=" text-xs text-center font-normal mb-1" :class="biMonthly ? 'md:text-xs' : 'md:text-sm'">
                   Your {{biMonthly ? 'bi-monthly':'monthly'}} repayment
                 </p>
                 <p
-                  class="lg:text-4xl md:text-3xl text-lg text-center font-black"
+                  class=" md:text-3xl text-lg text-center font-black"
                 >
                   {{biMonthly ? biMonthlyRepayent :repayment}}
                 </p>
