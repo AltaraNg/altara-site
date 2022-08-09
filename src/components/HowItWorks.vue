@@ -43,13 +43,13 @@
           <form class="mt-8">
             <div class="flex flex-col mb-5">
               <label
-                for="amount"
+                for="data.amount"
                 class="text-gray-600 md:text-sm text-xs font-normal"
                 >How much do you want to loan?</label
               >
               <input
                 type="number"
-                class="border border-gray-600 px-3 rounded h-10"
+                class="border border-gray-600 px-3 rounded h-10 focus:outline-none "
                 v-model="data.amount"
                 placeholder="enter amount..."
                 @input="getCalc()"
@@ -57,7 +57,7 @@
             </div>
             <div class="flex items-center justify-between mb-12">
               <label class="toggle">
-                <input class="toggle-checkbox" type="checkbox" v-model="biMonthly" onclick="setBiMonthly()"/>
+                <input class="toggle-checkbox" type="checkbox" v-model="biMonthly" @click="setBiMonthly()"/>
                 <div class="toggle-switch"></div>
                 <span class="text-gray-600 md:text-sm text-xs font-normal ml-4"
                   >Bi-Monthly</span
@@ -65,7 +65,7 @@
               </label>
 
               <label class="toggle">
-                <input class="toggle-checkbox" type="checkbox" checked />
+                <input class="toggle-checkbox" type="checkbox" v-model="data.collateral" @click="setCollateral()" />
                 <div class="toggle-switch"></div>
                 <span class="text-gray-600 md:text-sm text-xs font-normal ml-4"
                   >Collateral</span
@@ -112,7 +112,7 @@
                 <p
                   class="lg:text-4xl md:text-3xl text-lg text-center font-black"
                 >
-                  ₦ {{actualDownpayment}}
+                 {{actualDownpayment}}
                 </p>
               </div>
               <div
@@ -125,7 +125,7 @@
                 <p
                   class="lg:text-4xl md:text-3xl text-lg text-center font-black"
                 >
-                  ₦{{biMonthly ? repayment/2 :repayment}}
+                  {{biMonthly ? biMonthlyRepayent :repayment}}
                 </p>
               </div>
             </div>
@@ -200,6 +200,7 @@ export default {
     return {
       baseURL: process.env.VUE_APP_URL,
       biMonthly:false,
+      
       image: {
         backgroundImage: `url(${require("../assets/images/jigsaw.png")})`,
       },
@@ -215,10 +216,12 @@ export default {
       repaymentDuration: [],
       calculation: [],
       actualDownpayment:null,
+      biMonthlyRepayent:null,
       repayment:null,
       data: {
         amount: null,
-        repayment_duration:6
+        repayment_duration:6,
+        collateral:false,
       },
     };
   },
@@ -280,6 +283,10 @@ export default {
        return item.value == this.data.repayment_duration * 30;
       });
     },
+    setCollateral(){
+      this.data.collateral = !this.data.collateral;
+      
+    },
     setBiMonthly(){
       this.biMonthly = !this.biMonthly
     },
@@ -289,9 +296,21 @@ export default {
           return item.slug == 'ap_super_loan-new'
         }else if(this.data.amount > 120000 && this.data.amount < 500000){
             return item.slug == 'ap_cash_loan-no_collateral'
-        }else if(this.data.amount <= 100000) return item.slug =='ap_starter_cash_loan-no_collateral'
+        }else if(this.data.amount <= 100000){
+           return item.slug =='ap_starter_cash_loan-no_collateral'
+        }
       })
     },
+    // watchBuinessCollateral(){
+    //   this.business_type_id = this.businessTypes.find((item)=>{
+    //     if(this.data.collateral && this.business_type_id.slug == 'ap_cash_loan-no_collateral'){
+    //       return item.slug == 'ap_cash_loan-product'
+    //     }else if(this.data.collateral && this.business_type_id.slug == 'ap_starter_cash_loan-no_collateral'){
+    //         return item.slug == 'ap_starter_cash_loan'
+    //     }
+    //   })
+
+    // },
     async getCalculation() {
       const api = new Apiservice();
       await api
@@ -313,8 +332,6 @@ export default {
             x.down_payment_rate_id === this.data.payment_type_id.id &&
             x.repayment_duration_id === this.data.repayment_duration_id.id
         });
-        console.log(params);
-        console.log(this.data);
         const { total, actualDownpayment, repayment } = cashLoan(
                 this.data.amount,
                 this.data,
@@ -322,13 +339,14 @@ export default {
                 0
               )
        
-        this.actualDownpayment = actualDownpayment;
-        this.repayment = repayment/this.data.repayment_duration;
+        this.actualDownpayment = `₦${actualDownpayment.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+        this.repayment = `₦${(repayment/this.data.repayment_duration).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+        this.biMonthlyRepayent = `₦${((repayment/this.data.repayment_duration)/2).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
         this.total = total
       } catch (e) {
         console.log(e)
-        this.actualDownpayment = "0";
-        this.repayment = "0";
+        this.actualDownpayment = "Not available";
+        this.repayment = "Not available";
         this.total =0
       }
       
@@ -340,11 +358,18 @@ export default {
         this.watchRepaymentDuration(newData);
       },
     },
-    "data.amount":{
+    ["data.amount"]:{
       handler(newData){
         this.watchBuinessTypes(newData)
       }
-    }
+    },
+    // "data.collateral":{
+    //   handler(newData){
+    //     this.watchBuinessTypes(newData)
+    //     this.watchBuinessCollateral(newData)
+    //     this.getCalc()
+    //   }
+    // }
   },
   async mounted() {
     await this.getDownPaymentRates();
@@ -386,6 +411,13 @@ export default {
   position: relative;
   vertical-align: middle;
   transition: background 0.25s;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
 }
 
 .toggle-switch:before,
