@@ -339,6 +339,7 @@ export default {
         console.log(e)
         this.actualDownpayment = "Not available";
         this.repayment = "Not available";
+        this.biMonthlyRepayent = "Not available";
         this.total =0
       }
       
