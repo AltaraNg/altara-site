@@ -119,7 +119,7 @@
                 class="w-1/2 p-5 flex-col text-white"
                 style="background-color: rgba(7, 74, 116, 0.63)"
               >
-                <p class="md:text-sm text-xs text-center font-normal mb-1">
+                <p class=" text-xs text-center font-normal mb-1" :class="biMonthly ? 'md:text-xs' : 'md:text-sm'">
                   Your {{biMonthly ? 'bi-monthly':'monthly'}} repayment
                 </p>
                 <p
