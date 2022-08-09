@@ -259,10 +259,6 @@ export default {
             throw error;
           }
         });
-
-      // this.downPaymentRates = this.downPaymentRates.sort((a, b) => {
-      //   return a.percent - b.percent;
-      // });
     },
     async getRepaymentDuration() {
       const api = new Apiservice();
@@ -285,6 +281,8 @@ export default {
     },
     setCollateral(){
       this.data.collateral = !this.data.collateral;
+      this.watchBuinessTypes()
+      this.getCalc()
       
     },
     setBiMonthly(){
@@ -294,23 +292,17 @@ export default {
       this.data.business_type_id = this.businessTypes.find((item)=>{
         if(this.data.amount == 500000){
           return item.slug == 'ap_super_loan-new'
-        }else if(this.data.amount > 120000 && this.data.amount < 500000){
+        }else if(this.data.amount > 120000 && this.data.amount < 500000 && !this.data.collateral){
             return item.slug == 'ap_cash_loan-no_collateral'
-        }else if(this.data.amount <= 100000){
+        }else if(this.data.amount <= 100000 && !this.data.collateral){
            return item.slug =='ap_starter_cash_loan-no_collateral'
+        }else if(this.data.amount > 120000 && this.data.amount < 500000 && this.data.collateral){
+            return item.slug == 'ap_cash_loan-product'
+        }else if(this.data.amount <= 100000 && this.data.collateral){
+           return item.slug =='ap_starter_cash_loan'
         }
       })
     },
-    // watchBuinessCollateral(){
-    //   this.business_type_id = this.businessTypes.find((item)=>{
-    //     if(this.data.collateral && this.business_type_id.slug == 'ap_cash_loan-no_collateral'){
-    //       return item.slug == 'ap_cash_loan-product'
-    //     }else if(this.data.collateral && this.business_type_id.slug == 'ap_starter_cash_loan-no_collateral'){
-    //         return item.slug == 'ap_starter_cash_loan'
-    //     }
-    //   })
-
-    // },
     async getCalculation() {
       const api = new Apiservice();
       await api
@@ -363,13 +355,6 @@ export default {
         this.watchBuinessTypes(newData)
       }
     },
-    // "data.collateral":{
-    //   handler(newData){
-    //     this.watchBuinessTypes(newData)
-    //     this.watchBuinessCollateral(newData)
-    //     this.getCalc()
-    //   }
-    // }
   },
   async mounted() {
     await this.getDownPaymentRates();
