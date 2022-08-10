@@ -241,10 +241,6 @@ export default {
             throw error;
           }
         });
-
-      // this.downPaymentRates = this.downPaymentRates.sort((a, b) => {
-      //   return a.percent - b.percent;
-      // });
     },
     async getBusinessTypes() {
       const api = new Apiservice();
@@ -252,7 +248,7 @@ export default {
         .get(this.apiUrls.businessTypes)
         .then((res) => {
           this.businessTypes = JSON.parse(res?.data).data.data;
-       this.data.business_type_id =  this.businessTypes.find((item)=> item.slug =='ap_starter_cash_loan-no_collateral')
+      //  this.data.business_type_id =  this.businessTypes.find((item)=> item.slug =='ap_starter_cash_loan-no_collateral')
         })
         .catch((error) => {
           if (error) {
@@ -290,15 +286,15 @@ export default {
     },
     watchBuinessTypes(){
       this.data.business_type_id = this.businessTypes.find((item)=>{
-        if(this.data.amount == 500000){
+        if(this.data.amount >= 500000){
           return item.slug == 'ap_super_loan-new'
         }else if(this.data.amount > 120000 && this.data.amount < 500000 && !this.data.collateral){
             return item.slug == 'ap_cash_loan-no_collateral'
-        }else if(this.data.amount <= 100000 && !this.data.collateral){
+        }else if(this.data.amount >= 70000 && this.data.amount <= 120000 && !this.data.collateral){
            return item.slug =='ap_starter_cash_loan-no_collateral'
         }else if(this.data.amount > 120000 && this.data.amount < 500000 && this.data.collateral){
             return item.slug == 'ap_cash_loan-product'
-        }else if(this.data.amount <= 100000 && this.data.collateral){
+        }else if(this.data.amount >= 70000 && this.data.amount <= 120000 && this.data.collateral){
            return item.slug =='ap_starter_cash_loan'
         }
       })

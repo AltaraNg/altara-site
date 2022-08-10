@@ -29,7 +29,7 @@
               type="text"
               name="full_name"
               v-model="full_name"
-              class="bg-white rounded-full h-10 text-sm shadow-lg px-2 py-1 border border-brand"
+              class="bg-white rounded-xs h-10 text-sm shadow-lg px-2 py-1 border border-brand"
             />
           </div>
         </div>
@@ -44,7 +44,7 @@
               type="number"
               name="phone_number"
               v-model="phone_number"
-              class="bg-white rounded-full h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
+              class="bg-white rounded-xs h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
             />
           </div>
           <div class="flex flex-col md:w-2/5 w-full">
@@ -54,7 +54,7 @@
             <select
               name="area"
               v-model="area"
-              class="bg-white rounded-full h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
+              class="bg-white rounded-xs h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
             >
               <option value="default" class disabled>Area</option>
               <option class="text-sm" value="Apata">Apata, Ibadan</option>
@@ -92,7 +92,7 @@
             <select
               name="services_you_are_interested_in"
               v-model="services_you_are_interested_in"
-              class="bg-white rounded-full h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
+              class="bg-white rounded-xs h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
             >
               <option value="default" class disabled selected>
                 Services you are interested in?
@@ -103,7 +103,6 @@
             </select>
           </div>
           <div class="flex flex-col md:w-2/5 md:mb-6 w-full"
-            v-if="services_you_are_interested_in"
           >
             <label
               for="services_you_are_interested_in"
@@ -113,7 +112,7 @@
             <select
               name="further_details"
               v-model="further_details"
-              class="bg-white rounded-full h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
+              class="bg-white rounded-xs h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
             >
               <option value="default" class disabled selected>
                 {{ checkService("Product", "Amount", "Amount") }}
@@ -130,12 +129,12 @@
           </div>
           <div class="flex flex-col md:w-2/5 md:mb-6 w-full">
             <label for="employment_status" class="mb-0.5 ml-2 text-sm"
-              >Employment Status: *</label
+              >Repayment Duration: *</label
             >
             <select
               name="employment_status"
               v-model="employment_status"
-              class="bg-white rounded-full h-10 text-sm shadow-lg px-2 py-1 border border-brand"
+              class="bg-white rounded-xs h-10 text-sm shadow-lg px-2 py-1 border border-brand"
             >
               <option value="default" class disabled selected>
                 Employment Status
@@ -146,11 +145,29 @@
               </option>
             </select>
           </div>
-          <div class="flex flex-col md:w-2/5 md:mb-6 w-full pt-4">
+          <div class="flex flex-col md:w-2/5 md:mb-6 w-full">
+            <label for="employment_status" class="mb-0.5 ml-2 text-sm"
+              >Repayment Plan: *</label
+            >
+            <select
+              name="employment_status"
+              v-model="employment_status"
+              class="bg-white rounded-xs h-10 text-sm shadow-lg px-2 py-1 border border-brand"
+            >
+              <option value="default" class disabled selected>
+                Employment Status
+              </option>
+              <option class="text-sm" value="employed">Employed</option>
+              <option class="text-sm" value="self_employed">
+                Self Employed
+              </option>
+            </select>
+          </div>
+          <div class="flex flex-col md:w-2/5 md:my-6 w-full pt-10">
           <button
             type="submit"
             :disabled="disabled()"
-            class="bg-brand flex items-center justify-center md:px-7 px-4 md:py-3 py-2 mx-0 rounded-full font-black  text-white text-sm hover:shadow-lg"
+            class="bg-brand flex items-center justify-center md:px-7 px-4 md:py-3 py-2 mx-0 rounded-xs font-black  text-white text-sm hover:shadow-lg"
           >
             <loaderVue v-if="loader" />
             Create Account
@@ -274,6 +291,9 @@ export default {
     // whenever question changes, this function will run
     
   },
+  mounted(){
+    console.log(this.data.business_type_id, 'hellooo')
+  }
 };
 </script>
 <style>
