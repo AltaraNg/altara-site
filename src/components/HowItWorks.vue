@@ -57,7 +57,7 @@
             </div>
             <div class="flex items-center justify-between mb-12">
               <label class="toggle">
-                <input class="toggle-checkbox" type="checkbox" v-model="biMonthly" @click="setBiMonthly()"/>
+                <input class="toggle-checkbox" type="checkbox" v-model="data.biMonthly" @click="setBiMonthly()"/>
                 <div class="toggle-switch"></div>
                 <span class="text-gray-600 md:text-sm text-xs font-normal ml-4"
                   >Bi-Monthly</span
@@ -112,20 +112,20 @@
                 <p
                   class="md:text-3xl text-lg text-center font-black"
                 >
-                 {{actualDownpayment}}
+                 {{data.actualDownpayment}}
                 </p>
               </div>
               <div
                 class="w-1/2 p-4 flex-col text-white"
                 style="background-color: rgba(7, 74, 116, 0.63)"
               >
-                <p class=" text-xs text-center font-normal mb-1" :class="biMonthly ? 'md:text-xs' : 'md:text-sm'">
-                  Your {{biMonthly ? 'bi-monthly':'monthly'}} repayment
+                <p class=" text-xs text-center font-normal mb-1" :class="data.biMonthly ? 'md:text-xs' : 'md:text-sm'">
+                  Your {{data.biMonthly ? 'bi-monthly':'monthly'}} repayment
                 </p>
                 <p
                   class=" md:text-3xl text-lg text-center font-black"
                 >
-                  {{biMonthly ? biMonthlyRepayent :repayment}}
+                  {{data.biMonthly ? data.biMonthlyRepayent :data.repayment}}
                 </p>
               </div>
             </div>
@@ -199,8 +199,6 @@ export default {
   data() {
     return {
       baseURL: process.env.VUE_APP_URL,
-      biMonthly:false,
-      
       image: {
         backgroundImage: `url(${require("../assets/images/jigsaw.png")})`,
       },
@@ -215,13 +213,14 @@ export default {
       businessTypes: [],
       repaymentDuration: [],
       calculation: [],
-      actualDownpayment:null,
-      biMonthlyRepayent:null,
-      repayment:null,
       data: {
         amount: null,
+         biMonthly:null,
         repayment_duration:6,
         collateral:false,
+        actualDownpayment:null,
+        biMonthlyRepayent:null,
+        repayment:null,
       },
     };
   },
@@ -282,7 +281,8 @@ export default {
       
     },
     setBiMonthly(){
-      this.biMonthly = !this.biMonthly
+      this.data.biMonthly = !this.data.biMonthly
+      window.localStorage.setItem('data', JSON.stringify(this.data));
     },
     watchBuinessTypes(){
       this.data.business_type_id = this.businessTypes.find((item)=>{
@@ -327,16 +327,17 @@ export default {
                 0
               )
        
-        this.actualDownpayment = `₦${actualDownpayment.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
-        this.repayment = `₦${(repayment/this.data.repayment_duration).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
-        this.biMonthlyRepayent = `₦${((repayment/this.data.repayment_duration)/2).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
-        this.total = total
+        this.data.actualDownpayment = `₦${actualDownpayment.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+        this.data.repayment = `₦${(repayment/this.data.repayment_duration).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+        this.data.biMonthlyRepayent = `₦${((repayment/this.data.repayment_duration)/2).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
+        this.data.total = total
+        window.localStorage.setItem('data', JSON.stringify(this.data));
       } catch (e) {
         console.log(e)
-        this.actualDownpayment = "Not available";
-        this.repayment = "Not available";
-        this.biMonthlyRepayent = "Not available";
-        this.total =0
+        this.data.actualDownpayment = "Not applicable";
+        this.data.repayment = "Not applicable";
+        this.data.biMonthlyRepayent = "Not applicable";
+        this.data.total =0
       }
       
     },
@@ -359,6 +360,9 @@ export default {
     await this.getRepaymentDuration();
     await this.getCalculation();
     this.watchRepaymentDuration()
+    if (localStorage.data) {
+      this.data = JSON.parse(localStorage.data)
+    }
   },
 };
 </script>
