@@ -263,6 +263,8 @@ export default {
         area: this.area,
         services_you_are_interested_in: this.services_you_are_interested_in,
         further_details: this.further_details,
+        repayment_duration :'',
+        repayment_plan : '',
         date: new Date().toLocaleString(),
       };
       this.formData = this.services_you_are_interested_in == "e_loan" ? eloan_data : product_data
@@ -278,6 +280,8 @@ export default {
           this.further_details = "";
           this.form_sent = true;
           this.loader = false;
+          window.localStorage.removeItem('data');
+          this.data={}
           this.$router.push({ path: "/signup" });
         })
         .catch((error) => {

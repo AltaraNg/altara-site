@@ -313,6 +313,11 @@ export default {
         });
 
     },
+    fetchData(){
+      if (localStorage.data) {
+      this.data = JSON.parse(localStorage.data)
+    }
+    },
      getCalc() {
       try {
         const params = this.calculation.find( (x) =>{
@@ -355,14 +360,14 @@ export default {
     },
   },
   async mounted() {
+     this.fetchData()
     await this.getDownPaymentRates();
     await this.getBusinessTypes();
     await this.getRepaymentDuration();
     await this.getCalculation();
     this.watchRepaymentDuration()
-    if (localStorage.data) {
-      this.data = JSON.parse(localStorage.data)
-    }
+   
+    
   },
 };
 </script>
