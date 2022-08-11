@@ -138,21 +138,35 @@
             <label for="repayment_duration" class="mb-0.5 ml-2 text-sm"
               >Repayment Duration: *</label
             >
-          <div
+            <select
               name="repayment_duration"
-              value="data.repayment_duration_id.name"
+              v-model="repayment_duration"
               class="bg-white rounded-xs h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
-            >{{data.repayment_duration_id.name}}</div>
+            >
+              <option value="default" class disabled>
+                Repayment Duration
+              </option>
+              <option class="text-sm" value="three_months">Three Months</option>
+              <option class="text-sm" value="six_months">Six Months</option>
+              <option class="text-sm" value="nine_months">Nine Months</option>
+              <option class="text-sm" value="twelve_months">Twelve Months</option>
+            </select>
           </div>
           <div class="flex flex-col md:w-2/5 md:mb-6 w-full" v-if="services_you_are_interested_in == 'e_loan'">
             <label for="repayment_plan" class="mb-0.5 ml-2 text-sm"
               >Repayment Plan: *</label
             >
-            <div
+             <select
               name="repayment_plan"
-              value="data.biMonthly ? 'Bimonthly' : 'monthly'"
+              v-model="repayment_plan"
               class="bg-white rounded-xs h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
-            >{{data.biMonthly ? 'Bimonthly' : 'monthly'}}</div>
+            >
+              <option value="default" class disabled>
+                Repayment Plan
+              </option>
+              <option class="text-sm" value="monthly">Monthly</option>
+              <option class="text-sm" value="Bimonthly">Bi-Monthly</option>
+            </select>
           </div>
           <div class="flex flex-col md:w-2/5 md:my-6 w-full pt-10">
             <button
@@ -190,6 +204,8 @@ export default {
   },
   data() {
     return {
+      repayment_duration:"",
+      repayment_plan:"",
       data: {},
       loader: false,
       background,
@@ -253,8 +269,8 @@ export default {
         area: this.area,
         services_you_are_interested_in: this.services_you_are_interested_in,
         further_details:this.data?.amount,
-        repayment_duration : this.data?.repayment_duration_id?.name,
-        repayment_plan : this.data?.biMonthly ? 'Bimonthly' : 'monthly',
+        repayment_duration : this.repayment_duration,
+        repayment_plan : this.repayment_plan,
         date: new Date().toLocaleString(),
       };
       const product_data = {
@@ -280,6 +296,8 @@ export default {
           this.further_details = "";
           this.form_sent = true;
           this.loader = false;
+          this.repayment_duration="",
+          this.repayment_plan="";
           window.localStorage.removeItem('data');
           this.data={}
           this.$router.push({ path: "/signup" });
@@ -294,6 +312,8 @@ export default {
        if (localStorage.data) {
       this.data = { ...JSON.parse(window.localStorage.getItem("data")) };
       this.services_you_are_interested_in = "e_loan";
+      this.repayment_duration = this.data.repayment_duration_id.name
+      this.repayment_plan = this.data.biMonthly ? 'Bimonthly' : 'monthly'
       
     }
     }
