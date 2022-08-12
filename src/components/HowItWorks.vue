@@ -315,7 +315,9 @@ export default {
     },
     fetchData(){
       if (localStorage.data) {
-      this.data = JSON.parse(localStorage.data)
+      this.data = JSON.parse(window.localStorage.getItem("data"))
+      this.watchBuinessTypes()
+      this.getCalc()
     }
     },
      getCalc() {
@@ -360,12 +362,12 @@ export default {
     },
   },
   async mounted() {
-     this.fetchData()
     await this.getDownPaymentRates();
     await this.getBusinessTypes();
     await this.getRepaymentDuration();
     await this.getCalculation();
     this.watchRepaymentDuration()
+    this.fetchData()
    
     
   },
