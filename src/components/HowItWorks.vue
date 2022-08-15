@@ -47,17 +47,26 @@
                 class="text-gray-600 md:text-sm text-xs font-normal"
                 >How much do you want to loan?</label
               >
-              <input
-                type="number"
-                class="border border-gray-600 px-3 rounded h-10 focus:outline-none "
+
+              <CurrencyInput
                 v-model="data.amount"
-                placeholder="enter amount..."
-                @input="getCalc()"
+                :options="{
+                  currency: 'NGN',
+                  hideCurrencySymbolOnFocus: false,
+                  hideGroupingSeparatorOnFocus: false,
+                  hideNegligibleDecimalDigitsOnFocus: false,
+                }"
+                :getCalc="getCalc()"
               />
             </div>
             <div class="flex items-center justify-between mb-12">
               <label class="toggle">
-                <input class="toggle-checkbox" type="checkbox" v-model="data.biMonthly" @click="setBiMonthly()"/>
+                <input
+                  class="toggle-checkbox"
+                  type="checkbox"
+                  v-model="data.biMonthly"
+                  @click="setBiMonthly()"
+                />
                 <div class="toggle-switch"></div>
                 <span class="text-gray-600 md:text-sm text-xs font-normal ml-4"
                   >Bi-Monthly</span
@@ -65,14 +74,19 @@
               </label>
 
               <label class="toggle">
-                <input class="toggle-checkbox" type="checkbox" v-model="data.collateral" @click="setCollateral()" />
+                <input
+                  class="toggle-checkbox"
+                  type="checkbox"
+                  v-model="data.collateral"
+                  @click="setCollateral()"
+                />
                 <div class="toggle-switch"></div>
                 <span class="text-gray-600 md:text-sm text-xs font-normal ml-4"
                   >Collateral</span
                 >
               </label>
             </div>
-            <div>
+            <div class="hover:pointer-events-none pointer-events-none">
               <div
                 class="flex items-center mb-2 justify-between text-gray-600 md:text-sm text-xs font-normal"
               >
@@ -101,7 +115,11 @@
                 <p>12</p>
               </div>
             </div>
-            <div class="flex w-full mt-10 mb-5">
+            <div class="flex w-full items-center justify-center py-5 mt-10 mb-5" v-if="disabled  && data.amount" style="background-color: rgba(7, 74, 116, 0.63)">
+             <p class="md:text-4xl text-lg text-center font-black text-white">
+                  {{ data.actualDownpayment }}
+                </p></div>
+            <div class="flex w-full mt-10 mb-5"  v-if="!disabled" >
               <div
                 class="w-1/2 p-4 flex-col text-brand"
                 style="background-color: #d9d9d9"
@@ -109,28 +127,28 @@
                 <p class="md:text-sm text-xs text-center font-normal mb-1">
                   Your downpayment
                 </p>
-                <p
-                  class="md:text-3xl text-lg text-center font-black"
-                >
-                 {{data.actualDownpayment}}
+                <p class="md:text-3xl text-lg text-center font-black">
+                  {{ data.actualDownpayment }}
                 </p>
-              </div>
+              </div>    
               <div
                 class="w-1/2 p-4 flex-col text-white"
                 style="background-color: rgba(7, 74, 116, 0.63)"
               >
-                <p class=" text-xs text-center font-normal mb-1" :class="data.biMonthly ? 'md:text-xs' : 'md:text-sm'">
-                  Your {{data.biMonthly ? 'bi-monthly':'monthly'}} repayment
-                </p>
                 <p
-                  class=" md:text-3xl text-lg text-center font-black"
+                  class="text-xs text-center font-normal mb-1"
+                  :class="data.biMonthly ? 'md:text-xs' : 'md:text-sm'"
                 >
-                  {{data.biMonthly ? data.biMonthlyRepayent :data.repayment}}
+                  Your {{ data.biMonthly ? "bi-monthly" : "monthly" }} repayment
+                </p>
+                <p class="md:text-3xl text-lg text-center font-black">
+                  {{ data.biMonthly ? data.biMonthlyRepayent : data.repayment }}
                 </p>
               </div>
             </div>
+             
             <router-link :to="{ name: 'signup' }">
-              <button class="bg-brand rounded py-3 w-full text-white font-bold">
+              <button class="bg-brand rounded  py-3 w-full text-white font-bold" :disabled='disabled' :style="disabled ? 'background-color: rgba(7, 74, 116, 0.2); margin-top:25px' : 'background-color: rgba(7, 74, 116, 1)'">
                 Get started
               </button>
             </router-link>
@@ -190,14 +208,17 @@ import heading from "../components/general/heading.vue";
 import slider from "vue3-slider";
 import { Apiservice } from "../services/apiService";
 import { cashLoan } from "../utilities/calculator";
+import CurrencyInput from "./general/currenyInput.vue";
 export default {
   components: {
     heading,
     "vue3-slider": slider,
+    CurrencyInput,
   },
   title: "How It Works | Altara Credit Limited",
   data() {
     return {
+      disabled:true,
       baseURL: process.env.VUE_APP_URL,
       image: {
         backgroundImage: `url(${require("../assets/images/jigsaw.png")})`,
@@ -215,12 +236,12 @@ export default {
       calculation: [],
       data: {
         amount: null,
-         biMonthly:null,
-        repayment_duration:6,
-        collateral:false,
-        actualDownpayment:null,
-        biMonthlyRepayent:null,
-        repayment:null,
+        biMonthly: null,
+        repayment_duration: 6,
+        collateral: false,
+        actualDownpayment: null,
+        biMonthlyRepayent: null,
+        repayment: null,
       },
     };
   },
@@ -231,9 +252,9 @@ export default {
         .get(this.apiUrls.downPaymentRates)
         .then((res) => {
           this.downPaymentRates = JSON.parse(res?.data).data.data;
-        this.data.payment_type_id =  this.downPaymentRates.find((item)=>{
-            return item.percent == 20 && item.plus == 0
-          })
+          this.data.payment_type_id = this.downPaymentRates.find((item) => {
+            return item.percent == 20 && item.plus == 0;
+          });
         })
         .catch((error) => {
           if (error) {
@@ -247,7 +268,7 @@ export default {
         .get(this.apiUrls.businessTypes)
         .then((res) => {
           this.businessTypes = JSON.parse(res?.data).data.data;
-      //  this.data.business_type_id =  this.businessTypes.find((item)=> item.slug =='ap_starter_cash_loan-no_collateral')
+          //  this.data.business_type_id =  this.businessTypes.find((item)=> item.slug =='ap_starter_cash_loan-no_collateral')
         })
         .catch((error) => {
           if (error) {
@@ -260,8 +281,7 @@ export default {
       await api
         .get(this.apiUrls.repaymentDuration)
         .then((res) => {
-         this.repaymentDuration = JSON.parse(res?.data).data.data;
-
+          this.repaymentDuration = JSON.parse(res?.data).data.data;
         })
         .catch((error) => {
           if (error) {
@@ -271,33 +291,51 @@ export default {
     },
     watchRepaymentDuration() {
       this.data.repayment_duration_id = this.repaymentDuration.find((item) => {
-       return item.value == this.data.repayment_duration * 30;
+        return item.value == this.data.repayment_duration * 30;
       });
     },
-    setCollateral(){
+    setCollateral() {
       this.data.collateral = !this.data.collateral;
-      this.watchBuinessTypes()
-      this.getCalc()
-      
+      this.watchBuinessTypes();
+      this.getCalc();
     },
-    setBiMonthly(){
-      this.data.biMonthly = !this.data.biMonthly
-      window.localStorage.setItem('data', JSON.stringify(this.data));
+    setBiMonthly() {
+      this.data.biMonthly = !this.data.biMonthly;
+      window.localStorage.setItem("data", JSON.stringify(this.data));
     },
-    watchBuinessTypes(){
-      this.data.business_type_id = this.businessTypes.find((item)=>{
-        if(this.data.amount >= 500000){
-          return item.slug == 'ap_super_loan-new'
-        }else if(this.data.amount > 120000 && this.data.amount < 500000 && !this.data.collateral){
-            return item.slug == 'ap_cash_loan-no_collateral'
-        }else if(this.data.amount >= 70000 && this.data.amount <= 120000 && !this.data.collateral){
-           return item.slug =='ap_starter_cash_loan-no_collateral'
-        }else if(this.data.amount > 120000 && this.data.amount < 500000 && this.data.collateral){
-            return item.slug == 'ap_cash_loan-product'
-        }else if(this.data.amount >= 70000 && this.data.amount <= 120000 && this.data.collateral){
-           return item.slug =='ap_starter_cash_loan'
+    watchBuinessTypes() {
+      this.data.business_type_id = this.businessTypes.find((item) => {
+        if (this.data.amount >= 500000) {
+          return item.slug == "ap_super_loan-new";
+        } else if (
+          this.data.amount > 120000 &&
+          this.data.amount < 500000 &&
+          !this.data.collateral
+        ) {
+          return item.slug == "ap_cash_loan-no_collateral";
+        } else if (
+          this.data.amount >= 70000 &&
+          this.data.amount <= 120000 &&
+          !this.data.collateral
+        ) {
+          return item.slug == "ap_starter_cash_loan-no_collateral";
+        } else if (
+          this.data.amount > 120000 &&
+          this.data.amount < 500000 &&
+          this.data.collateral
+        ) {
+          return item.slug == "ap_cash_loan-product";
+        } else if (
+          this.data.amount >= 70000 &&
+          this.data.amount <= 120000 &&
+          this.data.collateral
+        ) {
+          return item.slug == "ap_starter_cash_loan";
         }
-      })
+      });
+      if (this.data.amount >= 500000) {
+        return (this.data.repayment_duration = 12);
+      } else this.data.repayment_duration = 6;
     },
     async getCalculation() {
       const api = new Apiservice();
@@ -311,42 +349,51 @@ export default {
             throw error;
           }
         });
-
     },
-    fetchData(){
-      if (localStorage.data) {
-      this.data = JSON.parse(window.localStorage.getItem("data"))
-      this.watchBuinessTypes()
-      this.getCalc()
-    }
-    },
-     getCalc() {
+    getCalc() {
       try {
-        const params = this.calculation.find( (x) =>{
-           return x.business_type_id === this.data.business_type_id?.id &&
+        const params = this.calculation.find((x) => {
+          return (
+            x.business_type_id === this.data.business_type_id?.id &&
             x.down_payment_rate_id === this.data.payment_type_id.id &&
             x.repayment_duration_id === this.data.repayment_duration_id.id
+          );
         });
         const { total, actualDownpayment, repayment } = cashLoan(
-                this.data.amount,
-                this.data,
-                params,
-                0
-              )
-       
-        this.data.actualDownpayment = `₦${actualDownpayment.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
-        this.data.repayment = `₦${(repayment/this.data.repayment_duration).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
-        this.data.biMonthlyRepayent = `₦${((repayment/this.data.repayment_duration)/2).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
-        this.data.total = total
-        window.localStorage.setItem('data', JSON.stringify(this.data));
+          this.data.amount,
+          this.data,
+          params,
+          0
+        );
+
+        this.data.actualDownpayment = `₦${actualDownpayment
+          .toFixed(2)
+          .toString()
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+        this.data.repayment = `₦${(repayment / this.data.repayment_duration)
+          .toFixed(2)
+          .toString()
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+        this.data.biMonthlyRepayent = `₦${(
+          repayment /
+          this.data.repayment_duration /
+          2
+        )
+          .toFixed(2)
+          .toString()
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+        this.data.total = total;
+        window.localStorage.setItem("data", JSON.stringify(this.data));
+        this.disabled= false
       } catch (e) {
-        console.log(e)
+        console.log(e);
+        this.disabled= true
+        window.localStorage.removeItem("data");
         this.data.actualDownpayment = "Not applicable";
         this.data.repayment = "Not applicable";
         this.data.biMonthlyRepayent = "Not applicable";
-        this.data.total =0
+        this.data.total = 0;
       }
-      
     },
   },
   watch: {
@@ -355,10 +402,11 @@ export default {
         this.watchRepaymentDuration(newData);
       },
     },
-    ["data.amount"]:{
-      handler(newData){
-        this.watchBuinessTypes(newData)
-      }
+    ["data.amount"]: {
+      handler(newData) {
+        this.watchBuinessTypes(newData);
+        // this.formatNumber()
+      },
     },
   },
   async mounted() {
@@ -366,10 +414,8 @@ export default {
     await this.getBusinessTypes();
     await this.getRepaymentDuration();
     await this.getCalculation();
-    this.watchRepaymentDuration()
-    this.fetchData()
-   
-    
+    this.watchRepaymentDuration();
+    // this.fetchData()
   },
 };
 </script>
@@ -405,12 +451,12 @@ export default {
   vertical-align: middle;
   transition: background 0.25s;
 }
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    margin: 0; 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
 }
 
 .toggle-switch:before,

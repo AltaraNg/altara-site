@@ -108,13 +108,18 @@
               class="mb-0.5 ml-2 text-sm"
               >{{ checkService("Product *", "Amount *", "Amount *") }}</label
             >
-            <input
-              v-if="services_you_are_interested_in == 'e_loan'"
-              name="further_details"
-              v-model="data.amount"
-              type="number"
-              class="bg-white rounded-xs h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
-            />
+                          <CurrencyInput
+                          v-if="services_you_are_interested_in == 'e_loan'"
+                v-model="data.amount"
+                name="further_details"
+                :options="{
+                  currency: 'NGN',
+                  hideCurrencySymbolOnFocus: false,
+                  hideGroupingSeparatorOnFocus: false,
+                  hideNegligibleDecimalDigitsOnFocus: false,
+                }"
+              />
+           
             <select
               v-else
               name="further_details"
@@ -196,11 +201,13 @@ import background from "../assets/images/background_picture.png";
 import Modal from "../components/general/modal.vue";
 import { Apiservice } from "../services/apiService";
 import loaderVue from "../assets/svgs/loader.vue";
+import CurrencyInput from "./general/currenyInput.vue";
 export default {
   title: "Sign Up| Altara Credit Limited",
   components: {
     Modal,
     loaderVue,
+    CurrencyInput
   },
   data() {
     return {
