@@ -29,6 +29,7 @@
               type="text"
               name="full_name"
               v-model="full_name"
+              @input="checkPhone()"
               class="bg-white rounded-xs h-10 text-sm shadow-lg px-2 py-1 border border-brand"
             />
           </div>
@@ -44,6 +45,7 @@
               type="number"
               name="phone_number"
               v-model="phone_number"
+              @input="checkPhone()"
               class="bg-white rounded-xs h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
             />
           </div>
@@ -54,6 +56,7 @@
             <select
               name="area"
               v-model="area"
+              @change="checkPhone()"
               class="bg-white rounded-xs h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
             >
               <option value="default" class disabled>Area</option>
@@ -92,6 +95,7 @@
             <select
               name="services_you_are_interested_in"
               v-model="services_you_are_interested_in"
+              @change="checkPhone()"
               class="bg-white rounded-xs h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
             >
               <option value="default" class disabled>
@@ -176,7 +180,7 @@
           <div class="flex flex-col md:w-2/5 md:my-6 w-full pt-10">
             <button
               type="submit"
-              :disabled="disabled()"
+              :disabled="checkPhone()"
               class="bg-brand flex items-center justify-center md:px-7 px-4 md:py-3 py-2 mx-0 rounded-xs font-black text-white text-sm hover:shadow-lg"
             >
               <loaderVue v-if="loader" />
@@ -211,6 +215,7 @@ export default {
   },
   data() {
     return {
+      disabled:true,
       repayment_duration:"",
       repayment_plan:"",
       data: {},
@@ -252,13 +257,12 @@ export default {
     };
   },
   methods: {
-    disabled() {
-      return (
-        !this.full_name ||
-        !this.phone_number ||
-        !this.area ||
-        !this.services_you_are_interested_in
-      );
+    checkPhone(){
+       if ( this.phone_number.toString().length != 11 || !this.full_name || !this.area ||  !this.services_you_are_interested_in) {
+              return true
+            } else {
+              return false
+            }
     },
     checkService(product, loan, rent) {
       return this.services_you_are_interested_in == "product"
@@ -333,6 +337,7 @@ export default {
         this.further_details = "";
       },
     },
+    
     // whenever question changes, this function will run
   },
   async mounted() {

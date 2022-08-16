@@ -2,7 +2,7 @@
   <input
     ref="inputRef"
     type="text"
-    placeholder="enter amount"
+    placeholder="Enter amount"
     class="border border-gray-600 px-3 rounded h-10 focus:outline-none"
      @input="getCalc()"
   />

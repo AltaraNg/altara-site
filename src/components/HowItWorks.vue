@@ -389,9 +389,9 @@ export default {
         console.log(e);
         this.disabled= true
         window.localStorage.removeItem("data");
-        this.data.actualDownpayment = "Not applicable";
-        this.data.repayment = "Not applicable";
-        this.data.biMonthlyRepayent = "Not applicable";
+        this.data.actualDownpayment = "Not Available";
+        this.data.repayment = "Not Available";
+        this.data.biMonthlyRepayent = "Not Available";
         this.data.total = 0;
       }
     },
