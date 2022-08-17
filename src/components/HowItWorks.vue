@@ -30,7 +30,7 @@
       <heading title="HOW IT WORKS" />
       <div
         :style="image"
-        class="h-fit w-full image flex flex-col space-y-8 md:space-y-0 md:flex-row items-center md:justify-evenly md:space-x-3 p-10"
+        class="h-fit w-full image flex flex-col space-y-8 md:space-y-0 md:flex-row items-center md:justify-evenly md:space-x-3 md:p-10 p-4"
       >
         <div
           class="w-full lg:w-2/5 md:w-1/2 bg-white calculator md:py-6 md:px-10 p-3"
