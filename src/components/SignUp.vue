@@ -43,6 +43,7 @@
             >
             <input
               type="tel"
+              maxlength="11"
               name="phone_number"
               v-model= "phone_number"
               @input="checkPhone()"
