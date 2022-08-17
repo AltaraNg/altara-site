@@ -42,9 +42,9 @@
               >Phone Number: *</label
             >
             <input
-              type="number"
+              type="tel"
               name="phone_number"
-              v-model="phone_number"
+              v-model= "phone_number"
               @input="checkPhone()"
               class="bg-white rounded-xs h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
             />
