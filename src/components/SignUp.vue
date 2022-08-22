@@ -6,7 +6,7 @@
     <div
       class="md:absolute top-6 h-fit md:w-5/12 w-11/12 md:mx-0 md:pb-10 pb-8 opacity-90 bg-white md:py-12 py-6 rounded-lg shadow-2xl"
     >
-      <div class=" mb-5">
+      <div class="mb-5">
         <h1
           class="text-center text-brand font-black leading-7 md:text-3xl text-lg"
         >
@@ -29,7 +29,8 @@
               type="text"
               name="full_name"
               v-model="full_name"
-              class="bg-white rounded-full h-10 text-sm shadow-lg px-2 py-1 border border-brand"
+              @input="checkPhone()"
+              class="bg-white rounded-xs h-10 text-sm shadow-lg px-2 py-1 border border-brand"
             />
           </div>
         </div>
@@ -41,10 +42,12 @@
               >Phone Number: *</label
             >
             <input
-              type="number"
+              type="tel"
+              maxlength="11"
               name="phone_number"
-              v-model="phone_number"
-              class="bg-white rounded-full h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
+              v-model= "phone_number"
+              @input="checkPhone()"
+              class="bg-white rounded-xs h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
             />
           </div>
           <div class="flex flex-col md:w-2/5 w-full">
@@ -54,7 +57,8 @@
             <select
               name="area"
               v-model="area"
-              class="bg-white rounded-full h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
+              @change="checkPhone()"
+              class="bg-white rounded-xs h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
             >
               <option value="default" class disabled>Area</option>
               <option class="text-sm" value="Apata">Apata, Ibadan</option>
@@ -81,7 +85,7 @@
           </div>
         </div>
         <div
-          class="flex md:flex-row md:flex-wrap items-start  flex-col justify-evenly w-full px-6 md:px-0 space-y-5 md:space-y-0"
+          class="flex md:flex-row md:flex-wrap items-start flex-col justify-evenly w-full px-6 md:px-0 space-y-5 md:space-y-0"
         >
           <div class="flex flex-col md:w-2/5 md:mb-6 w-full">
             <label
@@ -92,9 +96,10 @@
             <select
               name="services_you_are_interested_in"
               v-model="services_you_are_interested_in"
-              class="bg-white rounded-full h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
+              @change="checkPhone()"
+              class="bg-white rounded-xs h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
             >
-              <option value="default" class disabled selected>
+              <option value="default" class disabled>
                 Services you are interested in?
               </option>
               <option class="text-sm" value="rent">Altara Rent</option>
@@ -102,18 +107,29 @@
               <option class="text-sm" value="product">Altara Product</option>
             </select>
           </div>
-          <div class="flex flex-col md:w-2/5 md:mb-6 w-full"
-            v-if="services_you_are_interested_in"
-          >
+          <div class="flex flex-col md:w-2/5 md:mb-6 w-full">
             <label
               for="services_you_are_interested_in"
               class="mb-0.5 ml-2 text-sm"
               >{{ checkService("Product *", "Amount *", "Amount *") }}</label
             >
+                          <CurrencyInput
+                          v-if="services_you_are_interested_in == 'e_loan'"
+                v-model="data.amount"
+                name="further_details"
+                :options="{
+                  currency: 'NGN',
+                  hideCurrencySymbolOnFocus: false,
+                  hideGroupingSeparatorOnFocus: false,
+                  hideNegligibleDecimalDigitsOnFocus: false,
+                }"
+              />
+           
             <select
+              v-else
               name="further_details"
               v-model="further_details"
-              class="bg-white rounded-full h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
+              class="bg-white rounded-xs h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
             >
               <option value="default" class disabled selected>
                 {{ checkService("Product", "Amount", "Amount") }}
@@ -121,43 +137,58 @@
               <option
                 class="text-sm"
                 :value="type.details"
-                v-for="type in checkService(products, loans, rents)"
+                v-for="type in checkService(products, rents, rents)"
                 :key="type.details"
               >
                 {{ type.details }}
               </option>
             </select>
           </div>
-          <div class="flex flex-col md:w-2/5 md:mb-6 w-full">
-            <label for="employment_status" class="mb-0.5 ml-2 text-sm"
-              >Employment Status: *</label
+          <div class="flex flex-col md:w-2/5 md:mb-6 w-full" v-if="services_you_are_interested_in == 'e_loan'">
+            <label for="repayment_duration" class="mb-0.5 ml-2 text-sm"
+              >Repayment Duration: *</label
             >
             <select
-              name="employment_status"
-              v-model="employment_status"
-              class="bg-white rounded-full h-10 text-sm shadow-lg px-2 py-1 border border-brand"
+              name="repayment_duration"
+              v-model="repayment_duration"
+              class="bg-white rounded-xs h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
             >
-              <option value="default" class disabled selected>
-                Employment Status
+              <option value="default" class disabled>
+                Repayment Duration
               </option>
-              <option class="text-sm" value="employed">Employed</option>
-              <option class="text-sm" value="self_employed">
-                Self Employed
-              </option>
+              <option class="text-sm" value="three_months">Three Months</option>
+              <option class="text-sm" value="six_months">Six Months</option>
+              <option class="text-sm" value="nine_months">Nine Months</option>
+              <option class="text-sm" value="twelve_months">Twelve Months</option>
             </select>
           </div>
-          <div class="flex flex-col md:w-2/5 md:mb-6 w-full pt-4">
-          <button
-            type="submit"
-            :disabled="disabled()"
-            class="bg-brand flex items-center justify-center md:px-7 px-4 md:py-3 py-2 mx-0 rounded-full font-black  text-white text-sm hover:shadow-lg"
-          >
-            <loaderVue v-if="loader" />
-            Create Account
-          </button>
-           </div>
+          <div class="flex flex-col md:w-2/5 md:mb-6 w-full" v-if="services_you_are_interested_in == 'e_loan'">
+            <label for="repayment_plan" class="mb-0.5 ml-2 text-sm"
+              >Repayment Plan: *</label
+            >
+             <select
+              name="repayment_plan"
+              v-model="repayment_plan"
+              class="bg-white rounded-xs h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
+            >
+              <option value="default" class disabled>
+                Repayment Plan
+              </option>
+              <option class="text-sm" value="monthly">Monthly</option>
+              <option class="text-sm" value="Bimonthly">Bi-Monthly</option>
+            </select>
+          </div>
+          <div class="flex flex-col md:w-2/5 md:my-6 w-full pt-10">
+            <button
+              type="submit"
+              :disabled="checkPhone()"
+              class="bg-brand flex items-center justify-center md:px-7 px-4 md:py-3 py-2 mx-0 rounded-xs font-black text-white text-sm hover:shadow-lg"
+            >
+              <loaderVue v-if="loader" />
+              Create Account
+            </button>
+          </div>
         </div>
-       
       </form>
     </div>
     <Modal v-if="form_sent" title="Sign Up Successfull!">
@@ -175,14 +206,20 @@ import background from "../assets/images/background_picture.png";
 import Modal from "../components/general/modal.vue";
 import { Apiservice } from "../services/apiService";
 import loaderVue from "../assets/svgs/loader.vue";
+import CurrencyInput from "./general/currenyInput.vue";
 export default {
   title: "Sign Up| Altara Credit Limited",
   components: {
     Modal,
     loaderVue,
+    CurrencyInput
   },
   data() {
     return {
+      disabled:true,
+      repayment_duration:"",
+      repayment_plan:"",
+      data: {},
       loader: false,
       background,
       full_name: "",
@@ -217,43 +254,64 @@ export default {
       employment_status: "",
       form_sent: false,
       formURL: process.env.VUE_APP_URL_SIGNUP,
+      formData:null
     };
   },
   methods: {
-    disabled() {
-      return (
-        !this.full_name ||
-        !this.phone_number ||
-        !this.area ||
-        !this.services_you_are_interested_in ||
-        !this.employment_status || !this.further_details
-      );
+    checkPhone(){
+       if ( this.phone_number.toString().length != 11 || !this.full_name || !this.area ||  !this.services_you_are_interested_in) {
+              return true
+            } else {
+              return false
+            }
     },
     checkService(product, loan, rent) {
-      return this.services_you_are_interested_in == "product"  ? product : this.services_you_are_interested_in == "e_loan"  ? loan : rent;
+      return this.services_you_are_interested_in == "product"
+        ? product
+        : this.services_you_are_interested_in == "e_loan"
+        ? loan
+        : rent;
     },
     sendEmail() {
+      this.loader = true;
       const api = new Apiservice();
-      var data = {
+      const eloan_data = {
         full_name: this.full_name,
         phone_number: this.phone_number,
         area: this.area,
         services_you_are_interested_in: this.services_you_are_interested_in,
-        employment_status: this.employment_status,
-        further_details: this.further_details,
+        further_details:this.data?.amount,
+        repayment_duration : this.repayment_duration,
+        repayment_plan : this.repayment_plan,
         date: new Date().toLocaleString(),
       };
-      this.loader = true;
+      const product_data = {
+        full_name: this.full_name,
+        phone_number: this.phone_number,
+        area: this.area,
+        services_you_are_interested_in: this.services_you_are_interested_in,
+        further_details: this.further_details,
+        repayment_duration :'',
+        repayment_plan : '',
+        date: new Date().toLocaleString(),
+      };
+      this.formData = this.services_you_are_interested_in == "e_loan" ? eloan_data : product_data
+      console.log(this.formData);
+      
       api
-        .post(this.formURL, data, true)
+        .post(this.formURL, this.formData, true)
         .then(() => {
           this.full_name = "";
           this.phone_number = "";
           (this.area = ""), (this.services_you_are_interested_in = "");
           this.employment_status = "";
-          this.further_details='';
+          this.further_details = "";
           this.form_sent = true;
           this.loader = false;
+          this.repayment_duration="",
+          this.repayment_plan="";
+          window.localStorage.removeItem('data');
+          this.data={}
           this.$router.push({ path: "/signup" });
         })
         .catch((error) => {
@@ -262,17 +320,29 @@ export default {
           }
         });
     },
+    async fetchData(){
+       if (localStorage.data) {
+      this.data = { ...JSON.parse(window.localStorage.getItem("data")) };
+      this.services_you_are_interested_in = "e_loan";
+      this.repayment_duration = this.data.repayment_duration_id.name
+      this.repayment_plan = this.data.biMonthly ? 'Bimonthly' : 'monthly'
+      
+    }
+    }
   },
   computed: {},
   watch: {
-    'services_you_are_interested_in': {
+    services_you_are_interested_in: {
       handler(newData) {
         this.checkService(newData);
-        this.further_details='';
+        this.further_details = "";
       },
     },
-    // whenever question changes, this function will run
     
+    // whenever question changes, this function will run
+  },
+  async mounted() {
+   await this.fetchData()
   },
 };
 </script>
