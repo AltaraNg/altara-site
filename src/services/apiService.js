@@ -20,6 +20,7 @@ export class Apiservice {
       },
     });
   }
+ 
 
   setRequestHeaders(header) {
     if (this?.requestConfig.headers) {
@@ -34,7 +35,7 @@ export class Apiservice {
     try {
       let result = await this.api_connector.get(url, this.requestConfig);
       this.resetRequestConfig();
-      return result.data;
+      return result;
     } catch (error) {
       this.handleErrors(error);
     }
