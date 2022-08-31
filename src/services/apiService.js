@@ -46,7 +46,6 @@ export class Apiservice {
 
   async post(url, data, isFormData) {
     // handle content type application/json
-    console.log('here', url);
     let postData = data;
 
     if (isFormData) {
