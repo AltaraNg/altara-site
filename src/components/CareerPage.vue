@@ -37,9 +37,9 @@
           Please complete the form below to apply a position with us
         </p>
         <form
-        ref="fileform"
+          ref="fileform"
           class="space-y-8 mt-6 w-full flex flex-col items-center"
-          @submit.prevent="sendEmail"
+          @submit.prevent="sendEmail()"
           method="POST"
         >
           <div
@@ -100,8 +100,13 @@
                 <option class="text-sm" value="Direct Sales Agent">
                   Direct Sales Agent
                 </option>
-                <option class="text-sm" value="Floor Sales Agent">Floor Sales Agent</option>
-                <option class="text-sm" value="Verification,Collection and Recovery Agent">
+                <option class="text-sm" value="Floor Sales Agent">
+                  Floor Sales Agent
+                </option>
+                <option
+                  class="text-sm"
+                  value="Verification,Collection and Recovery Agent"
+                >
                   Verification,Collection and Recovery Agent
                 </option>
                 <option class="text-sm" value="Freelance Sales Agent">
@@ -145,7 +150,6 @@
           <div class="flex flex-col md:w-2/5 md:my-6 w-full md:pt-10">
             <button
               type="submit"
-              :disabled="validate()"
               class="bg-brand flex items-center justify-center md:px-7 px-4 md:py-3 py-2 mx-0 rounded-md font-black text-white text-sm hover:shadow-lg"
             >
               <loaderVue v-if="loader" />
@@ -155,13 +159,13 @@
         </form>
       </div>
       <Modal v-if="form_sent" title="Job Application Successfull!">
-      <template v-slot:svg>
-        <img src="../assets/images/success.png" class="w-28 h-28" />
-      </template>
-      <template v-slot:text>
-        <p class="text-center">We will reach out to you shortly</p>
-      </template>
-    </Modal>
+        <template v-slot:svg>
+          <img src="../assets/images/success.png" class="w-28 h-28" />
+        </template>
+        <template v-slot:text>
+          <p class="text-center">We will reach out to you shortly</p>
+        </template>
+      </Modal>
     </div>
     <img
       src="../assets/images/pattern1.png"
@@ -179,38 +183,58 @@
 import Modal from "../components/general/modal.vue";
 import { Apiservice } from "../services/apiService";
 import loaderVue from "../assets/svgs/loader.vue";
-export default {
-    components:{
-        Modal,
-        loaderVue
-    },
-  data() {
-    return {
-        loader:null,
-        formURL: process.env.VUE_APP_URL_JOBFORM_STAGING,
-        full_name:'',
-        email_address:'',
-        phone_number:'',
-        roles:'',
-        location:'',
-        resume:'',
-        form_sent: false,
-        event: null,
-    };
-  },
-  methods: {
-    onFilePicked() {
-      const files = event.target.files;
-      const fileReader = new FileReader();
-      fileReader.addEventListener("load", () => {
-        this.resume = fileReader.result;
-        console.log(this.resume);
-      }); 
-       fileReader.readAsDataURL(files[0]);
-      this.event = files[0].name;
-      console.log(this.event);
-    console.log(this.resume);
-    },
+import AWSS3UploadAshClient from "aws-s3-upload-ash";
+
+	export default {
+		components: {
+			Modal,
+			loaderVue,
+		},
+		data() {
+			return {
+				loader: null,
+				formURL: process.env.VUE_APP_URL_JOBFORM_STAGING,
+				full_name: '',
+				email_address: '',
+				phone_number: '',
+				roles: '',
+				location: '',
+				resume: '',
+				form_sent: false,
+				fileSelected: null,
+				event: null,
+				config: {
+					bucketName: 'altara-staging',
+					dirName: 'media',
+					region: 'us-east-1',
+					accessKeyId: process.env.VUE_APP_AWS_ACCESS_KEY,
+					secretAccessKey: process.env.VUE_APP_AWS_SECRET_KEY,
+					s3Url: ' https://altara-staging.s3.amazonaws.com/',
+				},
+			};
+		},
+		mounted() {},
+		methods: {
+			onFilePicked: function (event) {
+				this.fileSelected = event.target.files[0];
+			},
+			handleSendFile: async function () {
+				try {
+					let S3CustomClient = new AWSS3UploadAshClient(this.config);
+					let result = await S3CustomClient.uploadFile(
+						this.fileSelected,
+						this.fileSelected.type,
+						undefined,
+						this.fileSelected.name,
+						undefined
+					);
+					return result.location;
+				} catch (error) {
+					console.log(error);
+				} finally {
+					console.log('done');
+				}
+			},
 
     validate() {
       if (
@@ -226,34 +250,37 @@ export default {
         return false;
       }
     },
+
     sendEmail() {
       this.loader = true;
+
+      this.resume = this.handleSendFile();
       const api = new Apiservice();
       const data = {
         full_name: this.full_name,
-        email_address:this.email_address,
+        email_address: this.email_address,
         phone_number: this.phone_number,
         roles: this.roles,
         location: this.location,
         date: new Date().toLocaleString(),
         resume: this.resume,
-      }
+      };
       api
         .post(this.formURL, data, true)
         .then(() => {
-         this.$refs.fileform.reset()
+          this.$refs.fileform.reset();
           this.full_name = "";
           this.phone_number = "";
           this.email_address = "";
           this.roles = "";
-          this.location="";
+          this.location = "";
           this.form_sent = true;
           this.loader = false;
           this.$router.push({ path: "/careers" });
         })
         .catch((error) => {
           if (error) {
-            this.$refs.fileform.reset()
+            this.$refs.fileform.reset();
             this.$router.push({ path: "/careers" });
             this.loader = false;
             this.form_sent = true;
