@@ -252,8 +252,9 @@ import AWSS3UploadAshClient from "aws-s3-upload-ash";
     },
 
     sendEmail() {
-      this.handleSendFile();
       this.loader = true;
+
+      this.resume = this.handleSendFile();
       const api = new Apiservice();
       const data = {
         full_name: this.full_name,
