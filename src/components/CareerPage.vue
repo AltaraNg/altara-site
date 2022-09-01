@@ -220,7 +220,6 @@ import AWSS3UploadAshClient from "aws-s3-upload-ash";
 			},
 			handleSendFile: async function () {
 				try {
-          console.log(this.config);
 					let S3CustomClient = new AWSS3UploadAshClient(this.config);
 					let result = await S3CustomClient.uploadFile(
 						this.fileSelected,
@@ -256,7 +255,6 @@ import AWSS3UploadAshClient from "aws-s3-upload-ash";
       this.loader = true;
 
       this.resume = await this.handleSendFile();
-      console.log(this.resume);
       if (!this.resume){
         this.loader = false;
         return alert('Unable to upload resume');
