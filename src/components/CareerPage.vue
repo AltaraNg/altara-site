@@ -193,7 +193,7 @@ import AWSS3UploadAshClient from "aws-s3-upload-ash";
 		data() {
 			return {
 				loader: null,
-				formURL: process.env.VUE_APP_URL_JOBFORM_STAGING,
+				formURL: process.env.VUE_APP_URL_JOBFORM,
 				full_name: '',
 				email_address: '',
 				phone_number: '',
@@ -204,9 +204,9 @@ import AWSS3UploadAshClient from "aws-s3-upload-ash";
 				fileSelected: null,
 				event: null,
 				config: {
-					bucketName: 'altara-staging',
-					dirName: 'media',
-					region: 'us-east-1',
+					bucketName: process.env.VUE_APP_AWS_BUCKET,
+					dirName: 'cv-upload',
+					region: process.env.VUE_APP_AWS_REGION,
 					accessKeyId: process.env.VUE_APP_AWS_ACCESS_KEY,
 					secretAccessKey: process.env.VUE_APP_AWS_SECRET_KEY,
 					s3Url: process.env.VUE_APP_AWS_URL,
@@ -230,10 +230,8 @@ import AWSS3UploadAshClient from "aws-s3-upload-ash";
 					);
 					return result.location;
 				} catch (error) {
-					console.log(error);
-				} finally {
-					console.log('done');
-				}
+					alert(error.message)
+				} 
 			},
 
     validate() {
