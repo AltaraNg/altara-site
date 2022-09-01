@@ -209,7 +209,7 @@ import AWSS3UploadAshClient from "aws-s3-upload-ash";
 					region: 'us-east-1',
 					accessKeyId: process.env.VUE_APP_AWS_ACCESS_KEY,
 					secretAccessKey: process.env.VUE_APP_AWS_SECRET_KEY,
-					s3Url: ' https://altara-staging.s3.amazonaws.com/',
+					s3Url: process.env.VUE_APP_AWS_URL,
 				},
 			};
 		},
@@ -220,6 +220,7 @@ import AWSS3UploadAshClient from "aws-s3-upload-ash";
 			},
 			handleSendFile: async function () {
 				try {
+          console.log(this.config);
 					let S3CustomClient = new AWSS3UploadAshClient(this.config);
 					let result = await S3CustomClient.uploadFile(
 						this.fileSelected,
@@ -251,10 +252,15 @@ import AWSS3UploadAshClient from "aws-s3-upload-ash";
       }
     },
 
-    sendEmail() {
+    async sendEmail() {
       this.loader = true;
 
-      this.resume = this.handleSendFile();
+      this.resume = await this.handleSendFile();
+      console.log(this.resume);
+      if (!this.resume){
+        this.loader = false;
+        return alert('Unable to upload resume');
+      }
       const api = new Apiservice();
       const data = {
         full_name: this.full_name,
@@ -283,7 +289,7 @@ import AWSS3UploadAshClient from "aws-s3-upload-ash";
             this.$refs.fileform.reset();
             this.$router.push({ path: "/careers" });
             this.loader = false;
-            this.form_sent = true;
+            this.form_sent = false;
             throw error;
           }
         });
