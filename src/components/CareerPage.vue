@@ -170,7 +170,7 @@
           </div>
         </form>
       </div>
-      <Modal v-if="form_sent" title="Job Application Successfull!" @close ="!form_sent" >
+      <Modal v-if="form_sent" title="Job Application Successfull!"  >
         <template v-slot:svg>
           <img src="../assets/images/success.png" class="w-28 h-28" />
         </template>
@@ -250,8 +250,9 @@ export default {
           this.fileSelected.name,
           undefined
         );
-        return result.location;
+        return result?.location;
       } catch (error) {
+		console.log(error)
         alert(error.message);
       }
     },
@@ -272,8 +273,8 @@ export default {
     },
 
     async sendEmail() {
+		this.form_sent = false;
       this.loader = true;
-
       this.resume = await this.handleSendFile();
       if (!this.resume) {
         this.loader = false;
