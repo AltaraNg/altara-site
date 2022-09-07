@@ -252,7 +252,6 @@ export default {
         );
         return result?.location;
       } catch (error) {
-		console.log(error)
         alert(error.message);
       }
     },
@@ -280,6 +279,7 @@ export default {
         this.loader = false;
         return alert("Unable to upload resume");
       }
+console.log(this.resume);
       const api = new Apiservice();
       const data = {
         full_name: this.full_name,
@@ -288,7 +288,7 @@ export default {
         roles: this.roles,
         location: this.location,
         date: new Date().toLocaleString(),
-        resume: this.resume,
+        resume: this.resume.toString(),
       };
       api
         .post(this.formURL, data, true)
