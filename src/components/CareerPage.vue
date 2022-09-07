@@ -205,7 +205,7 @@ export default {
   data() {
     return {
       loader: null,
-      formURL: process.env.VUE_APP_URL_JOBFORM_STAGING,
+      formURL: process.env.VUE_APP_URL_JOBFORM,
       full_name: "",
       email_address: "",
       phone_number: "",
