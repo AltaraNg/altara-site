@@ -38,8 +38,8 @@ export default {
       type: String, 
       default:"",
     },
-    escClose:{
-      type: Boolean,
+    onClose:{
+      type: Event,
       default:true
     },
     overlayClose:{
@@ -56,9 +56,11 @@ export default {
         state: true  
       }
   },
+  emits: ['close'],
   methods:{
       toggleModal(){
-          this.state= !this.state
+          this.state= false
+          this.$emit('close')
           if (!this.state && this.onClose) this.onClose()
       },
       clickOverlay(event){

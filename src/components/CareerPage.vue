@@ -170,7 +170,7 @@
           </div>
         </form>
       </div>
-      <Modal v-if="form_sent" title="Job Application Successfull!">
+      <Modal v-if="form_sent" title="Job Application Successfull!" @close ="!form_sent" >
         <template v-slot:svg>
           <img src="../assets/images/success.png" class="w-28 h-28" />
         </template>
@@ -205,7 +205,7 @@ export default {
   data() {
     return {
       loader: null,
-      formURL: process.env.VUE_APP_URL_JOBFORM,
+      formURL: process.env.VUE_APP_URL_JOBFORM_STAGING,
       full_name: "",
       email_address: "",
       phone_number: "",
@@ -292,6 +292,8 @@ export default {
       api
         .post(this.formURL, data, true)
         .then(() => {
+			this.fileSelected = "";
+			this.resume = "";
           this.$refs.fileform.reset();
           this.full_name = "";
           this.phone_number = "";
