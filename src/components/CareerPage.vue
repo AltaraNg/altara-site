@@ -282,7 +282,6 @@ validRegex : /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+(?:\
         this.loader = false;
         return alert("Unable to upload resume");
       }
-console.log(this.resume);
       const api = new Apiservice();
       const data = {
         full_name: this.full_name,
@@ -291,7 +290,7 @@ console.log(this.resume);
         roles: this.roles,
         location: this.location,
         date: new Date().toLocaleString(),
-        resume: 'https://altara-staging.s3.amazonaws.com/'+this.resume,
+        resume: 'https://altara-staging.s3.amazonaws.com/'+encodeURIComponent(this.resume),
       };
       api
         .post(this.formURL, data, true)
