@@ -67,6 +67,7 @@
               <input
                 type="text"
                 name="email_address"
+				@change="validate()"
                 v-model="email_address"
                 class="mt-1 block w-full rounded-md border focus:outline-none border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 h-10 text-sm shadow-sm px-2 py-1"
               />
@@ -212,6 +213,7 @@ export default {
       roles: "",
       location: "",
       resume: "",
+validRegex : /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
       form_sent: false,
       fileSelected: null,
       event: null,
@@ -250,7 +252,7 @@ export default {
           this.fileSelected.name,
           undefined
         );
-        return result?.location;
+        return result.key;
       } catch (error) {
         alert(error.message);
       }
@@ -260,7 +262,8 @@ export default {
       if (
         this.phone_number.toString().length != 11 ||
         !this.full_name ||
-        !this.email_address ||
+		//eslint-disable-next-line
+        !(this.email_address.match(this.validRegex)) ||
         !this.roles ||
         !this.location ||
         !this.fileSelected
@@ -288,7 +291,7 @@ console.log(this.resume);
         roles: this.roles,
         location: this.location,
         date: new Date().toLocaleString(),
-        resume: this.resume.toString(),
+        resume: 'https://altara-staging.s3.amazonaws.com/'+this.resume,
       };
       api
         .post(this.formURL, data, true)
