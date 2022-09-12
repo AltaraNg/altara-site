@@ -123,26 +123,14 @@
                 @change="validate()"
                 class="mt-1 block w-full rounded-md border focus:outline-none border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 h-10 text-sm shadow-sm px-2 py-1"
               >
-                <option value="default" class disabled>Area</option>
-                <option class="text-sm" value="Apata">Apata, Ibadan</option>
-                <option class="text-sm" value="Dugbe">Dugbe, Ibadan</option>
-                <option class="text-sm" value="Gate">Gate, Ibadan</option>
-                <option class="text-sm" value="Bodija">Bodija, Ibadan</option>
-                <option class="text-sm" value="Iwo">Iwo Road, Ibadan</option>
-                <option class="text-sm" value="Challenge">
-                  Challenge, Ibadan
-                </option>
-                <option class="text-sm" value="Iyana_church">
-                  Iyana church, Ibadan
-                </option>
-                <option class="text-sm" value="Oyo">Oyo Town</option>
-                <option class="text-sm" value="Ogbomosho">Ogbomosho</option>
-                <option class="text-sm" value="Yoruba_Road">
-                  Yoruba Road, Ilorin
-                </option>
-                <option class="text-sm" value="Gambari">Gambari, Ilorin</option>
-                <option class="text-sm" value="Taiwo_Road">
-                  Taiwo Road, Ilorin
+                <option value="default" class disabled>Location</option>
+                <option
+                  class="text-sm"
+                  :value="item.value"
+                  v-for="item in locationOptions"
+                  :key="item.name"
+                >
+                  {{ item.name }}
                 </option>
               </select>
             </div>
@@ -235,6 +223,20 @@ validRegex : /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+(?:\
         { name: "Freelance Sales Agent", value: "Freelance Sales Agent" },
         { name: "Inventory Officer", value: "Inventory Officer" },
       ],
+     locationOptions: [
+        { name: "Apata, Ibadan", value: "Apata" },
+        { name: "Dugbe, Ibadan", value: "Dugbe" },
+        { name: "Gate, Ibadan", value: "Gate" },
+        { name: "Bodija, Ibadan", value: "Bodija" },
+        { name: "Iwo Road, Ibadan", value: "Iwo" },
+        { name: "Challenge, Ibadan", value: "Challenge" },
+        { name: "Iyana church, Ibadan", value: "Iyana_church" },
+        { name: "Oyo Town", value: "Oyo" },
+        { name: "Ogbomosho", value: "Ogbomosho" },
+        { name: "Yoruba Road, Ilorin", value: "Yoruba_Road" },
+        { name: "Gambari, Ilorin", value: "Gambari" },
+        { name: "Taiwo Road, Ilorin", value: "Taiwo_Road" },
+      ],
     };
   },
   mounted() {},
@@ -262,7 +264,6 @@ validRegex : /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+(?:\
       if (
         this.phone_number.toString().length != 11 ||
         !this.full_name ||
-		//eslint-disable-next-line
         !(this.email_address.match(this.validRegex)) ||
         !this.roles ||
         !this.location ||
@@ -290,7 +291,7 @@ validRegex : /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+(?:\
         roles: this.roles,
         location: this.location,
         date: new Date().toLocaleString(),
-        resume: 'https://altara-staging.s3.amazonaws.com/'+encodeURIComponent(this.resume),
+        resume: this.config.s3Url +encodeURIComponent(this.resume),
       };
       api
         .post(this.formURL, data, true)
