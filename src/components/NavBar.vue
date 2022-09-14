@@ -2,8 +2,9 @@
   <div
     class="
       bg-brand
+      border-brand
       h-16
-      border-b
+      border
       w-full
       lg:px-24
       md:px-16
@@ -35,6 +36,9 @@
       >
       <router-link :to="{ name: 'impact' }" exact class="cursor-pointer"
         >Impact</router-link
+      >
+      <router-link :to="{ name: 'careers' }" exact class="cursor-pointer"
+        >Careers</router-link
       >
     </div>
     <div>
@@ -127,6 +131,9 @@
         >
         <router-link :to="{ name: 'impact' }" exact class="cursor-pointer"
           >Impact</router-link
+        >
+        <router-link :to="{ name: 'careers' }" exact class="cursor-pointer"
+          >Careers</router-link
         >
         <router-link
           class="
