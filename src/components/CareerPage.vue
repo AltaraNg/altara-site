@@ -67,10 +67,11 @@
               <input
                 type="text"
                 name="email_address"
-				@change="validate()"
+                @change="validate()" 
                 v-model="email_address"
                 class="mt-1 block w-full rounded-md border focus:outline-none border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 h-10 text-sm shadow-sm px-2 py-1"
               />
+              <p v-if="!(email_address.match(validRegex)) && email_address" class="text-xs text-red-500">Email address is invalid</p>
             </div>
           </div>
           <div
@@ -84,9 +85,11 @@
                 type="tel"
                 maxlength="11"
                 name="phone_number"
+                @change="validate()" 
                 v-model="phone_number"
                 class="mt-1 block w-full rounded-md border focus:outline-none border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 h-10 text-sm shadow-sm px-2 py-1"
               />
+              <p class="text-xs text-red-500" v-if="phone_number.length !==11 && phone_number">Phone number must be 11 digits</p>
             </div>
             <div class="flex flex-col md:w-1/2 w-full">
               <label for="phone_number" class="mb-0.5 ml-2 text-sm"
@@ -197,6 +200,7 @@ export default {
       formURL: process.env.VUE_APP_URL_JOBFORM,
       full_name: "",
       email_address: "",
+      active:true,
       phone_number: "",
       roles: "",
       location: "",
@@ -291,7 +295,7 @@ validRegex : /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+(?:\
         roles: this.roles,
         location: this.location,
         date: new Date().toLocaleString(),
-        resume: this.config.s3Url +encodeURIComponent(this.resume),
+        resume: this.config.s3Url + '/' +encodeURIComponent(this.resume)
       };
       api
         .post(this.formURL, data, true)
