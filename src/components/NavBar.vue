@@ -66,7 +66,7 @@
         Sign up
       </router-link>
     </div>
-    <div class="block md:hidden cursor-pointer">
+    <div class="flex lg:hidden cursor-pointer">
       <img
         src="../assets/images/menu.png"
         class="w-6 h-6"

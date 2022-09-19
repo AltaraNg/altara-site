@@ -5,7 +5,7 @@
     <div
       class="
         flex flex-col-reverse
-        md:flex-row
+        lg:flex-row
         w-full
         md:py-8
         pb-5
@@ -19,9 +19,9 @@
     >
       <img
         src="../../assets/images/altara_product.png"
-        class="w-full ml-8 md:ml-0 md:w-3/5"
+        class="w-full ml-8 lg:ml-0 lg:w-3/5"
       />
-      <div class="w-full md:w-2/5 md:mt-10 pl-8 md:pl-0 ">
+      <div class="w-full lg:w-2/5 lg:mt-10 pl-8 lg:pl-0 ">
         <h1
           class="
             text-brand
@@ -43,7 +43,7 @@
             text-justify
             leading-10
             text-md text-left
-            md:pr-28
+            lg:pr-28
           "
         >
           Easy-to-access product on a flexible buy now pay later plan. Products
@@ -55,29 +55,29 @@
     <div
       class="
         flex flex-col-reverse
-        md:flex-row-reverse
+        lg:flex-row-reverse
         w-full
         py-10
-        md:py-0
+        lg:py-0
         h-fit
         flex
         items-start
         justify-between
-        md:pr-24
+        lg:pr-24
         pr-10
-        md:pr-0
+        lg:pr-0
       "
       id="altaraLoan"
     >
       <img
         src="../../assets/images/altara_loans.png"
-        class=" md:max-w-lg w-4/5 ml-16 md:ml-0 object-contain"
+        class=" lg:max-w-lg w-4/5 ml-16 lg:ml-0 object-contain"
       />
-      <div class="md:w-1/2 w-full mt-10 md:pl-24 pl-8 md:pl-0">
+      <div class="lg:w-1/2 w-full mt-10 lg:pl-24 pl-8 ">
         <h1
           class="
             text-brand
-            md:text-left
+            lg:text-left
             text-center
             md:text-3xl
             text-2xl
@@ -91,11 +91,11 @@
         <p
           class="
             text-gray-800
-            md:text-left
+            lg:text-left
             text-justify
             leading-10
             text-md text-left
-            md:pr-28
+            lg:pr-28
           "
         >
           Quick-to-process loans on multiple payment plans. Plan options include
@@ -106,13 +106,13 @@
     <div
       class="
         flex flex-col-reverse
-        md:flex-row
+        lg:flex-row
         w-full
         pt-10
-        md:pt-16
+        lg:pt-16
         py-4
         h-fit
-        md:pl-24
+        lg:pl-24
         flex
         items-start
         justify-between
@@ -122,15 +122,15 @@
     >
       <img
         src="../../assets/images/altara_rent.png"
-        class="md:max-w-lg w-4/5 ml-16 md:ml-0 object-contain pl-"
+        class="lg:max-w-lg w-4/5 ml-16 lg:ml-0 object-contain pl-"
       />
-      <div class="md:w-1/2 w-full mt-10 pl-8 md:pl-16">
+      <div class="lg:w-1/2 w-full mt-10 pl-8 lg:pl-16">
         <h1
           class="
             text-brand
-            md:text-left
+            lg:text-left
             text-center
-            md:text-3xl
+            lg:text-3xl
             text-2xl
             font-black
             md:leading-14
@@ -142,11 +142,11 @@
         <p
           class="
             text-gray-800
-            md:text-left
+            lg:text-left
             text-justify
             leading-10
             text-md text-left
-            md:pr-28 md:pr-28
+            lg:pr-28
           "
         >
           Hassle-free renting on pay later plan. Plans include: renting for
