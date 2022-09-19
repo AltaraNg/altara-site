@@ -2,6 +2,7 @@
   <Banner/>
   <AchievementsVue/>
   <Services/>
+  <Calculator/>
   <FAQ/>
   <ContactUs/>
 </template>
@@ -12,13 +13,15 @@ import Services from './ServiceSection.vue'
 import ContactUs from './ContactUs.vue'
 import FAQ from './FaqSection.vue'
 import AchievementsVue from './Achievements.vue'
+import Calculator from './Calculator.vue'
 export default {
   components:{
     Banner,
     Services,
     ContactUs,
     FAQ,
-    AchievementsVue
+    AchievementsVue,
+    Calculator
   },
    title: 'Buy now Pay Later | Altara Credit Limited'
 

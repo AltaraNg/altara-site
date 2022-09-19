@@ -17,11 +17,11 @@
     <router-link :to="{ name: 'home' }" exact class="cursor-pointer">
       <img src="../assets/logo.png" class="w-24" />
     </router-link>
-    <div class="space-x-10 text-xs md:text-sm hidden md:flex text-white">
+    <div class="space-x-10 text-xs md:text-sm hidden lg:flex text-white">
       <router-link
         class="cursor-pointer"
-        :to="{ name: 'home', hash: '#service' }"
-        >Services</router-link
+        :to="{ name: 'home', hash: '#calculator' }"
+        >Calculator</router-link
       >
       <router-link
         class="cursor-pointer"
@@ -45,7 +45,7 @@
       <router-link
         class="
           hidden
-          md:flex
+          lg:flex
           bg-brand
           border-white
           hover:bg-white 
@@ -115,8 +115,8 @@
         />
         <router-link
           class="cursor-pointer"
-          :to="{ name: 'home', hash: '#service' }"
-          >Services</router-link
+          :to="{ name: 'home', hash: '#calculator' }"
+          >Calculator</router-link
         >
         <router-link
           class="cursor-pointer"

@@ -1,197 +1,207 @@
 <template>
-  <div class="">
-    <div class="flex md:flex-row flex-col justify-evenly md:py-10 py-5">
-      <div class="md:w-5/12 relative">
-        <div
-          class="absolute right-0 bg-white/20 rounded-tr-lg px-4 py-1 opacity-80 backdrop-filter backdrop-blur-md"
-        >
-          <p class="text-white font-black md:text-2xl text-sm text-right">
-            Non- Salaried Worker
-          </p>
-        </div>
-        <img
-          src="../assets/images/non-salaried.png"
-          class="md:rounded-lg h-96"
-        />
-      </div>
-      <div class="md:w-5/12 relative">
-        <div
-          class="absolute right-0 bg-white/20 rounded-tr-lg px-4 py-1 opacity-80 backdrop-filter backdrop-blur-md"
-        >
-          <p class="text-white font-black md:text-2xl text-sm text-right">
-            Salaried Worker
-          </p>
-        </div>
-        <img src="../assets/images/salaried.jpg" class="md:rounded-lg h-96" />
-      </div>
-    </div> 
-
-    <div class="my-10">
-      <heading title="HOW IT WORKS" />
+  <div>
+    <div id="calculator" class="h-16"></div>
+    <div class="background w-full flex flex-col items-center p-8">
+      <p class="text-gray-900 font-black lg:text-5xl pb-2">Calculator</p>
+      <p class="text-sm text-gray-700">
+        Need Products/Cash to pay in installments ?
+      </p>
       <div
-        :style="image"
-        class="h-fit w-full image flex flex-col space-y-8 md:space-y-0 md:flex-row items-center md:justify-evenly md:space-x-3 md:p-10 p-4"
+        class="bg-gray-100 w-64 rounded-md shadow-lg flex p-1.5 items-center cursor-pointer mt-6"
       >
         <div
-          class="w-full lg:w-2/5 md:w-1/2 bg-white calculator md:py-6 md:px-10 p-3"
+          :class="
+            activeTab == 'cash'
+              ? 'tabBackground cursor-pointer text-white font-black shadow-md'
+              : 'bg-transparent text-gray-700 '
+          "
+          class="w-1/2 text-sm rounded-md text-center px-3 py-2"
+          @click="activeTab = 'cash'"
         >
-          <p
-            class="text-brand text-lg md:text-2xl font-bold md:font-black leading-10 text-center tracking-wide"
-          >
-            Calculator
-          </p>
-          <form class="mt-8">
-            <div class="flex flex-col mb-5">
-              <label
-                for="data.amount"
-                class="text-gray-600 md:text-sm text-xs font-normal"
-                >How much do you want to loan?</label
-              >
-
-              <CurrencyInput
-                v-model="data.amount"
-                :options="{
-                  currency: 'NGN',
-                  hideCurrencySymbolOnFocus: false,
-                  hideGroupingSeparatorOnFocus: false,
-                  hideNegligibleDecimalDigitsOnFocus: false,
-                }"
-                :getCalc="getCalc()"
-              />
-            </div>
-            <div class="flex items-center justify-between mb-12">
-              <label class="toggle">
-                <input
-                  class="toggle-checkbox"
-                  type="checkbox"
-                  v-model="data.biMonthly"
-                  @click="setBiMonthly()"
-                />
-                <div class="toggle-switch"></div>
-                <span class="text-gray-600 md:text-sm text-xs font-normal ml-4"
-                  >Bi-Monthly</span
-                >
-              </label>
-
-              <label class="toggle">
-                <input
-                  class="toggle-checkbox"
-                  type="checkbox"
-                  v-model="data.collateral"
-                  @click="setCollateral()"
-                />
-                <div class="toggle-switch"></div>
-                <span class="text-gray-600 md:text-sm text-xs font-normal ml-4"
-                  >Collateral</span
-                >
-              </label>
-            </div>
-            <div class="flex w-full items-center justify-center py-5 mt-10 mb-5" v-if="disabled  && data.amount" style="background-color: rgba(7, 74, 116, 0.63)">
-             <p class="md:text-4xl text-lg text-center font-black text-white">
-                  {{ data.actualDownpayment }}
-                </p></div>
-            <div class="flex w-full mt-10 mb-5"  v-if="!disabled" >
-              <div
-                class="w-1/2 p-4 flex-col text-brand"
-                style="background-color: #d9d9d9"
-              >
-                <p class="md:text-sm text-xs text-center font-normal mb-1">
-                  Your downpayment
-                </p>
-                <p class="md:text-3xl text-lg text-center font-black">
-                  {{ data.actualDownpayment }}
-                </p>
-              </div>    
-              <div
-                class="w-1/2 p-4 flex-col text-white"
-                style="background-color: rgba(7, 74, 116, 0.63)"
-              >
-                <p
-                  class="text-xs text-center font-normal mb-1"
-                  :class="data.biMonthly ? 'md:text-xs' : 'md:text-sm'"
-                >
-                  Your {{ data.biMonthly ? "bi-monthly" : "monthly" }} repayment
-                </p>
-                <p class="md:text-3xl text-lg text-center font-black">
-                  {{ data.biMonthly ? data.biMonthlyRepayent : data.repayment }}
-                </p>
-              </div>
-            </div>
-             
-            <router-link :to="{ name: 'signup' }">
-              <button class="bg-brand rounded  py-3 w-full text-white font-bold" :disabled='disabled' :style="disabled ? 'background-color: rgba(7, 74, 116, 0.2); margin-top:25px' : 'background-color: rgba(7, 74, 116, 1)'">
-                Get started
-              </button>
-            </router-link>
-          </form>
+          Cash Loans
         </div>
         <div
-          class="w-full lg:w-2/5 md:w-1/2 flex flex-col items-center jusitfy-evenly space-y-4"
+          :class="
+            activeTab == 'product'
+              ? 'tabBackground cursor-pointer text-white font-black shadow-md'
+              : 'bg-transparent text-gray-700 '
+          "
+          class="w-1/2 text-sm rounded-md text-center px-3 py-2"
+          @click="activeTab = 'product'"
         >
-          <div class="bg-white border-brand border p-5 rounded-md w-full">
-            <p
-              class="text-brand text-lg md:text-2xl font-bold md:font-black leading-10 mb-1"
+          Product Loans
+        </div>
+      </div>
+      <div class=" w-full h-fit">
+        <div v-if="activeTab == 'cash'">
+          <div
+            class="w-full image flex flex-col space-y-4 md:space-y-0 md:flex-row items-stretch justify-center md:p-10 p-4"
+          >
+            <div
+              class="w-full lg:w-2/5 md:w-1/2 bg-white calculator md:py-6 md:px-10 p-3"
             >
-              Select what you’re interested in
-            </p>
-            <p class="text-gray-600 md:text-sm text-xs font-normal">
-              Select what Product or Cash loan you are interested in
-            </p>
-          </div>
-          <div class="bg-white border-brand border p-5 rounded-md w-full">
-            <p
-              class="text-brand text-lg md:text-2xl font-bold md:font-black leading-10 mb-1 tracking-wide"
+              <p
+                class="text-brand text-lg md:text-2xl font-bold md:font-black leading-10 text-center tracking-wide"
+              >
+                Calculator
+              </p>
+              <form class="mt-8">
+                <div class="flex flex-col mb-5">
+                  <label
+                    for="data.amount"
+                    class="text-gray-600 md:text-sm text-xs font-normal"
+                    >How much do you want to loan?</label
+                  >
+
+                  <CurrencyInput
+                    v-model="data.amount"
+                    :options="{
+                      currency: 'NGN',
+                      hideCurrencySymbolOnFocus: false,
+                      hideGroupingSeparatorOnFocus: false,
+                      hideNegligibleDecimalDigitsOnFocus: false,
+                    }"
+                    :getCalc="getCalc()"
+                  />
+                </div>
+                <div class="flex items-center justify-between mb-12">
+                  <label class="toggle">
+                    <input
+                      class="toggle-checkbox"
+                      type="checkbox"
+                      v-model="data.biMonthly"
+                      @click="setBiMonthly()"
+                    />
+                    <div class="toggle-switch"></div>
+                    <span
+                      class="text-gray-600 md:text-sm text-xs font-normal ml-4"
+                      >Bi-Monthly</span
+                    >
+                  </label>
+
+                  <label class="toggle">
+                    <input
+                      class="toggle-checkbox"
+                      type="checkbox"
+                      v-model="data.collateral"
+                      @click="setCollateral()"
+                    />
+                    <div class="toggle-switch"></div>
+                    <span
+                      class="text-gray-600 md:text-sm text-xs font-normal ml-4"
+                      >Collateral</span
+                    >
+                  </label>
+                </div>
+                <div
+                  class="flex w-full items-center justify-center py-5 mt-10 mb-5"
+                  v-if="disabled && data.amount"
+                  style="background-color: rgba(7, 74, 116, 0.63)"
+                >
+                  <p
+                    class="md:text-4xl text-lg text-center font-black text-white"
+                  >
+                    {{ data.actualDownpayment }}
+                  </p>
+                </div>
+                <div class="flex w-full mt-10 mb-5" v-if="!disabled">
+                  <div
+                    class="w-1/2 p-4 flex-col text-brand"
+                    style="background-color: #d9d9d9"
+                  >
+                    <p class="md:text-sm text-xs text-center font-normal mb-1">
+                      Your downpayment
+                    </p>
+                    <p class="md:text-3xl text-lg text-center font-black">
+                      {{ data.actualDownpayment }}
+                    </p>
+                  </div>
+                  <div
+                    class="w-1/2 p-4 flex-col text-white"
+                    style="background-color: rgba(7, 74, 116, 0.63)"
+                  >
+                    <p
+                      class="text-xs text-center font-normal mb-1"
+                      :class="data.biMonthly ? 'md:text-xs' : 'md:text-sm'"
+                    >
+                      Your
+                      {{ data.biMonthly ? "bi-monthly" : "monthly" }} repayment
+                    </p>
+                    <p class="md:text-3xl text-lg text-center font-black">
+                      {{
+                        data.biMonthly ? data.biMonthlyRepayent : data.repayment
+                      }}
+                    </p>
+                  </div>
+                </div>
+
+                <router-link :to="{ name: 'signup' }">
+                  <button
+                    class="bg-brand rounded py-3 w-full text-white font-bold"
+                    :disabled="disabled"
+                    :style="
+                      disabled
+                        ? 'background-color: rgba(7, 74, 116, 0.2); margin-top:25px'
+                        : 'background-color: rgba(7, 74, 116, 1)'
+                    "
+                  >
+                    Get started
+                  </button>
+                </router-link>
+              </form>
+            </div>
+            <div
+              class="background shadow-lg w-full lg:w-2/5 md:w-1/2 flex flex-col p-4"
             >
-              Plan
-            </p>
-            <p class="text-gray-600 md:text-sm text-xs font-normal">
-              Choose repayment plan, business type and duration
-            </p>
-          </div>
-          <div class="bg-white border-brand border p-5 rounded-md w-full">
-            <p
-              class="text-brand text-lg md:text-2xl font-bold md:font-black leading-10 mb-1 tracking-wide"
-            >
-              Fill in Application Form
-            </p>
-            <p class="text-gray-600 md:text-sm text-xs font-normal">
-              Click on get started and fill in your information
-            </p>
-          </div>
-          <div class="bg-white border-brand border p-5 rounded-md w-full">
-            <p
-              class="text-brand text-lg md:text-2xl font-bold md:font-black leading-10 mb-1 tracking-wide"
-            >
-              Preferred mode of payment.
-            </p>
-            <p class="text-gray-600 md:text-sm text-xs font-normal">
-              Select your preferred Mode of Payment Options
-            </p>
+              <div class="flex items-center mb-6">
+                <img
+                  src="../../assets/images/cash.png"
+                  class="mr-5 w-12 h-12"
+                />
+                <div>
+                  <p class="text-gray-600 text-xs md:text-sm font-light">
+                    Cash Loan
+                  </p>
+                  <p v-if="data.amount" class="text-brand font-black md:text-lg text-normal">
+                    ₦{{ data.amount }}
+                  </p>
+                </div>
+              </div>
+              <hr class="border-gray-500 w-full px-10" />
+              <div class="flex items-center mt-1" v-for=" message, index  in checks" :key="index">
+                <img
+                  src="../../assets/images/check.png"
+                  class="mr-2 w-10 h-10"
+                />
+                <p class="text-gray-800 text-sm md:text-lg font-bold">{{message.title}}</p>
+              </div>
+            </div>
           </div>
         </div>
+        <div v-else>Product</div>
       </div>
     </div>
   </div>
 </template>
-
 <script>
-import heading from "../components/general/heading.vue";
-import { Apiservice } from "../services/apiService";
-import { cashLoan } from "../utilities/calculator";
-import CurrencyInput from "./general/currenyInput.vue";
+import { Apiservice } from "../../services/apiService";
+import { cashLoan } from "../../utilities/calculator";
+import CurrencyInput from "../general/currenyInput.vue";
 export default {
   components: {
-    heading,
     CurrencyInput,
   },
-  title: "How It Works | Altara Credit Limited",
   data() {
     return {
-      disabled:true,
+      activeTab: "cash",
+      checks: [
+       {title: "Flexible  payment option"},
+        {title: "Fast and easy to apply"},
+        {title: "up to ₦120,000 as a first time customer"},
+        {title: "Direct transfer to your bank account"},
+      ],
+      disabled: true,
       baseURL: process.env.VUE_APP_URL,
-      image: {
-        backgroundImage: `url(${require("../assets/images/jigsaw.png")})`,
-      },
       apiUrls: {
         repaymentDuration: `${process.env.VUE_APP_URL}/api/repayment_duration`,
         repaymentCycles: `${process.env.VUE_APP_URL}/api/repayment_cycle`,
@@ -353,10 +363,10 @@ export default {
           .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
         this.data.total = total;
         window.localStorage.setItem("data", JSON.stringify(this.data));
-        this.disabled= false
+        this.disabled = false;
       } catch (e) {
         console.log(e);
-        this.disabled= true
+        this.disabled = true;
         window.localStorage.removeItem("data");
         this.data.actualDownpayment = "Not Available";
         this.data.repayment = "Not Available";
@@ -388,15 +398,29 @@ export default {
   },
 };
 </script>
-
 <style>
+.background {
+  background: linear-gradient(
+    251.22deg,
+    rgba(236, 248, 249, 0.22) -7.88%,
+    rgba(7, 74, 116, 0.5) 110.26%
+  );
+}
+.tabBackground {
+  background: linear-gradient(
+    270deg,
+    #074a74 33.7%,
+    #074a74 36.33%,
+    #089ca4 69.06%
+  );
+}
 .image {
   background-repeat: no-repeat;
 }
 
 .calculator {
   box-shadow: 0.4px 50px 120px 5px rgba(7, 74, 116, 0.5);
-  border-radius: 5px;
+  border-radius: 2px, 0, 0, 2px;
 }
 
 *,
