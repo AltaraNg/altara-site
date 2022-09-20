@@ -6,36 +6,63 @@
       <p class="text-sm text-gray-700">
         Need Products/Cash to pay in installments ?
       </p>
-      <div
-        class="bg-gray-100 w-64 rounded-md shadow-lg flex p-1.5 items-center cursor-pointer mt-6"
-      >
-        <div
-          :class="
-            activeTab == 'cash'
-              ? 'tabBackground cursor-pointer text-white font-black shadow-md'
-              : 'bg-transparent text-gray-700 '
-          "
-          class="w-1/2 text-sm rounded-md text-center px-3 py-2"
-          @click="activeTab = 'cash'"
-        >
-          Cash Loans
-        </div>
-        <div
-          :class="
-            activeTab == 'product'
-              ? 'tabBackground cursor-pointer text-white font-black shadow-md'
-              : 'bg-transparent text-gray-700 '
-          "
-          class="w-1/2 text-sm rounded-md text-center px-3 py-2"
-          @click="activeTab = 'product'"
-        >
-          Product Loans
-        </div>
-      </div>
+      
       <div class=" w-full h-fit">
-        <div v-if="activeTab == 'cash'">
+         <div class="flex items-center justify-center">
+              <div
+        class="
+          md:flex
+          mt-8
+          w-full
+          hidden
+          md:flex-row
+          flex-col
+          items-start
+          justify-evenly
+        "
+      >
+        <carousel
+        :items-to-show="5"
+        :autoplay="3000"
+        :transition="800"
+        :wrap-around="true"
+        :pauseAutoplayOnHover="true"
+        :breakpoints="breakpoints"
+        :touchDrag="true"
+        :snapAlign="center"
+        class="hidden md:flex flex-col items-center justify-center mt-8 w-full"
+      >
+        <slide v-for="(product, index) in products" :key="index">
+          <ProductsVue :name="product.name" :image="product.image"/>
+        </slide>
+
+        <template #addons>
+          <navigation />
+          <pagination />
+        </template>
+      </carousel>
+      </div>
+      <carousel
+        :items-to-show="1"
+        :autoplay="4000"
+        :transition="800"
+        :wrap-around="true"
+        class="md:hidden block mt-8"
+      >
+         <slide v-for="(product, index) in products" :key="index">
+          <ProductsVue :name="product.name" :image="product.image"/>
+        </slide>
+
+
+        <template #addons>
+          <navigation />
+          <pagination />
+        </template>
+      </carousel>
+         </div>
+        <div>
           <div
-            class="w-full image flex flex-col space-y-4 md:space-y-0 md:flex-row items-stretch justify-center md:p-10 p-4"
+            class="w-full image flex flex-col space-y-4 md:space-y-0 md:flex-row items-stretch mt-20 justify-center md:p-10 p-4"
           >
             <div
               class="w-full lg:w-2/5 md:w-1/2 bg-white calculator md:py-6 md:px-10 p-3"
@@ -178,7 +205,7 @@
             </div>
           </div>
         </div>
-        <div v-else>Product</div>
+       
       </div>
     </div>
   </div>
@@ -187,12 +214,88 @@
 import { Apiservice } from "../../services/apiService";
 import { cashLoan } from "../../utilities/calculator";
 import CurrencyInput from "../general/currenyInput.vue";
+import phone from "../../assets/images/phone.png";
+import television from "../../assets/images/television.png";
+import washing_machine from "../../assets/images/washing_machine.png";
+import fridge from "../../assets/images/fridge.png";
+import generator from "../../assets/images/generator.png";
+import ProductsVue from "../general/products.vue";
+import "vue3-carousel/dist/carousel.css";
+import "../../assets/css/carousel.css";
+import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
 export default {
   components: {
-    CurrencyInput,
+    CurrencyInput,Carousel,ProductsVue,
+    Slide,
+    Pagination,
+    Navigation,
   },
   data() {
     return {
+        hover:false,
+        products: [
+        {
+          name: "Infinix",
+          downpayment:'150,000',
+          repayment:'40,000',
+          category:'phone',       
+          image: phone,
+        },
+        {
+          name: "Television",
+          downpayment:'150,000',
+          repayment:'40,000',
+          category:'television',       
+          image: television,
+        },
+        {
+          name: "Washing Machine",
+          downpayment:'150,000',
+          repayment:'40,000',
+          category:'washing_machine',       
+          image: washing_machine,
+        },
+        
+        {
+          name: "Fridge",
+          downpayment:'150,000',
+          repayment:'40,000',
+          category:'fridge',       
+          image: fridge,
+        },
+        {
+          name: "Generator",
+          downpayment:'150,000',
+          repayment:'40,000',
+          category:'generator',       
+          image: generator,
+        },
+         {
+          name: "Infinix",
+          downpayment:'150,000',
+          repayment:'40,000',
+          category:'phone',       
+          image: phone,
+        },
+         {
+          name: "Television",
+          downpayment:'150,000',
+          repayment:'40,000',
+          category:'television',       
+          image: television,
+        },
+       
+        
+      ],
+      breakpoints: {
+      700: {
+        itemsToShow: 3.5,
+      },
+      1024: {
+        itemsToShow: 5,
+       
+      }
+    },
       activeTab: "cash",
       checks: [
        {title: "Flexible  payment option"},
@@ -398,7 +501,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 .background {
   background: linear-gradient(
     251.22deg,
@@ -493,4 +596,5 @@ input[type="number"]::-webkit-outer-spin-button {
   position: relative;
   top: 2px;
 }
+
 </style>
