@@ -8,10 +8,13 @@ export class Apiservice {
       baseURL: "",
       transformRequest: [],
       transformResponse: [],
-      headers: null,
       params: null,
       paramsSerializer: "",
       data: null,
+      mode: "cors",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8",
+      },
     };
     this.api_connector = axios.create({
       baseURL:  "https://script.google.com",

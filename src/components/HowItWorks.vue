@@ -86,35 +86,6 @@
                 >
               </label>
             </div>
-            <div class="hover:pointer-events-none pointer-events-none">
-              <div
-                class="flex items-center mb-2 justify-between text-gray-600 md:text-sm text-xs font-normal"
-              >
-                <p>For how long?</p>
-                <p>{{ data.repayment_duration }} Months</p>
-              </div>
-              <vue3-slider
-                v-model="data.repayment_duration"
-                max="12"
-                limit="12"
-                tooltip="true"
-                color="#074A74"
-                track-color="#638DA7"
-                alwaysShowHandle="true"
-                handleScale="3.5"
-                step="3"
-                v-on:change="getCalc()"
-              />
-              <div
-                class="flex items-center justify-between text-gray-600 md:text-sm text-xs font-normal"
-              >
-                <p>0</p>
-                <p>3</p>
-                <p>6</p>
-                <p>9</p>
-                <p>12</p>
-              </div>
-            </div>
             <div class="flex w-full items-center justify-center py-5 mt-10 mb-5" v-if="disabled  && data.amount" style="background-color: rgba(7, 74, 116, 0.63)">
              <p class="md:text-4xl text-lg text-center font-black text-white">
                   {{ data.actualDownpayment }}
@@ -130,7 +101,7 @@
                 <p class="md:text-3xl text-lg text-center font-black">
                   {{ data.actualDownpayment }}
                 </p>
-              </div>    
+              </div>
               <div
                 class="w-1/2 p-4 flex-col text-white"
                 style="background-color: rgba(7, 74, 116, 0.63)"
@@ -146,7 +117,7 @@
                 </p>
               </div>
             </div>
-             
+
             <router-link :to="{ name: 'signup' }">
               <button class="bg-brand rounded  py-3 w-full text-white font-bold" :disabled='disabled' :style="disabled ? 'background-color: rgba(7, 74, 116, 0.2); margin-top:25px' : 'background-color: rgba(7, 74, 116, 1)'">
                 Get started
@@ -205,14 +176,12 @@
 
 <script>
 import heading from "../components/general/heading.vue";
-import slider from "vue3-slider";
 import { Apiservice } from "../services/apiService";
 import { cashLoan } from "../utilities/calculator";
 import CurrencyInput from "./general/currenyInput.vue";
 export default {
   components: {
     heading,
-    "vue3-slider": slider,
     CurrencyInput,
   },
   title: "How It Works | Altara Credit Limited",

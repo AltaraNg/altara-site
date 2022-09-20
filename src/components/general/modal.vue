@@ -38,7 +38,7 @@ export default {
       type: String, 
       default:"",
     },
-    escClose:{
+    onClose:{
       type: Boolean,
       default:true
     },
@@ -56,10 +56,10 @@ export default {
         state: true  
       }
   },
+  emits: ['close'],
   methods:{
       toggleModal(){
-          this.state= !this.state
-          if (!this.state && this.onClose) this.onClose()
+          this.state= false
       },
       clickOverlay(event){
         let overlay = this.$refs.overlay
