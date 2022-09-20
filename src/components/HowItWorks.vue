@@ -101,7 +101,7 @@
                 <p class="md:text-3xl text-lg text-center font-black">
                   {{ data.actualDownpayment }}
                 </p>
-              </div>    
+              </div>
               <div
                 class="w-1/2 p-4 flex-col text-white"
                 style="background-color: rgba(7, 74, 116, 0.63)"
@@ -117,7 +117,7 @@
                 </p>
               </div>
             </div>
-             
+
             <router-link :to="{ name: 'signup' }">
               <button class="bg-brand rounded  py-3 w-full text-white font-bold" :disabled='disabled' :style="disabled ? 'background-color: rgba(7, 74, 116, 0.2); margin-top:25px' : 'background-color: rgba(7, 74, 116, 1)'">
                 Get started
