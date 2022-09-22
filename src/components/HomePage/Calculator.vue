@@ -1,71 +1,15 @@
 <template>
   <div>
-    <div id="calculator" class="h-16"></div>
-    <div class="background w-full flex flex-col items-center p-8">
-      <p class="text-gray-900 font-black lg:text-5xl pb-2">Calculator</p>
-      <p class="text-sm text-gray-700">
-        Need Products/Cash to pay in installments ?
-      </p>
-      
-      <div class=" w-full h-fit">
-         <div class="flex items-center justify-center">
-              <div
-        class="
-          md:flex
-          mt-8
-          w-full
-          hidden
-          md:flex-row
-          flex-col
-          items-start
-          justify-evenly
-        "
-      >
-        <carousel
-        :items-to-show="5"
-        :autoplay="3000"
-        :transition="800"
-        :wrap-around="true"
-        :pauseAutoplayOnHover="true"
-        :breakpoints="breakpoints"
-        :touchDrag="true"
-        :snapAlign="center"
-        class="hidden md:flex flex-col items-center justify-center mt-8 w-full"
-      >
-        <slide v-for="(product, index) in products" :key="index">
-          <ProductsVue :name="product.name" :image="product.image"/>
-        </slide>
-
-        <template #addons>
-          <navigation />
-          <pagination />
-        </template>
-      </carousel>
-      </div>
-      <carousel
-        :items-to-show="1"
-        :autoplay="4000"
-        :transition="800"
-        :wrap-around="true"
-        class="md:hidden block mt-8"
-      >
-         <slide v-for="(product, index) in products" :key="index">
-          <ProductsVue :name="product.name" :image="product.image"/>
-        </slide>
-
-
-        <template #addons>
-          <navigation />
-          <pagination />
-        </template>
-      </carousel>
-         </div>
+    
+    
+      <div class=" w-full background">
+        
         <div>
           <div
-            class="w-full image flex flex-col space-y-4 md:space-y-0 md:flex-row items-stretch mt-20 justify-center md:p-10 p-4"
+            class="w-full image flex flex-col space-y-4 md:space-y-0 md:flex-row items-stretch pt-20 justify-center md:p-10 p-4"
           >
             <div
-              class="w-full lg:w-2/5 md:w-1/2 bg-white calculator md:py-6 md:px-10 p-3"
+              class="w-full lg:w-2/5 md:w-1/2 bg-white calculator rounded-l-md md:py-6 md:px-10 p-3"
             >
               <p
                 class="text-brand text-lg md:text-2xl font-bold md:font-black leading-10 text-center tracking-wide"
@@ -186,7 +130,7 @@
                   class="mr-5 w-12 h-12"
                 />
                 <div>
-                  <p class="text-gray-600 text-xs md:text-sm font-light">
+                  <p class="text-gray-900 text-xs md:text-sm font-bold">
                     Cash Loan
                   </p>
                   <p v-if="data.amount" class="text-brand font-black md:text-lg text-normal">
@@ -200,13 +144,13 @@
                   src="../../assets/images/check.png"
                   class="mr-2 w-10 h-10"
                 />
-                <p class="text-gray-800 text-sm md:text-lg font-bold">{{message.title}}</p>
+                <p class="text-black text-sm md:text-lg font-bold">{{message.title}}</p>
               </div>
             </div>
           </div>
         </div>
        
-      </div>
+    
     </div>
   </div>
 </template>
@@ -214,89 +158,14 @@
 import { Apiservice } from "../../services/apiService";
 import { cashLoan } from "../../utilities/calculator";
 import CurrencyInput from "../general/currenyInput.vue";
-import phone from "../../assets/images/phone.png";
-import television from "../../assets/images/television.png";
-import washing_machine from "../../assets/images/washing_machine.png";
-import fridge from "../../assets/images/fridge.png";
-import generator from "../../assets/images/generator.png";
-import ProductsVue from "../general/products.vue";
-import "vue3-carousel/dist/carousel.css";
-import "../../assets/css/carousel.css";
-import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
+
 export default {
   components: {
-    CurrencyInput,Carousel,ProductsVue,
-    Slide,
-    Pagination,
-    Navigation,
+    CurrencyInput,
   },
   data() {
     return {
         hover:false,
-        products: [
-        {
-          name: "Infinix",
-          downpayment:'150,000',
-          repayment:'40,000',
-          category:'phone',       
-          image: phone,
-        },
-        {
-          name: "Television",
-          downpayment:'150,000',
-          repayment:'40,000',
-          category:'television',       
-          image: television,
-        },
-        {
-          name: "Washing Machine",
-          downpayment:'150,000',
-          repayment:'40,000',
-          category:'washing_machine',       
-          image: washing_machine,
-        },
-        
-        {
-          name: "Fridge",
-          downpayment:'150,000',
-          repayment:'40,000',
-          category:'fridge',       
-          image: fridge,
-        },
-        {
-          name: "Generator",
-          downpayment:'150,000',
-          repayment:'40,000',
-          category:'generator',       
-          image: generator,
-        },
-         {
-          name: "Infinix",
-          downpayment:'150,000',
-          repayment:'40,000',
-          category:'phone',       
-          image: phone,
-        },
-         {
-          name: "Television",
-          downpayment:'150,000',
-          repayment:'40,000',
-          category:'television',       
-          image: television,
-        },
-       
-        
-      ],
-      breakpoints: {
-      700: {
-        itemsToShow: 3.5,
-      },
-      1024: {
-        itemsToShow: 5,
-       
-      }
-    },
-      activeTab: "cash",
       checks: [
        {title: "Flexible  payment option"},
         {title: "Fast and easy to apply"},
@@ -468,7 +337,6 @@ export default {
         window.localStorage.setItem("data", JSON.stringify(this.data));
         this.disabled = false;
       } catch (e) {
-        console.log(e);
         this.disabled = true;
         window.localStorage.removeItem("data");
         this.data.actualDownpayment = "Not Available";
