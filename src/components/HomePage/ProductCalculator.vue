@@ -15,7 +15,7 @@
         >
           <carousel
             :items-to-show="5"
-            :autoplay="3000"
+            :autoplay="2000"
             :transition="800"
             :wrap-around="true"
             :pauseAutoplayOnHover="true"
@@ -44,29 +44,34 @@
             </template>
           </carousel>
         </div>
-
-        <carousel
+        <div class="">
+                    <carousel
           :items-to-show="1"
-          :autoplay="4000"
+          :autoplay="2000"
           :transition="800"
           :wrap-around="true"
-          class="md:hidden block mt-8"
+          :pauseAutoplayOnHover="true"
+            :touchDrag="true"
+            :snapAlign="center"
+          class="md:hidden flex mt-8"
         >
           <slide v-for="(product, index) in results" :key="index">
              <ProductsVue
                 :name="product.name"
                 :downpayment="formatDownpayment(product.actualDownpayment)"
                 :repayment="formatAmount(product.repayment)"
-                :bi-monthly_repayment="formatAmount(biMonthlyRepayment)"
+                :bi-monthly_repayment="formatAmount(product.repayment/2)"
                 :image="images[product.product_category_id]"
               />
           </slide>
 
-          <template #addons>
+          <!-- <template #addons>
             <navigation />
             <pagination />
-          </template>
+          </template> -->
         </carousel>
+        </div>
+
       </div>
     </div>
   </main>
@@ -287,7 +292,6 @@ export default {
             product_category_id: product.product_category_id,
             biMonthlyRepayment
           });
-          console.log(this.results)
         });
  
       } catch (e) {

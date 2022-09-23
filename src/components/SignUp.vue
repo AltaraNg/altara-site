@@ -45,7 +45,7 @@
               type="tel"
               maxlength="11"
               name="phone_number"
-              v-model= "phone_number"
+              v-model="phone_number"
               @input="checkPhone()"
               class="bg-white rounded-xs h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
             />
@@ -113,38 +113,27 @@
               class="mb-0.5 ml-2 text-sm"
               >{{ checkService("Product *", "Amount *", "Amount *") }}</label
             >
-                          <CurrencyInput
-                          v-if="services_you_are_interested_in == 'e_loan'"
-                v-model="data.amount"
-                name="further_details"
-                :options="{
-                  currency: 'NGN',
-                  hideCurrencySymbolOnFocus: false,
-                  hideGroupingSeparatorOnFocus: false,
-                  hideNegligibleDecimalDigitsOnFocus: false,
-                }"
-              />
-           
-            <select
-              v-else
+            <CurrencyInput
+              v-if="data.amount"
+              v-model="data.amount"
               name="further_details"
-              v-model="further_details"
+              :options="{
+                currency: 'NGN',
+                hideCurrencySymbolOnFocus: false,
+                hideGroupingSeparatorOnFocus: false,
+                hideNegligibleDecimalDigitsOnFocus: false,
+              }"
+            />
+            <input
+              v-else
+              type="text"
+              name="product"
+              v-model="data.product"
+              @input="checkPhone()"
               class="bg-white rounded-xs h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
-            >
-              <option value="default" class disabled selected>
-                {{ checkService("Product", "Amount", "Amount") }}
-              </option>
-              <option
-                class="text-sm"
-                :value="type.details"
-                v-for="type in checkService(products, rents, rents)"
-                :key="type.details"
-              >
-                {{ type.details }}
-              </option>
-            </select>
+            />
           </div>
-          <div class="flex flex-col md:w-2/5 md:mb-6 w-full" v-if="services_you_are_interested_in == 'e_loan'">
+          <div class="flex flex-col md:w-2/5 md:mb-6 w-full">
             <label for="repayment_duration" class="mb-0.5 ml-2 text-sm"
               >Repayment Duration: *</label
             >
@@ -153,27 +142,25 @@
               v-model="repayment_duration"
               class="bg-white rounded-xs h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
             >
-              <option value="default" class disabled>
-                Repayment Duration
-              </option>
+              <option value="default" class disabled>Repayment Duration</option>
               <option class="text-sm" value="three_months">Three Months</option>
               <option class="text-sm" value="six_months">Six Months</option>
               <option class="text-sm" value="nine_months">Nine Months</option>
-              <option class="text-sm" value="twelve_months">Twelve Months</option>
+              <option class="text-sm" value="twelve_months">
+                Twelve Months
+              </option>
             </select>
           </div>
-          <div class="flex flex-col md:w-2/5 md:mb-6 w-full" v-if="services_you_are_interested_in == 'e_loan'">
+          <div class="flex flex-col md:w-2/5 md:mb-6 w-full">
             <label for="repayment_plan" class="mb-0.5 ml-2 text-sm"
               >Repayment Plan: *</label
             >
-             <select
+            <select
               name="repayment_plan"
               v-model="repayment_plan"
               class="bg-white rounded-xs h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
             >
-              <option value="default" class disabled>
-                Repayment Plan
-              </option>
+              <option value="default" class disabled>Repayment Plan</option>
               <option class="text-sm" value="monthly">Monthly</option>
               <option class="text-sm" value="Bimonthly">Bi-Monthly</option>
             </select>
@@ -212,13 +199,13 @@ export default {
   components: {
     Modal,
     loaderVue,
-    CurrencyInput
+    CurrencyInput,
   },
   data() {
     return {
-      disabled:true,
-      repayment_duration:"",
-      repayment_plan:"",
+      disabled: true,
+      repayment_duration: "",
+      repayment_plan: "",
       data: {},
       loader: false,
       background,
@@ -254,16 +241,21 @@ export default {
       employment_status: "",
       form_sent: false,
       formURL: process.env.VUE_APP_URL_SIGNUP,
-      formData:null
+      formData: null,
     };
   },
   methods: {
-    checkPhone(){
-       if ( this.phone_number.toString().length != 11 || !this.full_name || !this.area ||  !this.services_you_are_interested_in) {
-              return true
-            } else {
-              return false
-            }
+    checkPhone() {
+      if (
+        this.phone_number.toString().length != 11 ||
+        !this.full_name ||
+        !this.area ||
+        !this.services_you_are_interested_in
+      ) {
+        return true;
+      } else {
+        return false;
+      }
     },
     checkService(product, loan, rent) {
       return this.services_you_are_interested_in == "product"
@@ -280,9 +272,9 @@ export default {
         phone_number: this.phone_number,
         area: this.area,
         services_you_are_interested_in: this.services_you_are_interested_in,
-        further_details:this.data?.amount,
-        repayment_duration : this.repayment_duration,
-        repayment_plan : this.repayment_plan,
+        further_details: this.data?.amount,
+        repayment_duration: this.repayment_duration,
+        repayment_plan: this.repayment_plan,
         date: new Date().toLocaleString(),
       };
       const product_data = {
@@ -291,13 +283,16 @@ export default {
         area: this.area,
         services_you_are_interested_in: this.services_you_are_interested_in,
         further_details: this.further_details,
-        repayment_duration :'',
-        repayment_plan : '',
+        repayment_duration: "",
+        repayment_plan: "",
         date: new Date().toLocaleString(),
       };
-      this.formData = this.services_you_are_interested_in == "e_loan" ? eloan_data : product_data
+      this.formData =
+        this.services_you_are_interested_in == "e_loan"
+          ? eloan_data
+          : product_data;
       console.log(this.formData);
-      
+
       api
         .post(this.formURL, this.formData, true)
         .then(() => {
@@ -308,10 +303,9 @@ export default {
           this.further_details = "";
           this.form_sent = true;
           this.loader = false;
-          this.repayment_duration="",
-          this.repayment_plan="";
-          window.localStorage.removeItem('data');
-          this.data={}
+          (this.repayment_duration = ""), (this.repayment_plan = "");
+          window.localStorage.removeItem("data");
+          this.data = {};
           this.$router.push({ path: "/signup" });
         })
         .catch((error) => {
@@ -320,15 +314,21 @@ export default {
           }
         });
     },
-    async fetchData(){
-       if (localStorage.data) {
-      this.data = { ...JSON.parse(window.localStorage.getItem("data")) };
-      this.services_you_are_interested_in = "e_loan";
-      this.repayment_duration = this.data.repayment_duration_id.name
-      this.repayment_plan = this.data.biMonthly ? 'Bimonthly' : 'monthly'
-      
-    }
-    }
+    async fetchData() {
+      if (localStorage.data) {
+        this.data = { ...JSON.parse(window.localStorage.getItem("data")) };
+        if (this.data.amount) {
+          this.services_you_are_interested_in = "e_loan";
+          this.repayment_duration = this.data.repayment_duration_id.name;
+          this.repayment_plan = this.data.biMonthly ? "Bimonthly" : "monthly";
+        }
+        if (this.data.product) {
+          this.services_you_are_interested_in = "product";
+          this.repayment_plan = this.data.biMonthly ? "Bimonthly" : "monthly";
+          this.repayment_duration ='six_months'
+        }
+      }
+    },
   },
   computed: {},
   watch: {
@@ -338,11 +338,11 @@ export default {
         this.further_details = "";
       },
     },
-    
+
     // whenever question changes, this function will run
   },
   async mounted() {
-   await this.fetchData()
+    await this.fetchData();
   },
 };
 </script>

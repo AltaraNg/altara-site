@@ -1,11 +1,11 @@
 <template>
   <div
-    class="bg-white w-10/12 shadow-lg rounded-md flex flex-col items-center justify-start cursor-pointer"
+    class="bg-white lg:w-10/11 shadow-lg rounded-md flex flex-col items-center justify-start cursor-pointer"
     @mouseenter="hover = true"
     @mouseleave="hover = false"
   >
     <img :src="image" class="px-1.5 pt-1.5" />
-    <p class="mt-3 text-center text-sm px-1.5 font-black pl-1">{{ name }}</p>
+    <p class="mt-3 text-center text-sm px-1.5 font-black pl-1 " style="">{{ truncateString(name, 20) }}</p>
     <transition> </transition>
     <div v-if="hover">
       <div class="mt-3 space-y-4 w-full p flex items-start flex-col details">
@@ -33,11 +33,10 @@
         </div>
         <router-link
           :to="{ name: 'signup' }"
-          class="flex items-center justify-center w-full"
+          class="flex items-center justify-center w-full "
         >
           <button
-            class="bg-brand rounded py-3 w-full px-12 text-white font-bold"
-            :disabled="disabled"
+            class="bg-brand rounded cursor-pointer py-3 w-full px-12 text-white font-bold" @click="sendToLocalStorage"
             :style="
               disabled
                 ? 'background-color: rgba(7, 74, 116, 0.2); margin-top:25px'
@@ -61,13 +60,24 @@ export default {
       
     };
   },
-  props: ["name", "image", "downpayment", "repayment","biMonthly_repayment" ],
+  props: ["name", "image", "downpayment", "repayment","biMonthly_repayment" ,"repayment_duration_id"],
 
   methods:{
+    sendToLocalStorage(){
+        window.localStorage.setItem("data", JSON.stringify({"product": this.name,"biMonthly":this.biMonthly, }));
+    },
         setBiMonthly() {
       this.biMonthly = !this.biMonthly;
-    //   window.localStorage.setItem("data", JSON.stringify(this.data));
+      this.sendToLocalStorage()
     },
+     truncateString(str, num) {
+  if (str.length <= num) {
+    return str
+  }
+  return str.slice(0, num) + '...'
+}
+
+
   }
 };
 </script>
