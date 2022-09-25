@@ -16,18 +16,17 @@
           <carousel
             :items-to-show="5"
             :autoplay="2000"
-            :transition="800"
+            :transition="500"
             :wrap-around="true"
             :pauseAutoplayOnHover="true"
-            :breakpoints="breakpoints"
             :touchDrag="true"
             :snapAlign="center"
-            class="hidden md:flex flex-col items-center justify-start mt-8 w-full"
+            class="hidden md:flex flex-col w-full items-center justify-start mt-8 w-full"
           >
             <slide
               v-for="(product, index) in results"
               :key="index"
-              class="flex items-start w-full"
+              class="flex items-start "
             >
               <ProductsVue
                 :name="product.name"
@@ -178,10 +177,10 @@ export default {
       },
       breakpoints: {
         700: {
-          itemsToShow: 3.5,
+          itemsToShow: 1,
         },
         1024: {
-          itemsToShow: 5,
+          itemsToShow: 4,
         },
       },
       results: [],

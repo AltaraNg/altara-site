@@ -1,15 +1,18 @@
 <template>
   <div
-    class="bg-white lg:w-10/11 shadow-lg rounded-md flex flex-col items-center justify-start cursor-pointer"
+    class="bg-white   shadow-lg rounded-md flex flex-col items-center justify-start cursor-pointer"
     @mouseenter="hover = true"
     @mouseleave="hover = false"
   >
     <img :src="image" class="px-1.5 pt-1.5" />
-    <p class="mt-3 text-center text-sm px-1.5 font-black pl-1 " style="">{{ truncateString(name, 20) }}</p>
+    <div class="flex items-center px-1.5" >
+        <p class="mt-3 text-center text-xs  font-black " >{{!hover ? truncateString(name, 20) : name }}</p>
+    </div>
+    
     <transition> </transition>
-    <div v-if="hover">
-      <div class="mt-3 space-y-4 w-full p flex items-start flex-col details">
-        <label class="toggle px-1.5">
+    <div v-if="hover" class="fadeDown w-full">
+      <div class="mt-3 space-y-4 w-full   flex items-start flex-col details">
+        <label class="toggle pl-2">
           <input
             class="toggle-checkbox"
             type="checkbox"
@@ -21,11 +24,11 @@
             >Bi-Monthly</span
           >
         </label>
-        <div class="flex items-center px-0.5">
+        <div class="flex items-center pl-2">
           <p class="text-gray-700 font-semibold text-xs">Downpayment :</p>
           <p class="font-black text-black text-md">{{ downpayment }}</p>
         </div>
-        <div class="flex items-center">
+        <div class="flex items-center pl-2">
           <p class="text-gray-700 font-semibold text-xs px-0.5">
              {{ biMonthly ? "bi-monthly" : "monthly" }} Repayment :
           </p>
@@ -36,12 +39,8 @@
           class="flex items-center justify-center w-full "
         >
           <button
-            class="bg-brand rounded cursor-pointer py-3 w-full px-12 text-white font-bold" @click="sendToLocalStorage"
-            :style="
-              disabled
-                ? 'background-color: rgba(7, 74, 116, 0.2); margin-top:25px'
-                : 'background-color: rgba(7, 74, 116, 1)'
-            "
+            class="bg-brand  cursor-pointer py-3 w-full px-12 text-white font-bold" @click="sendToLocalStorage"
+            
           >
             Get started
           </button>
@@ -85,5 +84,9 @@ export default {
 .details {
   transition: height 0.3s ease-in-out;
   transition-delay: 0.1s;
+}
+img{
+    width: 250px;
+    height: auto;
 }
 </style>

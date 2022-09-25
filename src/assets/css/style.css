@@ -79,3 +79,17 @@ input[type="number"]::-webkit-outer-spin-button {
     position: relative;
     top: 2px;
 }
+.fadeDown {
+    animation: fadeDown 0.8s ease-in-out;
+}
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-80px);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
