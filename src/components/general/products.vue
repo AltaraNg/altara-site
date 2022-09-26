@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-white   shadow-lg rounded-md flex flex-col items-center justify-start cursor-pointer"
+    class="bg-white  shadow-lg rounded-md flex flex-col items-center justify-center cursor-pointer"
     @mouseenter="hover = true"
     @mouseleave="hover = false"
   >
@@ -86,7 +86,7 @@ export default {
   transition-delay: 0.1s;
 }
 img{
-    width: 250px;
+    width: 220px;
     height: auto;
 }
 </style>

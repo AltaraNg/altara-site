@@ -178,7 +178,7 @@
         </div>
       </form>
     </div>
-    <Modal v-if="form_sent" title="Sign Up Successfull!">
+    <Modal v-if="form_sent" title="Sign Up Successfull!" @routeHome="routeHome()">
       <template v-slot:svg>
         <img src="../assets/images/success.png" class="w-28 h-28" />
       </template>
@@ -240,11 +240,15 @@ export default {
       further_details: "",
       employment_status: "",
       form_sent: false,
-      formURL: process.env.VUE_APP_URL_SIGNUP,
+      formURL: process.env.VUE_APP_URL_SIGNUP_STAGING,
       formData: null,
     };
   },
   methods: {
+    routeHome(){
+      !this.form_sent
+      this.$router.push({ path: "/" });
+    },
     checkPhone() {
       if (
         this.phone_number.toString().length != 11 ||
@@ -291,7 +295,6 @@ export default {
         this.services_you_are_interested_in == "e_loan"
           ? eloan_data
           : product_data;
-      console.log(this.formData);
 
       api
         .post(this.formURL, this.formData, true)

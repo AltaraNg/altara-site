@@ -134,7 +134,7 @@
                     Cash Loan
                   </p>
                   <p v-if="data.amount" class="text-brand font-black md:text-lg text-normal">
-                    ₦{{ data.amount }}
+                  {{ formatAmount(data.amount) }}
                   </p>
                 </div>
               </div>
@@ -344,6 +344,12 @@ export default {
         this.data.biMonthlyRepayent = "Not Available";
         this.data.total = 0;
       }
+    },
+     formatAmount(amount) {
+      return `₦${(amount)
+        ?.toFixed(2)
+        ?.toString()
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
     },
   },
   watch: {
