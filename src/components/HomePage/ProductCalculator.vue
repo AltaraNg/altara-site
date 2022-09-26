@@ -30,10 +30,10 @@
             >
               <ProductsVue
                 :name="product.name"
-                :downpayment="formatDownpayment(product.actualDownpayment)"
-                :repayment="formatAmount(product.repayment)"
+                :downpayment="formatAmount(product.actualDownpayment)"
+                :repayment="formatAmount(product.repayment/6)"
+                :bi-monthly_repayment="formatAmount(product.repayment/6/2)"
                 :image="images[product.product_category_id]"
-                :bi-monthly_repayment="formatAmount(product.repayment/2)"
               />
             </slide>
 
@@ -56,9 +56,9 @@
           <slide v-for="(product, index) in results" :key="index">
              <ProductsVue
                 :name="product.name"
-                :downpayment="formatDownpayment(product.actualDownpayment)"
-                :repayment="formatAmount(product.repayment)"
-                :bi-monthly_repayment="formatAmount(product.repayment/2)"
+                :downpayment="formatAmount(product.actualDownpayment)"
+                :repayment="formatAmount(product.repayment/6)"
+                :bi-monthly_repayment="formatAmount(product.repayment/6/2)"
                 :image="images[product.product_category_id]"
               />
           </slide>
@@ -301,12 +301,6 @@ export default {
       }
     },
     formatAmount(amount) {
-      return `₦${(amount/6)
-        ?.toFixed(2)
-        ?.toString()
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
-    },
-    formatDownpayment(amount) {
       return `₦${(amount)
         ?.toFixed(2)
         ?.toString()

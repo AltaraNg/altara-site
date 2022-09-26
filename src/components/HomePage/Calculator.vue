@@ -219,7 +219,6 @@ export default {
         .get(this.apiUrls.businessTypes)
         .then((res) => {
           this.businessTypes = JSON.parse(res?.data).data.data;
-          //  this.data.business_type_id =  this.businessTypes.find((item)=> item.slug =='ap_starter_cash_loan-no_collateral')
         })
         .catch((error) => {
           if (error) {
@@ -317,22 +316,9 @@ export default {
           0
         );
 
-        this.data.actualDownpayment = `₦${actualDownpayment
-          .toFixed(2)
-          .toString()
-          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
-        this.data.repayment = `₦${(repayment / this.data.repayment_duration)
-          .toFixed(2)
-          .toString()
-          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
-        this.data.biMonthlyRepayent = `₦${(
-          repayment /
-          this.data.repayment_duration /
-          2
-        )
-          .toFixed(2)
-          .toString()
-          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+        this.data.actualDownpayment = this.formatAmount(actualDownpayment);
+        this.data.repayment = this.formatAmount(repayment / this.data.repayment_duration);
+        this.data.biMonthlyRepayent = this.formatAmount( repayment /this.data.repayment_duration / 2);
         this.data.total = total;
         window.localStorage.setItem("data", JSON.stringify(this.data));
         this.disabled = false;
@@ -361,7 +347,6 @@ export default {
     ["data.amount"]: {
       handler(newData) {
         this.watchBuinessTypes(newData);
-        // this.formatNumber()
       },
     },
   },
@@ -371,7 +356,6 @@ export default {
     await this.getRepaymentDuration();
     await this.getCalculation();
     this.watchRepaymentDuration();
-    // this.fetchData()
   },
 };
 </script>
