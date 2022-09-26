@@ -170,7 +170,7 @@ export default {
         11: phone,
         52: cash,
         53: blender_kettle,
-        55: cooking_oil_rice,
+        47: cooking_oil_rice,
         54: cooking_oil,
         57: gas_cooker,
         3: washing_machine
