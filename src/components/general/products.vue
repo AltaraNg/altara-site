@@ -1,17 +1,18 @@
 <template>
-  <div
-    class="bg-white  shadow-lg rounded-md flex flex-col items-center justify-center cursor-pointer"
-    @mouseenter="hover = true"
-    @mouseleave="hover = false"
+  <main @mouseenter="hover = true"
+    @mouseleave="hover = false">
+     <div
+    class="bg-white  shadow-lg rounded flex rounded-b-none flex-col items-center justify-center cursor-pointer "
   >
-    <img :src="image" class="px-1.5 pt-1.5" />
+    <img :src="image" class="px-1 pt-1" />
     <div class="flex items-center px-1.5" >
         <p class="mt-3 text-center text-xs  font-black " >{{!hover ? truncateString(name, 20) : name }}</p>
     </div>
     
-    <transition> </transition>
-    <div v-if="hover" class="fadeDown w-full">
-      <div class="mt-3 space-y-4 w-full   flex items-start flex-col details">
+  </div>
+  <transition name="slide">
+      <div v-if="hover" class=" w-full fadeDown details bg-white" >
+      <div class="mt-3 space-y-4 w-full   flex items-start flex-col ">
         <label class="toggle pl-2">
           <input
             class="toggle-checkbox"
@@ -47,7 +48,10 @@
         </router-link>
       </div>
     </div>
-  </div>
+    </transition>
+  </main>
+ 
+    
 </template>
 <script>
 import "../../assets/css/style.css";
@@ -81,12 +85,17 @@ export default {
 };
 </script>
 <style>
-.details {
-  transition: height 0.3s ease-in-out;
-  transition-delay: 0.1s;
-}
+
 img{
     width: 220px;
     height: auto;
+}
+.slide-enter, .slide-leave-to{
+  transform: scaleY(0);
+}
+.details{
+  transform-origin: top;
+  transition: transform .8s ease-in-out;
+  overflow: hidden;
 }
 </style>

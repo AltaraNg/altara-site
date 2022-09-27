@@ -39,6 +39,7 @@
 
             <template #addons>
               <pagination />
+              <navigation />
             </template>
           </carousel>
         </div>
@@ -63,10 +64,7 @@
               />
           </slide>
 
-          <!-- <template #addons>
-            <navigation />
-            <pagination />
-          </template> -->
+         
         </carousel>
         </div>
 
@@ -88,7 +86,7 @@ import cooking_oil_rice from "../../assets/images/cooking_oil&&rice.png";
 import ProductsVue from "../general/products.vue";
 import "vue3-carousel/dist/carousel.css";
 import "../../assets/css/carousel.css";
-import { Carousel, Slide, Pagination,  } from "vue3-carousel";
+import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
 import { Apiservice } from "../../services/apiService";
 import { calculate } from "../../utilities/calculator";
 export default {
@@ -97,6 +95,7 @@ export default {
     ProductsVue,
     Slide,
     Pagination,
+    Navigation
   },
   data() {
     return {
