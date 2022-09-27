@@ -20,7 +20,7 @@
             :wrap-around="true"
             :pauseAutoplayOnHover="true"
             :touchDrag="true"
-            :snapAlign="center"
+            :snapAlign="top"
             class="hidden md:flex flex-col w-full items-center justify-center  mt-8 w-full"
           >
             <slide
