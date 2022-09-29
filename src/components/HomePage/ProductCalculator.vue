@@ -40,13 +40,13 @@
             </template>
           </carousel>
 
-          <div @click="prev">
+          <div class="cursor-pointer" @click="prev">
             <img
               src="../../assets/images/arrowLeft.png"
               class="w-8 h-8 absolute top-40 left-0"
             />
           </div>
-          <div @click="next">
+          <div class="cursor-pointer" @click="next">
             <img
               src="../../assets/images/arrowRight.png"
               class="w-8 h-8 absolute top-40 right-0"
