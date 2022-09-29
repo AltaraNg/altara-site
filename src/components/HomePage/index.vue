@@ -1,9 +1,10 @@
 <template>
-  <Banner/>
-  <AchievementsVue/>
-  <Services/>
   <ProductCalculator/>
   <Calculator/>
+  <Banner/>
+    
+  <AchievementsVue/>
+  <Services/>
   <FAQ/>
   <ContactUs/>
 </template>

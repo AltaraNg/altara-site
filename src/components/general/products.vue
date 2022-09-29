@@ -1,6 +1,6 @@
 <template>
-  <main @mouseenter="hover = true"
-    @mouseleave="hover = false">
+  <main class="relative "
+    @mouseleave="hover = false" @click="hover = true"     @mouseenter="hover = true">
      <div
     class="bg-white  shadow-lg rounded flex rounded-b-none flex-col items-center justify-center cursor-pointer "
   >
@@ -11,7 +11,7 @@
     
   </div>
   <transition name="slide">
-      <div v-if="hover" class=" w-full fadeDown details bg-white" >
+      <div v-if="hover" class=" w-full fadeDown details shadow-lg bg-white" >
       <div class="mt-3 space-y-4 w-full   flex items-start flex-col ">
         <label class="toggle pl-2">
           <input

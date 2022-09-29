@@ -18,5 +18,9 @@
   transform: translate(50%, -50%);
 }
 .carousel__slide {
-  width:fit-content
+  width:fit-content;
+  align-items: flex-start;
+}
+.carousel__icon{
+  position: absolute;
 }

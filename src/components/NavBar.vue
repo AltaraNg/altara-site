@@ -20,8 +20,8 @@
     <div class="space-x-10 text-xs md:text-sm hidden lg:flex text-white">
       <router-link
         class="cursor-pointer"
-        :to="{ name: 'home', hash: '#calculator' }"
-        >Calculator</router-link
+        :to="{ name: 'home', hash: '#services' }"
+        >Services</router-link
       >
       <router-link
         class="cursor-pointer"
@@ -63,7 +63,7 @@
         exact
        
       >
-        Sign up
+        Order Now
       </router-link>
     </div>
     <div class="flex lg:hidden cursor-pointer">
@@ -115,8 +115,8 @@
         />
         <router-link
           class="cursor-pointer"
-          :to="{ name: 'home', hash: '#calculator' }"
-          >Calculator</router-link
+          :to="{ name: 'home', hash: '#services' }"
+          >Services</router-link
         >
         <router-link
           class="cursor-pointer"
@@ -149,7 +149,7 @@
           :to="{ name: 'signup' }"
           exact
         >
-          Sign up
+          Order Now
         </router-link>
       </div>
     </transition>

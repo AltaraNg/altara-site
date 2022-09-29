@@ -2,14 +2,14 @@
   <div>
     
     
-      <div class=" w-full background">
+      <div class=" w-full ">
         
         <div>
           <div
             class="w-full image flex flex-col space-y-4 md:space-y-0 md:flex-row items-stretch pt-20 justify-center md:p-10 p-4"
           >
             <div
-              class="w-full lg:w-2/5 md:w-1/2 bg-white calculator rounded-l-md md:py-6 md:px-10 p-3"
+              class="w-full lg:w-2/5 md:w-1/2 bg-white drop-shadow-lg  borde rounded-l-lg md:py-6 md:px-10 p-3"
             >
               <p
                 class="text-brand text-lg md:text-2xl font-bold md:font-black leading-10 text-center tracking-wide"
@@ -122,7 +122,7 @@
               </form>
             </div>
             <div
-              class="background shadow-lg w-full lg:w-2/5 md:w-1/2 flex flex-col p-4"
+              class="bg-brand shadow-lg w-full lg:w-2/5 md:w-1/2 flex flex-col p-4"
             >
               <div class="flex items-center mb-6">
                 <img
@@ -130,7 +130,7 @@
                   class="mr-5 w-12 h-12"
                 />
                 <div>
-                  <p class="text-gray-900 text-xs md:text-sm font-bold">
+                  <p class="text-white text-lg md:text-2xl font-bold md:font-black leading-10 text-center tracking-wide">
                     Cash Loan
                   </p>
                   <p v-if="data.amount" class="text-brand font-black md:text-lg text-normal">
@@ -141,10 +141,10 @@
               <hr class="border-gray-500 w-full px-10" />
               <div class="flex items-center mt-1" v-for=" message, index  in checks" :key="index">
                 <img
-                  src="../../assets/images/check.png"
+                  src="../../assets/images/check2.png"
                   class="mr-2 w-10 h-10"
                 />
-                <p class="text-black text-sm md:text-lg font-bold">{{message.title}}</p>
+                <p class="text-white text-sm md:text-lg font-bold">{{message.title}}</p>
               </div>
             </div>
           </div>
@@ -429,6 +429,9 @@ input[type="number"]::-webkit-outer-spin-button {
   top: 2.5px;
   left: 4px;
   transition: left 0.25s;
+}
+.drop-shadow-lg{
+  filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.07)) drop-shadow(3px 4px 3px rgb(0 0 0 / 0.1));
 }
 
 .toggle:hover .toggle-switch:before {

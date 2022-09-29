@@ -99,7 +99,7 @@
             >Fill in Application Form</b
           >
           <p class="text-center text-black md:text-sm text-xs">
-            Go to <b>Sign up</b> and fill in your information
+            Go to <b>Order Now</b> and fill in your information
           </p>
         </div>
         <div

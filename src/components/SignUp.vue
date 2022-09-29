@@ -172,13 +172,13 @@
               class="bg-brand flex items-center justify-center md:px-7 px-4 md:py-3 py-2 mx-0 rounded-xs font-black text-white text-sm hover:shadow-lg"
             >
               <loaderVue v-if="loader" />
-              Create Account
+              Submit Request
             </button>
           </div>
         </div>
       </form>
     </div>
-    <Modal v-if="form_sent" title="Sign Up Successfull!" @routeHome="routeHome()">
+    <Modal v-if="form_sent" title="Order Now Successfull!" @routeHome="routeHome()">
       <template v-slot:svg>
         <img src="../assets/images/success.png" class="w-28 h-28" />
       </template>
@@ -195,7 +195,7 @@ import { Apiservice } from "../services/apiService";
 import loaderVue from "../assets/svgs/loader.vue";
 import CurrencyInput from "./general/currenyInput.vue";
 export default {
-  title: "Sign Up| Altara Credit Limited",
+  title: "Order Now| Altara Credit Limited",
   components: {
     Modal,
     loaderVue,
@@ -240,7 +240,7 @@ export default {
       further_details: "",
       employment_status: "",
       form_sent: false,
-      formURL: process.env.VUE_APP_URL_SIGNUP,
+      formURL: process.env.VUE_APP_URL_SIGNUP_STAGING,
       formData: null,
     };
   },
