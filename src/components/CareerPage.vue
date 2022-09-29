@@ -60,7 +60,7 @@
           <div
             class="flex md:flex-row flex-col justify-evenly items-center w-full space-y-5 md:space-y-0"
           >
-            <div class="flex flex-col w-full">
+            <div class="flex flex-col w-full relative">
               <label for="email_address" class="mb-0.5 ml-2 text-sm"
                 >Email Address: *</label
               >
@@ -71,13 +71,13 @@
                 v-model="email_address"
                 class="mt-1 block w-full rounded-md border focus:outline-none border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 h-10 text-sm shadow-sm px-2 py-1"
               />
-              <p v-if="!(email_address.match(validRegex)) && email_address" class="text-xs text-red-500">Email address is invalid</p>
+              <p v-if="!(email_address.match(validRegex)) && email_address" class="text-xs text-red-500 absolute -bottom-4" >Email address is invalid</p>
             </div>
           </div>
           <div
-            class="flex md:flex-row flex-col justify-between items-center w-full space-y-5 md:space-y-0"
+            class="flex md:flex-row flex-col justify-between items-start w-full space-y-5 md:space-y-0"
           >
-            <div class="flex flex-col md:w-1/2 w-full md:mr-3 mr-0">
+            <div class="flex flex-col md:w-1/2 w-full md:mr-3 mr-0 relative">
               <label for="phone_number" class="mb-0.5 ml-2 text-sm"
                 >Phone Number: *</label
               >
@@ -89,7 +89,7 @@
                 v-model="phone_number"
                 class="mt-1 block w-full rounded-md border focus:outline-none border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 h-10 text-sm shadow-sm px-2 py-1"
               />
-              <p class="text-xs text-red-500" v-if="phone_number.length !==11 && phone_number">Phone number must be 11 digits</p>
+              <p class="text-xs text-red-500 absolute -bottom-4" v-show="phone_number.length !==11 && phone_number">Phone number must be 11 digits</p>
             </div>
             <div class="flex flex-col md:w-1/2 w-full">
               <label for="phone_number" class="mb-0.5 ml-2 text-sm"
