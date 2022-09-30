@@ -130,7 +130,7 @@
               items-center
               border-2
               object-center
-              h-8
+              h-8 
               border-brand
               text-center text-brand
               font-black
