@@ -1,5 +1,5 @@
 <template>
-  <main class="relative "
+  <main class="relative flex flex-col items-center justify-center  " 
     @mouseleave="hover = false" @click="hover = true"     @mouseenter="hover = true">
      <div
     class="bg-white  shadow-lg rounded flex rounded-b-none flex-col items-center justify-center cursor-pointer "
@@ -10,8 +10,45 @@
     </div>
     
   </div>
+  <div  class=" w-full flex flex-col lg:hidden fadeDown2 details shadow-lg bg-white" >
+      <div class="mt-3 space-y-4 w-full   flex items-start flex-col ">
+        <label class="toggle pl-2">
+          <input
+            class="toggle-checkbox"
+            type="checkbox"
+            v-model="biMonthly"
+            @click="setBiMonthly()"
+          />
+          <div class="toggle-switch"></div>
+          <span class="text-gray-600 md:text-sm text-xs font-normal ml-4"
+            >Bi-Monthly</span
+          >
+        </label>
+        <div class="flex items-center pl-2">
+          <p class="text-gray-700 font-semibold text-xs">Downpayment :</p>
+          <p class="font-black text-black text-md">{{ downpayment }}</p>
+        </div>
+        <div class="flex items-center pl-2">
+          <p class="text-gray-700 font-semibold text-xs px-0.5">
+             {{ biMonthly ? "bi-monthly" : "monthly" }} Repayment :
+          </p>
+          <p class="font-black text-black text-md">{{biMonthly? biMonthly_repayment : repayment }}</p>
+        </div>
+        <router-link
+          :to="{ name: 'signup' }"
+          class="flex items-center justify-center w-full "
+        >
+          <button
+            class="bg-brand  cursor-pointer py-3 w-full px-12 text-white font-bold" @click="sendToLocalStorage"
+            
+          >
+            Get started
+          </button>
+        </router-link>
+      </div>
+    </div>
   <transition name="slide">
-      <div v-if="hover" class=" w-full fadeDown2 details shadow-lg bg-white" >
+      <div v-if="hover" class=" w-full hidden lg:flex flex-col fadeDown2 details shadow-lg bg-white" >
       <div class="mt-3 space-y-4 w-full   flex items-start flex-col ">
         <label class="toggle pl-2">
           <input
