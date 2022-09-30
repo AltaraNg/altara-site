@@ -52,7 +52,7 @@
             />
           </div>
         </div>
-        <div class="md:hidden flex relative">
+        <div class="md:hidden flex relative w-screen overflow-hidden items-center justify-center">
            <loader v-if="loader" />
           <carousel v-else
             :items-to-show="1"
@@ -64,6 +64,7 @@
             class="md:hidden flex lg:flex-row flex-col mt-8"
           >
             <slide v-for="(product, index) in results" :key="index">
+            
               <ProductsVue
                 :name="product.name"
                 :downpayment="formatAmount(product.actualDownpayment)"
@@ -211,7 +212,6 @@ export default {
   },
   methods: {
     next() {
-      console.log(this.$refs);
       this.$refs.carousel.next();
     },
     prev() {
