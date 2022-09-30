@@ -51,13 +51,16 @@
       </p>
       <router-link :to="{ name: 'how_it_works' }" exact
         class="
-          mx-20
+          
           lg:mx-0
           bg-brand
-          px-7
-          lg:py-3
+          px-10
           py-3
-          lg:mr-80
+          mr-0
+          md:w-56
+          w-full
+          text-xs
+          md:text-sm
           rounded-lg
           font-bold
           text-white text-sm

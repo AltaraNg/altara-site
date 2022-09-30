@@ -46,7 +46,7 @@
         class="
           hidden
           lg:flex
-          bg-blue-800
+          lemon
           border-white
           hover:bg-white 
           hover:text-brand
@@ -140,14 +140,14 @@
         <router-link
           class="
             flex
-            bg-brand
+            lemon
             px-7
             py-1.5
             rounded-full
             text-white text-sm
             hover:shadow-lg
             cursor-pointer
-            animate-bounce
+            bounce
           "
           :to="{ name: 'signup' }"
           exact
@@ -199,5 +199,8 @@ export default {
 }
 .mobile-nav-enter-to {
   transform: translateX(0);
+}
+.lemon{
+  background-color: #47B5FF;
 }
 </style>
