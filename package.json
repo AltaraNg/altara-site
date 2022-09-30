@@ -19,6 +19,7 @@
     "vue-axios": "^3.4.0",
     "vue-currency-input": "^3.0.0",
     "vue-router": "^4.0.12",
+    "vue3-animate-onscroll": "^1.0.6",
     "vue3-autocounter": "^1.0.6",
     "vue3-carousel": "^0.1.35",
     "vue3-slider": "^1.8.0",

@@ -8,3 +8,163 @@ html, body { height: 100%; scroll-behavior: smooth; }
 body {
     font-family: 'Nunito Sans', sans-serif;
 }
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+.toggle {
+    cursor: pointer;
+    display: inline-block;
+}
+
+.toggle-switch {
+    display: inline-block;
+    background: #ccc;
+    border-radius: 16px;
+    width: 40px;
+    height: 21px;
+    position: relative;
+    vertical-align: middle;
+    transition: background 0.25s;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+.toggle-switch:before,
+.toggle-switch:after {
+    content: "";
+}
+
+.toggle-switch:before {
+    display: block;
+    background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 2.5px;
+    left: 4px;
+    transition: left 0.25s;
+}
+
+.toggle:hover .toggle-switch:before {
+    background: linear-gradient(to bottom, #fff 0%, #fff 100%);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+}
+
+.toggle-checkbox:checked+.toggle-switch {
+    background: #074a74;
+}
+
+.toggle-checkbox:checked+.toggle-switch:before {
+    left: 20px;
+}
+
+.toggle-checkbox {
+    position: absolute;
+    visibility: hidden;
+}
+
+.toggle-label {
+    margin-left: 5px;
+    position: relative;
+    top: 2px;
+}
+.fadeDown {
+    animation: fadeDown 0.8s ease-in-out;
+}
+
+@keyframes fadeDown {
+    from {
+        opacity: 0.9;
+        transform: translateY(-2px);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+.fadeUp {
+    animation: fadeUp 0.8s ease-in-out;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(80px);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+.fadeInRight {
+    animation: fadeInRight 2s ease-in-out;
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(300px);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeInLeft {
+    animation: fadeInLeft 2s ease-in-out;
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-300px);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.bounce {
+    animation: bounce .4s ease infinite alternate;
+    ;
+}
+
+@keyframes bounce {
+    0% {
+
+    }
+
+    100% {
+        transform: translateY(-5px);
+    }
+}
+.fadeDown2 {
+    animation: fadeDown 0.8s ease-in-out;
+}
+
+@keyframes fadeDown2 {
+    from {
+        opacity: 0;
+        transform: translateY(-80px);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+.zIndex{
+    z-index: 10000000;
+}
