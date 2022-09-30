@@ -6,12 +6,12 @@
   >
     <img :src="image" class="px-1 pt-1" />
     <div class="flex items-center px-1.5" >
-        <p class="mt-3 text-center text-xs  font-black " >{{!hover ? truncateString(name, 20) : name }}</p>
+        <p class="mt-3 text-center  font-black " >{{!hover ? truncateString(name, 20) : name }}</p>
     </div>
     
   </div>
   <transition name="slide">
-      <div v-if="hover" class=" w-full fadeDown details shadow-lg bg-white" >
+      <div v-if="hover" class=" w-full fadeDown2 details shadow-lg bg-white" >
       <div class="mt-3 space-y-4 w-full   flex items-start flex-col ">
         <label class="toggle pl-2">
           <input

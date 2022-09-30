@@ -46,18 +46,20 @@
         class="
           hidden
           lg:flex
-          bg-brand
+          bg-blue-800
           border-white
           hover:bg-white 
           hover:text-brand
-          font-semibold
+          font-black
           border
           px-7
           py-1.5
-          rounded-full
-          text-white text-sm
+          rounded-md
+          shadow-lg
+          text-white 
           hover:shadow-lg
           cursor-pointer
+          bounce
         "
         :to="{ name: 'signup' }"
         exact
@@ -145,6 +147,7 @@
             text-white text-sm
             hover:shadow-lg
             cursor-pointer
+            animate-bounce
           "
           :to="{ name: 'signup' }"
           exact

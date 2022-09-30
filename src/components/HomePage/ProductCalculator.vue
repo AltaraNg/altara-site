@@ -2,7 +2,7 @@
   <main>
     
     <div class="w-full flex flex-col items-center p-8 " id="calculator">
-      <p class="text-brand font-black lg:text-5xl pb-1">Products</p>
+      <p class="text-brand font-black lg:text-4xl pb-1">Product Calculator</p>
 
       <div class="flex items-start justify-start">
         <div

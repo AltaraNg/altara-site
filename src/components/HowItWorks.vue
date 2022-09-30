@@ -20,7 +20,7 @@
             Non- Salaried Worker
           </p>
         </div>
-        <img src="../assets/images/non-salaried.png" class="md:rounded-lg h-96" />
+        <img src="../assets/images/non-salaried.png" class="md:rounded-lg h-96  w-full" />
       </div>
       <div class="md:w-5/12 relative">
         <div
@@ -39,7 +39,7 @@
             Salaried Worker
           </p>
         </div>
-        <img src="../assets/images/salaried.jpg" class="md:rounded-lg h-96" />
+        <img src="../assets/images/salaried.jpg" class="md:rounded-lg h-96 w-full" />
       </div>
     </div>
 
@@ -99,7 +99,7 @@
             >Fill in Application Form</b
           >
           <p class="text-center text-black md:text-sm text-xs">
-            Go to <b>Order Now</b> and fill in your information
+            Go to <b>Sign up</b> and fill in your information
           </p>
         </div>
         <div

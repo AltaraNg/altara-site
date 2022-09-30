@@ -2,7 +2,7 @@
   <div
     class="flex items-start md:h-screen py-8 md:py-0 bg-brand25 justify-center md:px-32 relative"
   >
-    <img :src="background" class="hidden md:block" />
+    <img :src="background" class="hidden md:block w-full" />
     <div
       class="md:absolute top-6 h-fit md:w-5/12 w-11/12 md:mx-0 md:pb-10 pb-8 opacity-90 bg-white md:py-12 py-6 rounded-lg shadow-2xl"
     >

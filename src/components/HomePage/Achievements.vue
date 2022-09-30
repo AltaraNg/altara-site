@@ -2,9 +2,9 @@
   <div>
     <div class="">
       <div
-        class="items-center h-fit md:h-56 flex md:flex-row flex-col mt-10 bg-gray-50 lg:mx-36 md:mx-8 mx-3 md:mb-10 mb-3"
+        class="items-center animate-bounce h-fit md:h-56 flex md:flex-row flex-col mt-10 bg-gray-50 lg:mx-36 md:mx-8 mx-3 md:mb-10 mb-3"
       >
-        <div class="md:w-1/3 w-full">
+        <div class="md:w-1/3 w-full " >
           <img src="../../assets/images/approve.jpg" class="h-56 w-full" />
         </div>
         <div class="flex flex-col p-8 md:px-10 md:w-2/3 w-full">
