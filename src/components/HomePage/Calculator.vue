@@ -133,7 +133,7 @@
                   <p class="text-white text-lg md:text-2xl font-bold md:font-black leading-10 text-center tracking-wide">
                     Cash Loan
                   </p>
-                  <p v-if="data.amount" class="text-brand font-black md:text-lg text-normal">
+                  <p v-if="data.amount" class="text-white font-black md:text-lg text-normal">
                   {{ formatAmount(data.amount) }}
                   </p>
                 </div>
