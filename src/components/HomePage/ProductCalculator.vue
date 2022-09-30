@@ -2,11 +2,11 @@
   <main>
     
     <div class="w-full flex flex-col items-center p-8 " id="calculator">
-      <p class="text-brand font-black lg:text-5xl pb-2">Products</p>
+      <p class="text-brand font-black lg:text-5xl pb-1">Products</p>
 
       <div class="flex items-start justify-start">
         <div
-          class="md:flex mt-8 w-full hidden relative flex-col items-start justify-start"
+          class="md:flex mt-1 w-full hidden relative flex-col items-start justify-start"
         >
           <loader v-if="loader" />
           <carousel v-else
@@ -17,7 +17,6 @@
             :transition="800"
             :wrap-around="true"
             :pauseAutoplayOnHover="true"
-            :snapAlign="start"
             :touchDrag="true"
             class="hidden md:flex flex-col w-full relative items-center justify-center mt-8 w-full"
           >
@@ -61,7 +60,6 @@
             :wrap-around="true"
             :pauseAutoplayOnHover="true"
             :touchDrag="true"
-            :snapAlign="center"
             class="md:hidden flex mt-8"
           >
             <slide v-for="(product, index) in results" :key="index">

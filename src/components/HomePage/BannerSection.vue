@@ -1,14 +1,14 @@
 <template>
   <div id="banner"></div>
   <div
-    class="h-fit w-full flex flex-col lg:flex-row bg-blue-50 md:items-center"
+    class="h-fit w-full flex flex-col lg:flex-row banner justify-between md:items-center"
   >
     <div
       class="
         w-full
         lg:w-3/5
         text-gray-800
-        md:py-20
+        lg:py-0
         py-16
         md:pl-16
         px-8
@@ -18,8 +18,8 @@
     >
       <h1
         class="
-          md:text-7xl
-          text-5xl
+          md:text-6xl
+          text-4xl
           font-black
           lg:text-left
           text-center
@@ -67,20 +67,23 @@
         How It Works
       </router-link>
     </div>
-    <div class="w-full lg:w-1/2 lg:px-10 lg:pt-5 px-5 pt-5">
-      <bannerSVG />
+    <div class="w-full lg:w-1/2  lg:px-10 lg:pt-5 px-5 pt-5">
+      <img src="../../assets/images/banner2.png" class="h-full w-full lg:h-80 lg:w-auto "/>
     </div>
   </div>
 </template>
 
 <script>
-import bannerSVG from "../../assets/svgs/banner.vue";
 export default {
-  components: {
-    bannerSVG,
-  },
+
 };
 </script>
 
 <style>
+.banner{
+   background-image: url("../../assets/images/banner3.png");
+  background-repeat: no-repeat;
+  /* background-attachment: fixed; */
+  background-size: cover;
+}
 </style>

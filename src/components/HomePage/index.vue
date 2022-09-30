@@ -1,10 +1,11 @@
 <template>
+  
+  <Banner/>
   <ProductCalculator/>
   <Calculator/>
-  <Banner/>
-    
-  <AchievementsVue/>
   <Services/>
+  <AchievementsVue/>
+ 
   <FAQ/>
   <ContactUs/>
 </template>
