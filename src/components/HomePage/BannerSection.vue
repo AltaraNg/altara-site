@@ -31,7 +31,7 @@
           tracking-tighter
         "
       >
-        Buy Now, Pay Later
+       Where B-commerce meets Inclusion
       </h1>
       <p
         class="
