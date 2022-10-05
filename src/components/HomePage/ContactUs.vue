@@ -1,24 +1,24 @@
 <template>
   <div id="contact"></div>
   <div
-    class="background h-fit md:px-40 px-5 md:py-24 py-10 flex flex-col md:flex-row items-center justify-between"
+    class="background h-fit lg:px-40 px-5 md:px-20 md:py-24 py-10 flex flex-col lg:flex-row items-center justify-between"
   >
-    <div class="md:w-2/5 w-full">
+    <div class="lg:w-2/5 w-full">
       <h1
-        class="md:text-3xl text-2xl md:text-left text-center font-black leading-13 md:mb-10"
+        class="md:text-3xl text-2xl lg:text-left text-center font-black leading-13 lg:mb-10"
       >Contact Us</h1>
       <p
-        class="tracking-wide leading-8 md:mr-10 mb-10 md:text-left text-center"
+        class="tracking-wide leading-8 lg:mr-10 mb-10 md:text-left text-center"
       >Feel like contacting us? Submit your queries here and we will get back to you as soon as possible.</p>
-      <div class="flex items-center md:mb-10 mb-5">
+      <div class="flex items-center lg:mb-10 mb-5">
         <phone />
         <span class="ml-5 text-sm font-bold">+234 905 5493 652</span>
       </div>
-      <div class="flex items-center md:mb-10 mb-5">
+      <div class="flex items-center lg:mb-10 mb-5">
         <email />
         <span class="ml-5 text-sm font-bold">admin@altaracredit.com</span>
       </div>
-      <div class="flex space-x-8 mb-10 md:mb-0 justify-center md:justify-start">
+      <div class="flex space-x-8 mb-10 lg:mb-0 justify-center md:justify-start">
         <a href="https://www.facebook.com/AltaraCreditLimited" class="cursor-pointer" target=_blank><facebook /></a>
         <twitter />
         <linkedin />
@@ -28,7 +28,7 @@
       name="contact"
       @submit.prevent="sendEmail"
       method="POST"
-      class="md:w-1/2 w-full pb-10 space-y-8 bg-white rounded-lg shadow-lg px-8 pt-8 h-fit"
+      class="lg:w-1/2 w-full pb-10 space-y-8 bg-white rounded-lg shadow-lg px-8 pt-8 h-fit"
     >
       <p class="font-bold md:text-left text-center">Send us a Message</p>
       <div>

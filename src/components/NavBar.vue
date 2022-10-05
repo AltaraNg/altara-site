@@ -17,10 +17,10 @@
     <router-link :to="{ name: 'home' }" exact class="cursor-pointer">
       <img src="../assets/logo.png" class="w-24" />
     </router-link>
-    <div class="space-x-10 text-xs md:text-sm hidden md:flex text-white">
+    <div class="space-x-10 text-xs md:text-sm hidden lg:flex text-white">
       <router-link
         class="cursor-pointer"
-        :to="{ name: 'home', hash: '#service' }"
+        :to="{ name: 'home', hash: '#services' }"
         >Services</router-link
       >
       <router-link
@@ -45,28 +45,30 @@
       <router-link
         class="
           hidden
-          md:flex
-          bg-brand
+          lg:flex
+          lemon
           border-white
           hover:bg-white 
           hover:text-brand
-          font-semibold
+          font-black
           border
           px-7
           py-1.5
-          rounded-full
-          text-white text-sm
+          rounded-md
+          shadow-lg
+          text-white 
           hover:shadow-lg
           cursor-pointer
+          bounce
         "
         :to="{ name: 'signup' }"
         exact
        
       >
-        Sign up
+        Order Now
       </router-link>
     </div>
-    <div class="block md:hidden cursor-pointer">
+    <div class="flex lg:hidden cursor-pointer">
       <img
         src="../assets/images/menu.png"
         class="w-6 h-6"
@@ -115,7 +117,7 @@
         />
         <router-link
           class="cursor-pointer"
-          :to="{ name: 'home', hash: '#service' }"
+          :to="{ name: 'home', hash: '#services' }"
           >Services</router-link
         >
         <router-link
@@ -138,18 +140,19 @@
         <router-link
           class="
             flex
-            bg-brand
+            lemon
             px-7
             py-1.5
             rounded-full
             text-white text-sm
             hover:shadow-lg
             cursor-pointer
+            bounce
           "
           :to="{ name: 'signup' }"
           exact
         >
-          Sign up
+          Order Now
         </router-link>
       </div>
     </transition>
@@ -196,5 +199,8 @@ export default {
 }
 .mobile-nav-enter-to {
   transform: translateX(0);
+}
+.lemon{
+  background-color: #47B5FF;
 }
 </style>

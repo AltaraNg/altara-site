@@ -6,7 +6,7 @@
     </div>
     <div
       :class="isOpen ? 'block' : 'hidden'"
-      class="border bg-gray-100 p-6 rounded-lg"
+      class="border bg-gray-100 p-6 rounded-lg fadeDown2"
     >
       <slot></slot>
     </div>
