@@ -113,17 +113,17 @@
               class="mb-0.5 ml-2 text-sm"
               >{{ checkService("Product *", "Amount *", "Amount *") }}</label
             >
-            <CurrencyInput
-              v-if="data.amount"
-              v-model="data.amount"
-              name="further_details"
-              :options="{
-                currency: 'NGN',
-                hideCurrencySymbolOnFocus: false,
-                hideGroupingSeparatorOnFocus: false,
-                hideNegligibleDecimalDigitsOnFocus: false,
-              }"
-            />
+             <CurrencyInput
+             v-if="data.amount"
+                    v-model="data.amount"
+                    :options="{
+                      currency: 'NGN',
+                      hideCurrencySymbolOnFocus: false,
+                      hideGroupingSeparatorOnFocus: false,
+                      hideNegligibleDecimalDigitsOnFocus: false,
+                    }"
+                    :getCalc="checkPhone()"
+                  />
             <input
               v-else
               type="text"
@@ -240,7 +240,7 @@ export default {
       further_details: "",
       employment_status: "",
       form_sent: false,
-      formURL: process.env.VUE_APP_URL_SIGNUP,
+      formURL: process.env.VUE_APP_URL_SIGNUP_STAGING,
       formData: null,
     };
   },
@@ -256,12 +256,18 @@ export default {
         !this.area ||
         !this.services_you_are_interested_in  ||
         !this.repayment_duration  ||
-        !this.repayment_plan  || (!this.data.product  || this.data.amount)
+        !this.repayment_plan 
       ) {
         return true;
       } else {
         return false;
       }
+    },
+    formatAmount(amount) {
+      return `₦${(amount)
+        ?.toFixed(2)
+        ?.toString()
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
     },
     checkService(product, loan, rent) {
       return this.services_you_are_interested_in == "product"
@@ -283,6 +289,7 @@ export default {
         repayment_plan: this.repayment_plan,
         date: new Date().toLocaleString(),
       };
+      
       const product_data = {
         full_name: this.full_name,
         phone_number: this.phone_number,
@@ -294,7 +301,7 @@ export default {
         date: new Date().toLocaleString(),
       };
       this.formData =
-        this.services_you_are_interested_in == "e_loan"
+        this.data.amount
           ? eloan_data
           : product_data;
 
@@ -343,6 +350,11 @@ export default {
         this.further_details = "";
       },
     },
+    "data.amount":{
+      handler(){
+
+      }
+    }
 
     // whenever question changes, this function will run
   },
