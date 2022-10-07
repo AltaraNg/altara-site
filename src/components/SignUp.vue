@@ -240,7 +240,7 @@ export default {
       further_details: "",
       employment_status: "",
       form_sent: false,
-      formURL: process.env.VUE_APP_URL_SIGNUP,
+      formURL: process.env.VUE_APP_URL_SIGNUP_STAGING,
       formData: null,
     };
   },
@@ -254,7 +254,9 @@ export default {
         this.phone_number.toString().length != 11 ||
         !this.full_name ||
         !this.area ||
-        !this.services_you_are_interested_in
+        !this.services_you_are_interested_in  ||
+        !this.repayment_duration  ||
+        !this.repayment_plan  || (!this.data.product  || this.data.amount)
       ) {
         return true;
       } else {
