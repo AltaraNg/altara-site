@@ -350,13 +350,7 @@ export default {
         this.further_details = "";
       },
     },
-    "data.amount":{
-      handler(){
 
-      }
-    }
-
-    // whenever question changes, this function will run
   },
   async mounted() {
     await this.fetchData();
