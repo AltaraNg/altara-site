@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col min-h-screen">
-  <NavBar class="sticky top-0 z-50"/>
+  <NavBar class="sticky top-0 fixed zIndex"/>
     <div class="flex-grow">
      <router-view/> 
     </div> 
@@ -18,3 +18,4 @@ export default{
   }
 }
 </script>
+

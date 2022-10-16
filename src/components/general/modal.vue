@@ -60,10 +60,12 @@ export default {
   methods:{
       toggleModal(){
           this.state= false
+          this.$emit('routeHome')
+          console.log('hello')
       },
       clickOverlay(event){
         let overlay = this.$refs.overlay
-        if(event.target == overlay){
+        if(event.target == overlay ){
           //only toggle modal closure if user wants to modal to close when overlay is clicked
          if (this.overlayClose) this.toggleModal();
         }

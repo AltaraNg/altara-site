@@ -26,7 +26,7 @@ const calculate = (productPrice, data, params, percentage_discount) => {
   }
   total = actualRepayment + actualDownpayment;
 
-  return { total, actualDownpayment, repayment };
+  return { total, actualDownpayment, repayment, biMonthlyRepayment };
 };
 const repaymentCount = (days, cycle) => {
   const result = days / cycle;
