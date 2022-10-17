@@ -3,7 +3,7 @@
     
     
       <div class=" w-full ">
-         <p class="text-brand font-black lg:text-4xl  text-center w-full pt-20 ">Cash Calculator</p>
+         <p class="text-brand font-black lg:text-4xl  text-center w-full pt-20 ">Loan  Calculator</p>
         <div>
           <div
             class="w-full image flex flex-col space-y-4 md:space-y-0 md:flex-row items-stretch  justify-center md:p-10 p-4"

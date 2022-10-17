@@ -1,7 +1,7 @@
 <template>
   
   <Banner/>
-  <ProductCalculator/>
+  <!-- <ProductCalculator/> -->
   <Calculator/>
   <Services/>
   <AchievementsVue/>
@@ -17,7 +17,7 @@ import ContactUs from './ContactUs.vue'
 import FAQ from './FaqSection.vue'
 import AchievementsVue from './Achievements.vue'
 import Calculator from './Calculator.vue'
-import ProductCalculator from './ProductCalculator.vue'
+// import ProductCalculator from './ProductCalculator.vue'
 export default {
   components:{
     Banner,
@@ -25,7 +25,7 @@ export default {
     ContactUs,
     FAQ,
     AchievementsVue,
-    ProductCalculator,
+    // ProductCalculator,
     Calculator
   },
    title: 'Buy now Pay Later | Altara Credit Limited'
