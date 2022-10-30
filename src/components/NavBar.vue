@@ -47,7 +47,7 @@
           hidden
           lg:flex
           lemon
-          border-white
+          
           hover:bg-white 
           hover:text-brand
           font-black
@@ -56,10 +56,12 @@
           py-1.5
           rounded-md
           shadow-lg
+          
           text-white 
           hover:shadow-lg
           cursor-pointer
-          bounce
+           border-transparent
+          
         "
         :to="{ name: 'signup' }"
         exact
@@ -147,7 +149,7 @@
             text-white text-sm
             hover:shadow-lg
             cursor-pointer
-            bounce
+            border-transparent
           "
           :to="{ name: 'signup' }"
           exact
@@ -202,5 +204,6 @@ export default {
 }
 .lemon{
   background-color: #47B5FF;
+  border-color: #47B5FF;
 }
 </style>

@@ -136,9 +136,9 @@
               <div class="flex items-center mt-1" v-for=" message, index  in checks" :key="index">
                 <img
                   src="../../assets/images/check2.png"
-                  class="mr-2 w-10 h-10"
+                  class="mr-2 w-6 h-6"
                 />
-                <p class="text-white text-sm md:text-lg font-bold">{{message.title}}</p>
+                <p class="text-white text-sm">{{message.title}}</p>
               </div>
             </div>
           </div>

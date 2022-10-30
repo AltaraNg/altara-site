@@ -4,53 +4,19 @@
     <div class="w-full flex flex-col items-center p-8 " id="calculator">
       <p class="text-brand font-black lg:text-4xl pb-1">Product Calculator</p>
 
-      <div class="flex items-start justify-start">
-        <div
-          class="md:flex mt-1 w-full hidden relative flex-col items-start justify-start"
+      <div class="flex flex-wrap items-center w-full  justify-between">
+        <div v-for="(product, index) in results" :key="index"
+          class="  mb-5 mx-3 width"
         >
           <loader v-if="loader" />
-          <carousel v-else
-            ref="carousel"
-            v-model="currentSlide"
-            :items-to-show="5"
-            :autoplay="2000"
-            :transition="800"
-            :wrap-around="true"
-            :pauseAutoplayOnHover="true"
-            :touchDrag="true"
-            class="hidden md:flex flex-col w-full relative items-center justify-center mt-8 w-full"
-          >
-            <slide
-              v-for="(product, index) in results"
-              :key="index"
-              class="flex items-center mx-8"
-            >
-              <ProductsVue
+        <ProductsVue v-else
                 :name="product.name"
                 :downpayment="formatAmount(product.actualDownpayment)"
                 :repayment="formatAmount(product.repayment / 6)"
                 :bi-monthly_repayment="formatAmount(product.repayment / 6 / 2)"
                 :image="images[product.product_category_id]"
               />
-            </slide>
 
-            <template #addons>
-              <pagination />
-            </template>
-          </carousel>
-
-          <div class="cursor-pointer" @click="prev">
-            <img
-              src="../../assets/images/arrowLeft.png"
-              class="w-8 h-8 absolute top-40 left-0"
-            />
-          </div>
-          <div class="cursor-pointer" @click="next">
-            <img
-              src="../../assets/images/arrowRight.png"
-              class="w-8 h-8 absolute top-40 right-0"
-            />
-          </div>
         </div>
         <div class="md:hidden flex relative w-screen overflow-hidden items-center justify-center">
            <loader v-if="loader" />
@@ -358,5 +324,8 @@ export default {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+}
+.width{
+  width: 30%;
 }
 </style>
