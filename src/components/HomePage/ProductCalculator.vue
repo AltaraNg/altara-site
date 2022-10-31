@@ -1,62 +1,23 @@
 <template>
   <main>
-    
-    <div class="w-full flex flex-col items-center p-8 " id="calculator">
+    <div class="w-full flex flex-col items-center p-8" id="calculator">
       <p class="text-brand font-black lg:text-4xl pb-1">Product Calculator</p>
 
-      <div class="flex flex-wrap items-center w-full  justify-between">
-        <div v-for="(product, index) in results" :key="index"
-          class="  mb-5 mx-3 width"
+      <div class="flex flex-wrap items-center w-full justify-between">
+        <loader v-if="loading" />
+        <div
+          v-for="(product, index) in results"
+          :key="index"
+          v-else
+          class="mb-5 mx-3 width"
         >
-          <loader v-if="loader" />
-        <ProductsVue v-else
-                :name="product.name"
-                :downpayment="formatAmount(product.actualDownpayment)"
-                :repayment="formatAmount(product.repayment / 6)"
-                :bi-monthly_repayment="formatAmount(product.repayment / 6 / 2)"
-                :image="images[product.product_category_id]"
-              />
-
-        </div>
-        <div class="md:hidden flex relative w-screen overflow-hidden items-center justify-center">
-           <loader v-if="loader" />
-          <carousel v-else
-            :items-to-show="1"
-            :autoplay="2000"
-            :transition="800"
-            :wrap-around="true"
-            :pauseAutoplayOnHover="true"
-            :touchDrag="true"
-            class="md:hidden flex lg:flex-row flex-col mt-8"
-          >
-            <slide v-for="(product, index) in results" :key="index">
-            
-              <ProductsVue
-                :name="product.name"
-                :downpayment="formatAmount(product.actualDownpayment)"
-                :repayment="formatAmount(product.repayment / 6)"
-                :bi-monthly_repayment="formatAmount(product.repayment / 6 / 2)"
-                :image="images[product.product_category_id]"
-              />
-            </slide>
-             <template #addons>
-              <pagination />
-            </template>
-            
-          </carousel>
-                    <div class="cursor-pointer" @click="prev">
-            <img
-              src="../../assets/images/arrowLeft.png"
-              class="w-8 h-8 absolute top-40 left-0"
-            />
-          </div>
-          <div class="cursor-pointer" @click="next">
-            <img
-              src="../../assets/images/arrowRight.png"
-              class="w-8 h-8 absolute top-40 right-0"
-            />
-          </div>
-
+          <ProductsVue
+            :name="product.name"
+            :downpayment="formatAmount(product.actualDownpayment)"
+            :repayment="formatAmount(product.repayment / 6)"
+            :bi-monthly_repayment="formatAmount(product.repayment / 6 / 2)"
+            :image="images[product.product_category_id]"
+          />
         </div>
       </div>
     </div>
@@ -76,16 +37,12 @@ import cooking_oil_rice from "../../assets/images/cooking_oil&&rice.png";
 import ProductsVue from "../general/products.vue";
 import "vue3-carousel/dist/carousel.css";
 import "../../assets/css/carousel.css";
-import { Carousel, Slide, Pagination } from "vue3-carousel";
 import { Apiservice } from "../../services/apiService";
 import { calculate } from "../../utilities/calculator";
-import loader from "../../assets/svgs/loader2.vue";
+import loader from "../../assets/svgs/loader3.vue";
 export default {
   components: {
-    Carousel,
     ProductsVue,
-    Slide,
-    Pagination,
     loader,
   },
   data() {
@@ -173,7 +130,7 @@ export default {
       },
       currentSlide: 0,
       results: [],
-      loader:true
+      loading: null,
     };
   },
   methods: {
@@ -184,6 +141,7 @@ export default {
       this.$refs.carousel.prev();
     },
     async getProducts() {
+      
       const api = new Apiservice();
       await api
         .get(this.apiUrls.products)
@@ -262,7 +220,6 @@ export default {
         });
     },
     async getCalc() {
-      this.loader = true
       try {
         const params = this.calculation.find((x) => {
           return (
@@ -283,9 +240,7 @@ export default {
             product_category_id: product.product_category_id,
             biMonthlyRepayment,
           });
-
         });
-        this.loader = false
       } catch (e) {
         this.disabled = true;
         window.localStorage.removeItem("data");
@@ -303,12 +258,14 @@ export default {
     },
   },
   async mounted() {
+    this.loading = true;
     await this.getProducts();
     await this.getDownPaymentRates();
     await this.getBusinessTypes();
     await this.getRepaymentDuration();
     await this.getCalculation();
     await this.getCalc();
+    this.loading=false
   },
 };
 </script>
@@ -325,7 +282,9 @@ export default {
   justify-content: center;
   align-items: flex-start;
 }
-.width{
-  width: 30%;
+@media only screen and (min-width: 768px) {
+  .width {
+    width: 30%;
+  }
 }
 </style>

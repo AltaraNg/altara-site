@@ -4,7 +4,7 @@
       <img :src="image" class="w-1/3 h-auto" />
       <div>
         <p class=" mb-3 font-black " >{{!hover ? truncateString(name, 20) : name }}</p>
-         <div class=" space-y-2 w-full   flex items-start flex-col ">
+         <div class="  w-full   flex items-start flex-col ">
         <label class="toggle ">
           <input
             class="toggle-checkbox"
@@ -32,7 +32,7 @@
           class="flex items-center justify-center  "
         >
           <button
-            class="bg-brand  cursor-pointer text-xs rounded px-3 py-1 text-white font-bold" @click="sendToLocalStorage"
+            class="bg-brand mt-2  cursor-pointer text-xs rounded px-3 py-1 text-white font-bold" @click="sendToLocalStorage"
             
           >
             Get started
