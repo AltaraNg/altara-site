@@ -1,6 +1,6 @@
 <template>
   <main>
-    <div class="w-full flex flex-col items-center p-8" id="calculator">
+    <div class="w-full flex flex-col items-center p-8" id="calculator"  v-if="results">
       <p class="text-brand font-black lg:text-4xl pb-1">Product Calculator</p>
 
       <div class="flex flex-wrap items-center w-full justify-between">
@@ -16,7 +16,7 @@
             :downpayment="formatAmount(product.actualDownpayment)"
             :repayment="formatAmount(product.repayment / 6)"
             :bi-monthly_repayment="formatAmount(product.repayment / 6 / 2)"
-            :image="images[product.product_category_id]"
+            :image="product.image"
           />
         </div>
       </div>
@@ -57,7 +57,7 @@ export default {
         downPaymentRates: `${process.env.VUE_APP_URL}/api/down_payment_rate`,
         businessTypes: `${process.env.VUE_APP_URL}/api/business_type`,
         getCalculation: `${process.env.VUE_APP_URL}/api/price_calculator`,
-        products: `${process.env.VUE_APP_URL}/api/get-product-by-rank?numberOfProduct=5`,
+        products: `${process.env.VUE_APP_URL}/api/website-product`,
       },
       products: [
         {
@@ -146,10 +146,8 @@ export default {
       await api
         .get(this.apiUrls.products)
         .then((res) => {
-          this.apiProduct = JSON.parse(res?.data).data.meta;
-          this.allProducts = this.apiProduct?.least_selling_products.concat(
-            this.apiProduct?.top_selling_products
-          );
+          this.allProducts = JSON.parse(res?.data).data.data;
+          console.log(this.allProducts, 'this.allProducts');
         })
         .catch((error) => {
           if (error) {
@@ -228,12 +226,13 @@ export default {
             x.repayment_duration_id === this.data.repayment_duration_id.id
           );
         });
-        this.result = [];
+        
         this.allProducts.forEach((product) => {
           const { total, actualDownpayment, repayment, biMonthlyRepayment } =
-            calculate(product.product_retail_price, this.data, params, 0);
+            calculate(product.price, this.data, params, 0);
           this.results.push({
-            name: product.product_name,
+            name: product.name,
+            image:`${process.env.VUE_APP_AWS_URL}/`+product.image_url,
             total,
             actualDownpayment,
             repayment,
