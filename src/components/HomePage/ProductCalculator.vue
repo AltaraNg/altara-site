@@ -1,7 +1,7 @@
 <template>
   <main>
     <div class="w-full flex flex-col items-center p-8" id="calculator"  v-if="results">
-      <p class="text-brand font-black lg:text-4xl pb-1">Product Calculator</p>
+      <p class="text-brand font-black lg:text-4xl pb-8">Product Calculator</p>
 
       <div class="flex flex-wrap items-center w-full justify-between">
         <loader v-if="loading" />
