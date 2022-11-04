@@ -118,7 +118,7 @@
               </form>
             </div>
             <div v-animate-onscroll="{down:'fadeInRight'}"
-              class="bg-brand shadow-lg w-full lg:w-2/5 md:w-1/2 flex flex-col p-4"
+              class="bg-brand shadow-lg w-full lg:w-2/5 md:w-1/2 h-fit flex flex-col p-4"
             >
               <div class="flex items-center ">
                 <img
@@ -132,14 +132,17 @@
                   </p>
                 </div>
               </div>
-              <hr class="border-gray-500 w-full px-10 my-2" />
-              <div class="flex items-center mt-1" v-for=" message, index  in checks" :key="index">
+              <hr class="border-gray-500 w-full px-10 my-2 " />
+              <div class="flex flex-col justify-evenly  h-full">
+                  <div class="flex items-center mt-1" v-for=" message, index  in checks" :key="index">
                 <img
                   src="../../assets/images/check2.png"
                   class="mr-2 w-6 h-6"
                 />
                 <p class="text-white text-sm">{{message.title}}</p>
               </div>
+              </div>
+              
             </div>
           </div>
         </div>

@@ -1,8 +1,8 @@
 <template>
   <main class="flex items-center flex-col rounded shadow-lg  hover:shadow-2xl cursor-pointer p-3 h-[145px]">
-    <div class="flex items-center justify-between ">
+    <div class="flex items-center  ">
       <img :src="image" class="w-1/3 h-auto" />
-      <div>
+      <div class="w-2/3 ml-4">
         <p class=" mb-3 font-black " >{{!hover ? truncateString(name, 20) : name }}</p>
          <div class="  w-full   flex items-start flex-col ">
         <label class="toggle ">
