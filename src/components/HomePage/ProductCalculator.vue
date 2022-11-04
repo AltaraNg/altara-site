@@ -24,16 +24,6 @@
   </main>
 </template>
 <script>
-import phone from "../../assets/images/phone2.png";
-import television from "../../assets/images/television.png";
-import washing_machine from "../../assets/images/washing_machine.png";
-import fridge from "../../assets/images/fridge.png";
-import cash from "../../assets/images/money2.png";
-import generator from "../../assets/images/generator.png";
-import cooking_oil from "../../assets/images/cooking_oil.png";
-import gas_cooker from "../../assets/images/gas_cooker.png";
-import blender_kettle from "../../assets/images/blender_kettle.png";
-import cooking_oil_rice from "../../assets/images/cooking_oil&&rice.png";
 import ProductsVue from "../general/products.vue";
 import "vue3-carousel/dist/carousel.css";
 import "../../assets/css/carousel.css";
@@ -59,76 +49,6 @@ export default {
         getCalculation: `${process.env.VUE_APP_URL}/api/price_calculator`,
         products: `${process.env.VUE_APP_URL}/api/website-product`,
       },
-      products: [
-        {
-          name: "Infinix",
-          downpayment: "150,000",
-          repayment: "40,000",
-          category: "phone",
-          image: phone,
-        },
-        {
-          name: "Television",
-          downpayment: "150,000",
-          repayment: "40,000",
-          category: "television",
-          image: television,
-        },
-        {
-          name: "Washing Machine",
-          downpayment: "150,000",
-          repayment: "40,000",
-          category: "washing_machine",
-          image: washing_machine,
-        },
-
-        {
-          name: "Fridge",
-          downpayment: "150,000",
-          repayment: "40,000",
-          category: "fridge",
-          image: fridge,
-        },
-        {
-          name: "Generator",
-          downpayment: "150,000",
-          repayment: "40,000",
-          category: "generator",
-          image: generator,
-        },
-        {
-          name: "Infinix",
-          downpayment: "150,000",
-          repayment: "40,000",
-          category: "phone",
-          image: phone,
-        },
-        {
-          name: "Television",
-          downpayment: "150,000",
-          repayment: "40,000",
-          category: "television",
-          image: television,
-        },
-      ],
-      images: {
-        11: phone,
-        52: cash,
-        53: blender_kettle,
-        47: cooking_oil_rice,
-        54: cooking_oil,
-        57: gas_cooker,
-        3: washing_machine,
-      },
-      breakpoints: {
-        700: {
-          itemsToShow: 1,
-        },
-        1024: {
-          itemsToShow: 4,
-        },
-      },
-      currentSlide: 0,
       results: [],
       loading: null,
     };
@@ -147,11 +67,9 @@ export default {
         .get(this.apiUrls.products)
         .then((res) => {
           this.allProducts = JSON.parse(res?.data).data.data;
-          console.log(this.allProducts, 'this.allProducts');
         })
         .catch((error) => {
           if (error) {
-            console.log(error);
             throw error;
           }
         });
