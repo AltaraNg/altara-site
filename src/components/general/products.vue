@@ -1,5 +1,5 @@
 <template>
-  <main class="flex items-center w-full flex-col rounded shadow-lg  hover:shadow-2xl cursor-pointer p-3 h-[145px]">
+  <main class="flex items-center w-full  flex-col rounded shadow-lg  hover:shadow-2xl cursor-pointer p-3 h-[145px]">
     <div class="flex items-center w-full ">
       <img :src="image" class="w-1/3 h-auto" />
       <div class="w-2/3 ml-4">
@@ -90,5 +90,8 @@ img{
   transform-origin: top;
   transition: transform .8s ease-in-out;
   overflow: hidden;
+}
+.width1{
+  width:30%
 }
 </style>

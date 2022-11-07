@@ -9,7 +9,7 @@
           v-for="(product, index) in results"
           :key="index"
           v-else
-          class="mb-5 mx-3 width"
+          class="mb-5 mx-3 lg:w-0.3 md:w-2/5 w-full"
         >
           <ProductsVue
             :name="product.name"
@@ -198,9 +198,5 @@ export default {
   justify-content: center;
   align-items: flex-start;
 }
-@media only screen and (min-width: 768px) {
-  .width {
-    width: 30%;
-  }
-}
+
 </style>
