@@ -1,6 +1,6 @@
 <template>
-  <main class="flex items-center flex-col rounded shadow-lg  hover:shadow-2xl cursor-pointer p-3 h-[145px]">
-    <div class="flex items-center  ">
+  <main class="flex items-center w-full flex-col rounded shadow-lg  hover:shadow-2xl cursor-pointer p-3 h-[145px]">
+    <div class="flex items-center w-full ">
       <img :src="image" class="w-1/3 h-auto" />
       <div class="w-2/3 ml-4">
         <p class=" mb-3 font-black " >{{!hover ? truncateString(name, 20) : name }}</p>
@@ -17,11 +17,11 @@
             >Bi-Monthly</span
           >
         </label>
-        <div class="flex items-center">
+        <div class="flex items-center ">
           <p class="text-gray-700 font-semibold text-xs">Downpayment :</p>
           <p class="font-black text-black">{{ downpayment }}</p>
         </div>
-        <div class="flex items-center">
+        <div class="flex items-center w-full ">
           <p class="text-gray-700 font-semibold text-xs px-0.5">
              {{ biMonthly ? "bi-monthly" : "monthly" }} Repayment :
           </p>

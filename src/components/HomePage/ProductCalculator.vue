@@ -169,7 +169,6 @@ export default {
     },
     formatAmount(amount) {
       return `₦${amount
-        ?.toFixed(2)
         ?.toString()
         .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
     },
@@ -201,7 +200,7 @@ export default {
 }
 @media only screen and (min-width: 768px) {
   .width {
-    width: 30%;
+    width: 400px;
   }
 }
 </style>
