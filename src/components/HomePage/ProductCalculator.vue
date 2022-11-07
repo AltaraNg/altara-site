@@ -1,6 +1,6 @@
 <template>
   <main>
-    <div class="w-full flex flex-col items-center p-8" id="calculator"  v-if="results">
+    <div class="w-full flex flex-col items-center p-8" id="calculator"  v-if="results.length>0">
       <p class="text-brand font-black lg:text-4xl pb-8">Product Calculator</p>
 
       <div class="flex flex-wrap items-center w-full justify-between">
