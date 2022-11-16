@@ -50,7 +50,7 @@ export default {
         products: `${process.env.VUE_APP_URL}/api/website-product`,
       },
       results: [],
-      loading: null,
+      loading: true,
     };
   },
   methods: {
@@ -66,7 +66,7 @@ export default {
       await api
         .get(this.apiUrls.products)
         .then((res) => {
-          this.allProducts = JSON.parse(res?.data).data.data;
+          this.allProducts = JSON.parse(res?.data)?.data?.data;
         })
         .catch((error) => {
           if (error) {

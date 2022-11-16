@@ -6,6 +6,7 @@ module.exports = {
         brand: "#074A74",
         brand25: "#c2d2dd",
         lemon: "#a0c474",
+        lightBlue: "#47B5FF",
       },
       lineHeight: {
         12: "4rem",
@@ -14,12 +15,12 @@ module.exports = {
       },
       height: {
         99: "30rem",
-        101:"33rem"
+        101: "33rem",
       },
       width: {
         98: "29rem",
-        101:"31rem",
-        0.3:'30%',
+        101: "31rem",
+        0.3: "30%",
       },
     },
   },

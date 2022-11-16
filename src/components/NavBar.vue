@@ -46,7 +46,7 @@
         class="
           hidden
           lg:flex
-          lemon
+          bg-lightBlue
           
           hover:bg-white 
           hover:text-brand
@@ -142,7 +142,7 @@
         <router-link
           class="
             flex
-            lemon
+            bg-lightBlue
             px-7
             py-1.5
             rounded-full
@@ -202,8 +202,5 @@ export default {
 .mobile-nav-enter-to {
   transform: translateX(0);
 }
-.lemon{
-  background-color: #47B5FF;
-  border-color: #47B5FF;
-}
+
 </style>

@@ -91,7 +91,5 @@ img{
   transition: transform .8s ease-in-out;
   overflow: hidden;
 }
-.width1{
-  width:30%
-}
+
 </style>
