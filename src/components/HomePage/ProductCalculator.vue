@@ -1,7 +1,13 @@
 <template>
   <main>
     <div class="w-full flex flex-col items-center p-8" id="calculator"  v-if="results.length>0">
-      <p class="text-brand font-black lg:text-4xl pb-8">Product Calculator</p>
+      <p class="text-brand
+            text-center
+            md:text-3xl
+            text-2xl
+            font-black
+            md:leading-14
+            leading-12 uppercase w-full pb-8 ">Product Calculator</p>
 
       <div class="flex flex-wrap items-center w-full justify-between">
         <loader v-if="loading" />
@@ -54,12 +60,6 @@ export default {
     };
   },
   methods: {
-    next() {
-      this.$refs.carousel.next();
-    },
-    prev() {
-      this.$refs.carousel.prev();
-    },
     async getProducts() {
       
       const api = new Apiservice();

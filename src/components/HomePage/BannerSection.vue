@@ -14,7 +14,6 @@
         px-8
         md:px-0
         flex flex-col
-        fadeInLeft
       "
     >
       <h1

@@ -18,12 +18,12 @@
           >
         </label>
         <div class="flex items-center ">
-          <p class="text-gray-700 font-semibold text-xs">Downpayment :</p>
+          <p class="text-gray-700 font-semibold text-xs">Down Payment :</p>
           <p class="font-black text-black">{{ downpayment }}</p>
         </div>
         <div class="flex items-center w-full ">
           <p class="text-gray-700 font-semibold text-xs px-0.5">
-             {{ biMonthly ? "bi-monthly" : "monthly" }} Repayment :
+             {{ biMonthly ? "Bi-monthly" : "Monthly" }} Repayment :
           </p>
           <p class="font-black text-black">{{biMonthly? biMonthly_repayment : repayment }}</p>
         </div>
@@ -35,7 +35,7 @@
             class="bg-brand mt-2  cursor-pointer text-xs rounded px-3 py-1 text-white font-bold" @click="sendToLocalStorage"
             
           >
-            Get started
+            Get Started
           </button>
         </router-link>
       
