@@ -1,7 +1,7 @@
 <template>
   <div id="banner"></div>
   <div
-    class="h-fit w-full flex flex-col lg:flex-row banner justify-between md:items-center "
+    class="h-fit w-full flex flex-col lg:flex-row banner3 justify-between md:items-center "
   >
     <div
       class="
@@ -14,6 +14,7 @@
         px-8
         md:px-0
         flex flex-col
+        fadeInLeft
       "
     >
       <h1
@@ -83,7 +84,7 @@ export default {
 </script>
 
 <style>
-.banner{
+.banner3{
    background-image: url("../../assets/images/banner3.png");
   background-repeat: no-repeat;
   /* background-attachment: fixed; */
