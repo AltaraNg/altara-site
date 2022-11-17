@@ -47,8 +47,8 @@
           hidden
           lg:flex
           bg-lightBlue
-          
-          hover:bg-white 
+
+          hover:bg-white
           hover:text-brand
           font-black
           border
@@ -56,16 +56,16 @@
           py-1.5
           rounded-md
           shadow-lg
-          
-          text-white 
+
+          text-white
           hover:shadow-lg
           cursor-pointer
            border-transparent
-          
+
         "
         :to="{ name: 'signup' }"
         exact
-       
+
       >
         Order Now
       </router-link>
@@ -202,5 +202,4 @@ export default {
 .mobile-nav-enter-to {
   transform: translateX(0);
 }
-
 </style>

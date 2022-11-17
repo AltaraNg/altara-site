@@ -51,7 +51,7 @@
       </p>
       <router-link :to="{ name: 'how_it_works' }" exact
         class="
-          
+
           lg:mx-0
           bg-brand
           px-10

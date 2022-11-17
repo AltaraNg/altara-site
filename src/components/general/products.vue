@@ -33,15 +33,15 @@
         >
           <button
             class="bg-brand mt-2  cursor-pointer text-xs rounded px-3 py-1 text-white font-bold" @click="sendToLocalStorage"
-            
+
           >
             Get Started
           </button>
         </router-link>
-      
+
       </div>
       </div>
-      
+
     </div>
 
   </main>
@@ -53,7 +53,7 @@ export default {
     return {
       biMonthly: false,
       hover:false
-      
+
     };
   },
   props: ["name", "image", "downpayment", "repayment","biMonthly_repayment" ,"repayment_duration_id"],

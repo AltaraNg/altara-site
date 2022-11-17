@@ -61,7 +61,7 @@ export default {
   },
   methods: {
     async getProducts() {
-      
+
       const api = new Apiservice();
       await api
         .get(this.apiUrls.products)
@@ -144,7 +144,7 @@ export default {
             x.repayment_duration_id === this.data.repayment_duration_id.id
           );
         });
-        
+
         this.allProducts.forEach((product) => {
           const { total, actualDownpayment, repayment, biMonthlyRepayment } =
             calculate(product.price, this.data, params, 0);
@@ -198,5 +198,4 @@ export default {
   justify-content: center;
   align-items: flex-start;
 }
-
 </style>

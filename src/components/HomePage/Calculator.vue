@@ -1,7 +1,7 @@
 <template>
   <div>
-    
-    
+
+
       <div class=" w-full ">
          <p class="text-brand
             text-center
@@ -17,7 +17,7 @@
             <div v-animate-onscroll="{down:'fadeInLeft'}"
               class="w-full lg:w-2/5 md:w-1/2 bg-white drop-shadow-lg  border rounded-l-lg md:py-6 md:px-10 p-3"
             >
-             
+
               <form class="mt-8">
                 <div class="flex flex-col mb-5">
                   <label
@@ -148,12 +148,12 @@
                 <p class="text-white text-sm">{{message.title}}</p>
               </div>
               </div>
-              
+
             </div>
           </div>
         </div>
-       
-    
+
+
     </div>
   </div>
 </template>
