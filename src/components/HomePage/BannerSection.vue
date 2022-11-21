@@ -1,7 +1,7 @@
 <template>
   <div id="banner"></div>
   <div
-    class="h-fit w-full flex flex-col lg:flex-row banner3 justify-between md:items-center "
+    class="h-fit w-full flex flex-col lg:flex-row  justify-between md:items-center "
   >
     <div
       class="
@@ -14,7 +14,6 @@
         px-8
         md:px-0
         flex flex-col
-        fadeInLeft
       "
     >
       <h1
@@ -71,7 +70,7 @@
         How It Works
       </router-link>
     </div>
-    <div class="w-full lg:w-1/2  lg:px-10 lg:pt-5 px-5 pt-5 fadeInRight">
+    <div class="w-full lg:w-1/2  lg:px-10 lg:pt-5 px-5 pt-5 ">
       <img src="../../assets/images/banner2.png" class="h-full w-full lg:h-80 lg:w-auto "/>
     </div>
   </div>

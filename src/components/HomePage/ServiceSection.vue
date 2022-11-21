@@ -2,7 +2,7 @@
   <div class="py-10 px-5 md:px-10 flex flex-col justify-center items-center ">
     <div class="lg:max-w-5xl max-w-none">
             <div id="services"></div>
-    <div v-animate-onscroll="{down:'fadeInRight'}"
+    <div 
       class="
         flex flex-col-reverse
         lg:flex-row
@@ -52,7 +52,7 @@
         </p>
       </div>
     </div>
-    <div v-animate-onscroll="{down:'fadeInLeft'}"
+    <div 
       class="
         flex flex-col-reverse
         lg:flex-row-reverse
@@ -103,7 +103,7 @@
         </p>
       </div>
     </div>
-    <div v-animate-onscroll="{down:'fadeInRight'}"
+    <div 
       class="
         flex flex-col-reverse
         lg:flex-row

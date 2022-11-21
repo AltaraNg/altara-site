@@ -3,7 +3,7 @@
     <div class="flex items-center w-full ">
       <img :src="image" class="w-1/3 h-auto" />
       <div class="w-2/3 ml-4">
-        <p class=" mb-3 font-black " >{{!hover ? truncateString(name, 20) : name }}</p>
+        <p class=" mb-3 font-black capitalize" >{{!hover ? truncateString(name, 20) : name }}</p>
          <div class="  w-full   flex items-start flex-col ">
         <label class="toggle ">
           <input
@@ -18,12 +18,12 @@
           >
         </label>
         <div class="flex items-center ">
-          <p class="text-gray-700 font-semibold text-xs">Down Payment :</p>
+          <p class="text-gray-700 font-semibold text-xs">Down Payment:&#160;</p>
           <p class="font-black text-black">{{ downpayment }}</p>
         </div>
         <div class="flex items-center w-full ">
           <p class="text-gray-700 font-semibold text-xs px-0.5">
-             {{ biMonthly ? "Bi-monthly" : "Monthly" }} Repayment :
+             {{ biMonthly ? "Bi-monthly" : "Monthly" }} Repayment:&#160;
           </p>
           <p class="font-black text-black">{{biMonthly? biMonthly_repayment : repayment }}</p>
         </div>
