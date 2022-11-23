@@ -14,7 +14,7 @@
           <div
             class="w-full image flex flex-col space-y-4 md:space-y-0 md:flex-row items-stretch  justify-center md:p-10 p-4"
           >
-            <div v-animate-onscroll="{down:'fadeInLeft'}"
+            <div 
               class="w-full lg:w-2/5 md:w-1/2 bg-white drop-shadow-lg  border rounded-l-lg md:py-6 md:px-10 p-3"
             >
 
@@ -123,7 +123,7 @@
                 </router-link>
               </form>
             </div>
-            <div v-animate-onscroll="{down:'fadeInRight'}"
+            <div 
               class="bg-brand shadow-lg w-full lg:w-2/5 md:w-1/2 h-fit flex flex-col p-4"
             >
               <div class="flex items-center ">

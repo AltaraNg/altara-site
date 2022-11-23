@@ -13,10 +13,10 @@
       Let us answer your questions
     </h1>
     <div class="flex flex-col md:flex-row items-center">
-      <div class="w-full md:w-1/2" v-animate-onscroll="{down:'fadeInLeft'}">
+      <div class="w-full md:w-1/2" >
         <img src="../../assets/images/faq.png" class="w-full"  />
       </div>
-      <div class="w-full md:w-1/2 md:px-0 px-3" v-animate-onscroll="{down:'fadeInRight'}">
+      <div class="w-full md:w-1/2 md:px-0 px-3" >
         <div
           class="bg-blue-100 text-brand font-bold shadow-lg p-3 rounded my-1"
           v-for="faq in faqs"
