@@ -1,17 +1,23 @@
 <template>
   <div>
-    
-    
+
+
       <div class=" w-full ">
-         <p class="text-brand font-black lg:text-4xl  text-center w-full pt-20 ">Cash Calculator</p>
+         <p class="text-brand
+            text-center
+            md:text-3xl
+            text-2xl
+            font-black
+            md:leading-14
+            leading-12 uppercase w-full pt-20 ">Loan  Calculator</p>
         <div>
           <div
             class="w-full image flex flex-col space-y-4 md:space-y-0 md:flex-row items-stretch  justify-center md:p-10 p-4"
           >
-            <div v-animate-onscroll="{down:'fadeInLeft'}"
+            <div 
               class="w-full lg:w-2/5 md:w-1/2 bg-white drop-shadow-lg  border rounded-l-lg md:py-6 md:px-10 p-3"
             >
-             
+
               <form class="mt-8">
                 <div class="flex flex-col mb-5">
                   <label
@@ -112,13 +118,13 @@
                         : 'background-color: rgba(7, 74, 116, 1)'
                     "
                   >
-                    Get started
+                    Get Started
                   </button>
                 </router-link>
               </form>
             </div>
-            <div v-animate-onscroll="{down:'fadeInRight'}"
-              class="bg-brand shadow-lg w-full lg:w-2/5 md:w-1/2 flex flex-col p-4"
+            <div 
+              class="bg-brand shadow-lg w-full lg:w-2/5 md:w-1/2 h-fit flex flex-col p-4"
             >
               <div class="flex items-center ">
                 <img
@@ -132,19 +138,22 @@
                   </p>
                 </div>
               </div>
-              <hr class="border-gray-500 w-full px-10 my-2" />
-              <div class="flex items-center mt-1" v-for=" message, index  in checks" :key="index">
+              <hr class="border-gray-500 w-full px-10 my-2 " />
+              <div class="flex flex-col justify-evenly  h-full">
+                  <div class="flex items-center mt-1" v-for=" message, index  in checks" :key="index">
                 <img
                   src="../../assets/images/check2.png"
-                  class="mr-2 w-10 h-10"
+                  class="mr-2 w-6 h-6"
                 />
-                <p class="text-white text-sm md:text-lg font-bold">{{message.title}}</p>
+                <p class="text-white text-sm">{{message.title}}</p>
               </div>
+              </div>
+
             </div>
           </div>
         </div>
-       
-    
+
+
     </div>
   </div>
 </template>
@@ -161,9 +170,9 @@ export default {
     return {
         hover:false,
       checks: [
-       {title: "Flexible  payment option"},
+       {title: "Flexible  payment options"},
         {title: "Fast and easy to apply"},
-        {title: "up to ₦120,000 as a first time customer"},
+        {title: "Up to ₦170,000 as a first time customer"},
         {title: "Direct transfer to your bank account"},
       ],
       disabled: true,

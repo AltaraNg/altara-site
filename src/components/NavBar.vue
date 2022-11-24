@@ -46,9 +46,9 @@
         class="
           hidden
           lg:flex
-          lemon
-          border-white
-          hover:bg-white 
+          bg-lightBlue
+
+          hover:bg-white
           hover:text-brand
           font-black
           border
@@ -56,14 +56,16 @@
           py-1.5
           rounded-md
           shadow-lg
-          text-white 
+
+          text-white
           hover:shadow-lg
           cursor-pointer
-          bounce
+           border-transparent
+
         "
         :to="{ name: 'signup' }"
         exact
-       
+
       >
         Order Now
       </router-link>
@@ -140,14 +142,14 @@
         <router-link
           class="
             flex
-            lemon
+            bg-lightBlue
             px-7
             py-1.5
             rounded-full
             text-white text-sm
             hover:shadow-lg
             cursor-pointer
-            bounce
+            border-transparent
           "
           :to="{ name: 'signup' }"
           exact
@@ -199,8 +201,5 @@ export default {
 }
 .mobile-nav-enter-to {
   transform: translateX(0);
-}
-.lemon{
-  background-color: #47B5FF;
 }
 </style>

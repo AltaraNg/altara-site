@@ -1,125 +1,44 @@
 <template>
   <main>
-    
-    <div class="w-full flex flex-col items-center p-8 " id="calculator">
-      <p class="text-brand font-black lg:text-4xl pb-1">Product Calculator</p>
+    <div class="w-full flex flex-col items-center p-8" id="calculator"  v-if="results.length>0">
+      <p class="text-brand
+            text-center
+            md:text-3xl
+            text-2xl
+            font-black
+            md:leading-14
+            leading-12 uppercase w-full pb-8 ">Product Calculator</p>
 
-      <div class="flex items-start justify-start">
+      <div class="flex flex-wrap items-center w-full justify-between">
+        <loader v-if="loading" />
         <div
-          class="md:flex mt-1 w-full hidden relative flex-col items-start justify-start"
+          v-for="(product, index) in results"
+          :key="index"
+          v-else
+          class="mb-5 mx-3 lg:w-0.3 md:w-2/5 w-full"
         >
-          <loader v-if="loader" />
-          <carousel v-else
-            ref="carousel"
-            v-model="currentSlide"
-            :items-to-show="5"
-            :autoplay="2000"
-            :transition="800"
-            :wrap-around="true"
-            :pauseAutoplayOnHover="true"
-            :touchDrag="true"
-            class="hidden md:flex flex-col w-full relative items-center justify-center mt-8 w-full"
-          >
-            <slide
-              v-for="(product, index) in results"
-              :key="index"
-              class="flex items-center mx-8"
-            >
-              <ProductsVue
-                :name="product.name"
-                :downpayment="formatAmount(product.actualDownpayment)"
-                :repayment="formatAmount(product.repayment / 6)"
-                :bi-monthly_repayment="formatAmount(product.repayment / 6 / 2)"
-                :image="images[product.product_category_id]"
-              />
-            </slide>
-
-            <template #addons>
-              <pagination />
-            </template>
-          </carousel>
-
-          <div class="cursor-pointer" @click="prev">
-            <img
-              src="../../assets/images/arrowLeft.png"
-              class="w-8 h-8 absolute top-40 left-0"
-            />
-          </div>
-          <div class="cursor-pointer" @click="next">
-            <img
-              src="../../assets/images/arrowRight.png"
-              class="w-8 h-8 absolute top-40 right-0"
-            />
-          </div>
-        </div>
-        <div class="md:hidden flex relative w-screen overflow-hidden items-center justify-center">
-           <loader v-if="loader" />
-          <carousel v-else
-            :items-to-show="1"
-            :autoplay="2000"
-            :transition="800"
-            :wrap-around="true"
-            :pauseAutoplayOnHover="true"
-            :touchDrag="true"
-            class="md:hidden flex lg:flex-row flex-col mt-8"
-          >
-            <slide v-for="(product, index) in results" :key="index">
-            
-              <ProductsVue
-                :name="product.name"
-                :downpayment="formatAmount(product.actualDownpayment)"
-                :repayment="formatAmount(product.repayment / 6)"
-                :bi-monthly_repayment="formatAmount(product.repayment / 6 / 2)"
-                :image="images[product.product_category_id]"
-              />
-            </slide>
-             <template #addons>
-              <pagination />
-            </template>
-            
-          </carousel>
-                    <div class="cursor-pointer" @click="prev">
-            <img
-              src="../../assets/images/arrowLeft.png"
-              class="w-8 h-8 absolute top-40 left-0"
-            />
-          </div>
-          <div class="cursor-pointer" @click="next">
-            <img
-              src="../../assets/images/arrowRight.png"
-              class="w-8 h-8 absolute top-40 right-0"
-            />
-          </div>
-
+          <ProductsVue
+            :name="product.name"
+            :downpayment="formatAmount(product.actualDownpayment)"
+            :repayment="formatAmount(product.repayment / 6)"
+            :bi-monthly_repayment="formatAmount(product.repayment / 6 / 2)"
+            :image="product.image"
+          />
         </div>
       </div>
     </div>
   </main>
 </template>
 <script>
-import phone from "../../assets/images/phone2.png";
-import television from "../../assets/images/television.png";
-import washing_machine from "../../assets/images/washing_machine.png";
-import fridge from "../../assets/images/fridge.png";
-import cash from "../../assets/images/money2.png";
-import generator from "../../assets/images/generator.png";
-import cooking_oil from "../../assets/images/cooking_oil.png";
-import gas_cooker from "../../assets/images/gas_cooker.png";
-import blender_kettle from "../../assets/images/blender_kettle.png";
-import cooking_oil_rice from "../../assets/images/cooking_oil&&rice.png";
 import ProductsVue from "../general/products.vue";
 import "vue3-carousel/dist/carousel.css";
 import "../../assets/css/carousel.css";
-import { Carousel, Slide, Pagination } from "vue3-carousel";
 import { Apiservice } from "../../services/apiService";
 import { calculate } from "../../utilities/calculator";
-import loader from "../../assets/svgs/loader2.vue";
+import loader from "../../assets/svgs/loader3.vue";
 export default {
   components: {
-    Carousel,
     ProductsVue,
-    Slide,
-    Pagination,
     loader,
   },
   data() {
@@ -134,102 +53,23 @@ export default {
         downPaymentRates: `${process.env.VUE_APP_URL}/api/down_payment_rate`,
         businessTypes: `${process.env.VUE_APP_URL}/api/business_type`,
         getCalculation: `${process.env.VUE_APP_URL}/api/price_calculator`,
-        products: `${process.env.VUE_APP_URL}/api/get-product-by-rank?numberOfProduct=5`,
+        products: `${process.env.VUE_APP_URL}/api/website-product`,
       },
-      products: [
-        {
-          name: "Infinix",
-          downpayment: "150,000",
-          repayment: "40,000",
-          category: "phone",
-          image: phone,
-        },
-        {
-          name: "Television",
-          downpayment: "150,000",
-          repayment: "40,000",
-          category: "television",
-          image: television,
-        },
-        {
-          name: "Washing Machine",
-          downpayment: "150,000",
-          repayment: "40,000",
-          category: "washing_machine",
-          image: washing_machine,
-        },
-
-        {
-          name: "Fridge",
-          downpayment: "150,000",
-          repayment: "40,000",
-          category: "fridge",
-          image: fridge,
-        },
-        {
-          name: "Generator",
-          downpayment: "150,000",
-          repayment: "40,000",
-          category: "generator",
-          image: generator,
-        },
-        {
-          name: "Infinix",
-          downpayment: "150,000",
-          repayment: "40,000",
-          category: "phone",
-          image: phone,
-        },
-        {
-          name: "Television",
-          downpayment: "150,000",
-          repayment: "40,000",
-          category: "television",
-          image: television,
-        },
-      ],
-      images: {
-        11: phone,
-        52: cash,
-        53: blender_kettle,
-        47: cooking_oil_rice,
-        54: cooking_oil,
-        57: gas_cooker,
-        3: washing_machine,
-      },
-      breakpoints: {
-        700: {
-          itemsToShow: 1,
-        },
-        1024: {
-          itemsToShow: 4,
-        },
-      },
-      currentSlide: 0,
       results: [],
-      loader:true
+      loading: true,
     };
   },
   methods: {
-    next() {
-      this.$refs.carousel.next();
-    },
-    prev() {
-      this.$refs.carousel.prev();
-    },
     async getProducts() {
+
       const api = new Apiservice();
       await api
         .get(this.apiUrls.products)
         .then((res) => {
-          this.apiProduct = JSON.parse(res?.data).data.meta;
-          this.allProducts = this.apiProduct?.least_selling_products.concat(
-            this.apiProduct?.top_selling_products
-          );
+          this.allProducts = JSON.parse(res?.data)?.data?.data;
         })
         .catch((error) => {
           if (error) {
-            console.log(error);
             throw error;
           }
         });
@@ -296,7 +136,6 @@ export default {
         });
     },
     async getCalc() {
-      this.loader = true
       try {
         const params = this.calculation.find((x) => {
           return (
@@ -305,21 +144,20 @@ export default {
             x.repayment_duration_id === this.data.repayment_duration_id.id
           );
         });
-        this.result = [];
+
         this.allProducts.forEach((product) => {
           const { total, actualDownpayment, repayment, biMonthlyRepayment } =
-            calculate(product.product_retail_price, this.data, params, 0);
+            calculate(product.price, this.data, params, 0);
           this.results.push({
-            name: product.product_name,
+            name: product.name,
+            image:`${process.env.VUE_APP_AWS_URL}/`+product.image_url,
             total,
             actualDownpayment,
             repayment,
             product_category_id: product.product_category_id,
             biMonthlyRepayment,
           });
-
         });
-        this.loader = false
       } catch (e) {
         this.disabled = true;
         window.localStorage.removeItem("data");
@@ -331,18 +169,19 @@ export default {
     },
     formatAmount(amount) {
       return `₦${amount
-        ?.toFixed(2)
         ?.toString()
         .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
     },
   },
   async mounted() {
+    this.loading = true;
     await this.getProducts();
     await this.getDownPaymentRates();
     await this.getBusinessTypes();
     await this.getRepaymentDuration();
     await this.getCalculation();
     await this.getCalc();
+    this.loading=false
   },
 };
 </script>
