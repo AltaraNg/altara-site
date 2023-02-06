@@ -240,6 +240,10 @@ validRegex : /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+(?:\
         { name: "Yoruba Road, Ilorin", value: "Yoruba_Road" },
         { name: "Gambari, Ilorin", value: "Gambari" },
         { name: "Taiwo Road, Ilorin", value: "Taiwo_Road" },
+        { value:'Ijebu_Ode', name:'Ijebu Ode' },
+        { value:'Sagamu',name:'Sagamu'},
+        {value:'Abiola_Way', name:'Abiola Way Showroom' },
+        {value:'Isale_Igbeyin',name:'Isale Igbeyin Showroom'},
       ],
     };
   },
