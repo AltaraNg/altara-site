@@ -57,31 +57,14 @@
             <select
               name="area"
               v-model="area"
+             
               @change="checkPhone()"
               class="bg-white rounded-xs h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
             >
-              <option value="default" class disabled>Area</option>
-              <option class="text-sm" value="Apata">Apata, Ibadan</option>
-              <option class="text-sm" value="Dugbe">Dugbe, Ibadan</option>
-              <option class="text-sm" value="Gate">Gate, Ibadan</option>
-              <option class="text-sm" value="Bodija">Bodija, Ibadan</option>
-              <option class="text-sm" value="Iwo">Iwo Road, Ibadan</option>
-              <option class="text-sm" value="Challenge">
-                Challenge, Ibadan
-              </option>
-              <option class="text-sm" value="Iyana_church">
-                Iyana church, Ibadan
-              </option>
-              <option class="text-sm" value="Oyo">Oyo Town</option>
-              <option class="text-sm" value="Ogbomosho">Ogbomosho</option>
-              <option class="text-sm" value="Yoruba_Road">
-                Yoruba Road, Ilorin
-              </option>
-              <option class="text-sm" value="Gambari">Gambari, Ilorin</option>
-              <option class="text-sm" value="Taiwo_Road">
-                Taiwo Road, Ilorin
-              </option>
-            </select>
+            <option value="default" class disabled>Area</option>
+            <option class="text-sm" v-for="branch in areas"
+              :key="branch.value" :value=branch.value>{{ branch.name }}</option>
+          </select>
           </div>
         </div>
         <div
@@ -211,6 +194,73 @@ export default {
       background,
       full_name: "",
       area: "",
+      areas:[
+        {
+          value:'Apata',
+          name:'Apata, Ibadan'
+        },
+        {
+          value:'Dugbe',
+          name:'Dugbe, Ibadan'
+        },
+        {
+          value:'Gate',
+          name:'Gate, Ibadan'
+        },
+        {
+          value:'Bodija',
+          name:'Bodija, Ibadan'
+        },
+        {
+          value:'Iwo',
+          name:'Iwo Road, Ibadan'
+        },
+        {
+          value:'Challenge',
+          name:'Challenge, Ibadan'
+        },
+        {
+          value:'Iyana_church',
+          name:' Iyana church, Ibadan'
+        },
+        {
+          value:'Oyo',
+          name:'Oyo Town'
+        },
+        {
+          value:'Ogbomosho',
+          name:'Ogbomosho'
+        },
+        {
+          value:'Yoruba_Road',
+          name:'Yoruba Road, Ilorin'
+        },
+        {
+          value:'Gambari',
+          name:'Gambari, Ilorin'
+        },
+        {
+          value:'Taiwo_Road',
+          name:'Taiwo Road, Ilorin'
+        },
+        {
+          value:'Ijebu_Ode',
+          name:'Ijebu Ode'
+        },
+        {
+          value:'Sagamu',
+          name:'Sagamu'
+        },
+        {
+          value:'Abiola_Way',
+          name:'Abiola Way Showroom'
+        },
+        {
+          value:'Isale_Igbeyin',
+          name:'Isale Igbeyin Showroom'
+        },
+        
+      ],
       phone_number: "",
       services_you_are_interested_in: "",
       loans: [
