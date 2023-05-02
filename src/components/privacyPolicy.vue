@@ -1,5 +1,5 @@
 <template>
-  <div class="p-10 px-16 text-gray-600">
+  <div class="lg:p-10 py-5 px-4 lg:px-16 text-gray-600">
     <div class="w-full mb-10 text-center bg-lightBlue py-5 lg:py-10">
       <p class="text-white font-black tracking-wide lg:text-2xl text-lg">
         Privacy/Cookie Statement
