@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import Accordion from "../general/Accordion.vue";
+import Accordion from "../../components/Accordion";
 export default {
   components: {
     Accordion,

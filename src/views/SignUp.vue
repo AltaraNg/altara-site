@@ -173,10 +173,10 @@
 </template>
 <script>
 import background from "../assets/images/background_picture.png";
-import Modal from "../components/general/modal.vue";
+import Modal from "../components/modal.vue";
 import { Apiservice } from "../services/apiService";
 import loaderVue from "../assets/svgs/loader.vue";
-import CurrencyInput from "./general/currenyInput.vue";
+import CurrencyInput from "../components/currenyInput.vue";
 export default {
   title: "Order Now| Altara Credit Limited",
   components: {

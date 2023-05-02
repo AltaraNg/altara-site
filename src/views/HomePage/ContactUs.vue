@@ -149,7 +149,7 @@ import email from "../../assets/svgs/email.vue";
 import facebook from "../../assets/svgs/facebook.vue";
 import twitter from "../../assets/svgs/twitter.vue";
 import linkedin from "../../assets/svgs/linkedin.vue";
-import Modal from '../general/modal.vue'
+import Modal from '../../components/modal.vue'
 import { Apiservice } from "../../services/apiService"
 import loader from '../../assets/svgs/loader.vue'
 export default {

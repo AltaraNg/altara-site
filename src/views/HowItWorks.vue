@@ -238,7 +238,7 @@
 </template>
 
 <script>
-import heading from "../components/general/heading.vue";
+import heading from "../components/heading.vue";
 import applicationForm from "../assets/svgs/application_form.vue";
 import Image1 from "../assets/images/customer1.jpg";
 import Image2 from "../assets/images/customer2.jpg";

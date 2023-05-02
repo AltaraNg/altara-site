@@ -30,7 +30,7 @@
   </main>
 </template>
 <script>
-import ProductsVue from "../general/products.vue";
+import ProductsVue from "../../components/products.vue";
 import "vue3-carousel/dist/carousel.css";
 import "../../assets/css/carousel.css";
 import { Apiservice } from "../../services/apiService";
