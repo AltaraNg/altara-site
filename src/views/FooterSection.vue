@@ -28,7 +28,8 @@
         <a class="text-xs md:text-sm"
           ><span class="text-brand font-black">Altara </span>Rent</a
         >
-        <div><p class=" mt-4 text-sm">Privacy Policy</p></div>
+        <router-link
+          :to="{ name: 'privacy_policy' }"><p class=" mt-6 text-sm">Privacy Policy</p></router-link>
       </div>
       <div
         class="md:w-1/2 w-1/2 flex flex-col items-start md:space-y-6 space-y-2"
