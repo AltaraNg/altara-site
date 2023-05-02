@@ -6,7 +6,7 @@
       </p>
     </div>
     <div class="space-y-4 flex flex-col text-sm">
-      <p>
+      <p> 
         We use cookies to improve your browsing experience on our website. By
         browsing on our website, you consent to our use of cookies in accordance
         with our <span class="text-brand">privacy/Cookie policy</span>.
