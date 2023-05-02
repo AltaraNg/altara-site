@@ -1,5 +1,5 @@
 <template>
-  <div class="lg:p-10 py-5 px-4 lg:px-16 text-gray-600">
+  <div class="lg:p-10 py-5 px-5 lg:px-16 text-gray-600">
     <div class="w-full mb-10 text-center bg-lightBlue py-5 lg:py-10">
       <p class="text-white font-black tracking-wide lg:text-2xl text-lg">
         Privacy/Cookie Statement
@@ -22,7 +22,7 @@
       <heading
         class="pt-12"
         title="Who we Are"
-        width="w-10/12 "
+        width="lg:w-10/12 w-8/12 "
         justify="start"
       />
       <p>
@@ -50,7 +50,7 @@
       <heading
         class="pt-12"
         title="Why Do We Need the Data?"
-        width="w-9/12"
+        width="lg:w-9/12 w-1/2 md:w-3/5"
         justify="start"
       />
       <p>
@@ -97,7 +97,7 @@
       <heading
         class="pt-12"
         title="Retention of Records "
-        width="w-10/12"
+        width="lg:w-10/12 w-1/2 md:w-3/5"
         justify="start"
       />
       <p>
@@ -114,7 +114,7 @@
       <heading
         class="pt-12"
         title="Data Subject Rights"
-        width="w-10/12"
+        width="lg:w-10/12 w-7/12 md:w-9/12"
         justify="start"
       />
       <p>
@@ -157,7 +157,7 @@
       <heading
         class="pt-12"
         title="What are cookies?"
-        width="w-10/12"
+        width="lg:w-10/12  w-7/12 md:w-9/12"
         justify="start"
       />
       <p>
@@ -185,7 +185,7 @@
       <heading
         class="pt-12"
         title="Privacy statement"
-        width="w-10/12"
+        width="lg:w-10/12  w-7/12 md:w-9/12"
         justify="start"
       />
       <p>
@@ -286,7 +286,7 @@
         hold about you and how it is processed. If we do hold your personal
         data, you have the right to request the following information:
       </p>
-      <ul class="list-outside space-y-2" style="list-style-type:disc">
+      <nav class="pl-6 list-outside space-y-2" style="list-style-type:disc">
         <li>
           Contact details of the data protection officer, where applicable.
         </li>
@@ -332,7 +332,7 @@
           profiling, and any meaningful information about the logic involved, as
           well as the significance and expected consequences of such processing.
         </li>
-      </ul>
+      </nav>
       <p class="pt-6 font-bold text-brand underline">
         What Forms of ID Will I Need to Provide in Order to Access This?
       </p>
