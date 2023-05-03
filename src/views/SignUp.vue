@@ -57,14 +57,19 @@
             <select
               name="area"
               v-model="area"
-             
               @change="checkPhone()"
               class="bg-white rounded-xs h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
             >
-            <option value="default" class disabled>Area</option>
-            <option class="text-sm" v-for="branch in areas"
-              :key="branch.value" :value=branch.value>{{ branch.name }}</option>
-          </select>
+              <option value="default" class disabled>Area</option>
+              <option
+                class="text-sm"
+                v-for="branch in areas"
+                :key="branch.value"
+                :value="branch.value"
+              >
+                {{ branch.name }}
+              </option>
+            </select>
           </div>
         </div>
         <div
@@ -96,17 +101,17 @@
               class="mb-0.5 ml-2 text-sm"
               >{{ checkService("Product *", "Amount *", "Amount *") }}</label
             >
-             <CurrencyInput
-             v-if="data.amount"
-                    v-model="data.amount"
-                    :options="{
-                      currency: 'NGN',
-                      hideCurrencySymbolOnFocus: false,
-                      hideGroupingSeparatorOnFocus: false,
-                      hideNegligibleDecimalDigitsOnFocus: false,
-                    }"
-                    :getCalc="checkPhone()"
-                  />
+            <CurrencyInput
+              v-if="data.amount"
+              v-model="data.amount"
+              :options="{
+                currency: 'NGN',
+                hideCurrencySymbolOnFocus: false,
+                hideGroupingSeparatorOnFocus: false,
+                hideNegligibleDecimalDigitsOnFocus: false,
+              }"
+              :getCalc="checkPhone()"
+            />
             <input
               v-else
               type="text"
@@ -161,7 +166,11 @@
         </div>
       </form>
     </div>
-    <Modal v-if="form_sent" title="Order Now Successfull!" @routeHome="routeHome()">
+    <Modal
+      v-if="form_sent"
+      title="Order Now Successfull!"
+      @routeHome="routeHome()"
+    >
       <template v-slot:svg>
         <img src="../assets/images/success.png" class="w-28 h-28" />
       </template>
@@ -186,6 +195,8 @@ export default {
   },
   data() {
     return {
+      validRegex:
+        /^(\+234|234|0)(701|702|703|704|705|706|707|708|709|802|803|804|805|806|807|808|809|810|811|812|813|814|815|816|817|818|819|909|908|901|902|903|904|905|906|907)([0-9]{7})$/,
       disabled: true,
       repayment_duration: "",
       repayment_plan: "",
@@ -194,72 +205,71 @@ export default {
       background,
       full_name: "",
       area: "",
-      areas:[
+      areas: [
         {
-          value:'Apata',
-          name:'Apata, Ibadan'
+          value: "Apata",
+          name: "Apata, Ibadan",
         },
         {
-          value:'Dugbe',
-          name:'Dugbe, Ibadan'
+          value: "Dugbe",
+          name: "Dugbe, Ibadan",
         },
         {
-          value:'Gate',
-          name:'Gate, Ibadan'
+          value: "Gate",
+          name: "Gate, Ibadan",
         },
         {
-          value:'Bodija',
-          name:'Bodija, Ibadan'
+          value: "Bodija",
+          name: "Bodija, Ibadan",
         },
         {
-          value:'Iwo',
-          name:'Iwo Road, Ibadan'
+          value: "Iwo",
+          name: "Iwo Road, Ibadan",
         },
         {
-          value:'Challenge',
-          name:'Challenge, Ibadan'
+          value: "Challenge",
+          name: "Challenge, Ibadan",
         },
         {
-          value:'Iyana_church',
-          name:' Iyana church, Ibadan'
+          value: "Iyana_church",
+          name: " Iyana church, Ibadan",
         },
         {
-          value:'Oyo',
-          name:'Oyo Town'
+          value: "Oyo",
+          name: "Oyo Town",
         },
         {
-          value:'Ogbomosho',
-          name:'Ogbomosho'
+          value: "Ogbomosho",
+          name: "Ogbomosho",
         },
         {
-          value:'Yoruba_Road',
-          name:'Yoruba Road, Ilorin'
+          value: "Yoruba_Road",
+          name: "Yoruba Road, Ilorin",
         },
         {
-          value:'Gambari',
-          name:'Gambari, Ilorin'
+          value: "Gambari",
+          name: "Gambari, Ilorin",
         },
         {
-          value:'Taiwo_Road',
-          name:'Taiwo Road, Ilorin'
+          value: "Taiwo_Road",
+          name: "Taiwo Road, Ilorin",
         },
         {
-          value:'Ijebu_Ode',
-          name:'Ijebu Ode'
+          value: "Ijebu_Ode",
+          name: "Ijebu Ode",
         },
         {
-          value:'Sagamu',
-          name:'Sagamu'
+          value: "Sagamu",
+          name: "Sagamu",
         },
         {
-          value:'Abiola_Way',
-          name:'Abiola Way Showroom'
+          value: "Abiola_Way",
+          name: "Abiola Way Showroom",
         },
         {
-          value:'Isale_Igbeyin',
-          name:'Isale Igbeyin Showroom'
+          value: "Isale_Igbeyin",
+          name: "Isale Igbeyin Showroom",
         },
-        
       ],
       phone_number: "",
       services_you_are_interested_in: "",
@@ -295,18 +305,19 @@ export default {
     };
   },
   methods: {
-    routeHome(){
-      !this.form_sent
+    routeHome() {
+      !this.form_sent;
       this.$router.push({ path: "/" });
     },
     checkPhone() {
       if (
         this.phone_number.toString().length != 11 ||
+        !this.phone_number.match(this.validRegex) ||
         !this.full_name ||
         !this.area ||
-        !this.services_you_are_interested_in  ||
-        !this.repayment_duration  ||
-        !this.repayment_plan 
+        !this.services_you_are_interested_in ||
+        !this.repayment_duration ||
+        !this.repayment_plan
       ) {
         return true;
       } else {
@@ -314,7 +325,7 @@ export default {
       }
     },
     formatAmount(amount) {
-      return `₦${(amount)
+      return `₦${amount
         ?.toFixed(2)
         ?.toString()
         .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
@@ -339,7 +350,7 @@ export default {
         repayment_plan: this.repayment_plan,
         date: new Date().toLocaleString(),
       };
-      
+
       const product_data = {
         full_name: this.full_name,
         phone_number: this.phone_number,
@@ -350,10 +361,7 @@ export default {
         repayment_plan: this.repayment_plan,
         date: new Date().toLocaleString(),
       };
-      this.formData =
-        this.data.amount
-          ? eloan_data
-          : product_data;
+      this.formData = this.data.amount ? eloan_data : product_data;
 
       api
         .post(this.formURL, this.formData, true)
@@ -387,7 +395,7 @@ export default {
         if (this.data.product) {
           this.services_you_are_interested_in = "product";
           this.repayment_plan = this.data.biMonthly ? "Bimonthly" : "monthly";
-          this.repayment_duration ='six_months'
+          this.repayment_duration = "six_months";
         }
       }
     },
@@ -400,7 +408,6 @@ export default {
         this.further_details = "";
       },
     },
-
   },
   async mounted() {
     await this.fetchData();
