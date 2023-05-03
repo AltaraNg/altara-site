@@ -347,6 +347,7 @@
 <script>
 import heading from "../components/heading";
 export default {
+ title: "Privacy Policy | Altara Credit Limited",
   components: {
     heading,
   },
