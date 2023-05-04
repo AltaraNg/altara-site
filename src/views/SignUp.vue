@@ -170,7 +170,7 @@
               class="bg-brand flex items-center justify-center md:px-7 px-4 md:py-3 py-2 mx-0 rounded-xs font-black text-white text-sm hover:shadow-lg"
             >
               <loaderVue v-if="loader" />
-              Submit Request
+              <span v-else> Submit Request</span>
             </button>
           </div>
         </div>

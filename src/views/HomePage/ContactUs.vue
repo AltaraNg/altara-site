@@ -149,7 +149,8 @@
         class="flex items-center w-1/2 justify-center space-x-3 bg-brand px-7 py-3 mx-0 rounded-lg font-bold justify-self-end text-white text-sm hover:shadow-lg"
         :disabled="disabled()"
       >
-        <loader v-if="loading" />Send
+        <loader v-if="loading" />
+        <span v-else>Send</span>
       </button>
     </form>
   </div>
