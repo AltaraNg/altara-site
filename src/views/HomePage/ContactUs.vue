@@ -1,7 +1,7 @@
 <template>
   <div id="contact"></div>
   <div
-    class="background h-fit lg:px-40 px-5 md:px-20 md:py-24 py-10 flex flex-col lg:flex-row items-center justify-between"
+    class="background h-fit lg:px-20 px-5 md:px-20 md:py-24 py-10 lg:space-x-10 flex flex-col lg:flex-row lg:items-start items-center justify-between"
   >
     <div class="lg:w-2/5 w-full">
       <h1
@@ -28,10 +28,13 @@
       name="contact"
       @submit.prevent="sendEmail"
       method="POST"
-      class="lg:w-1/2 w-full pb-10 space-y-8 bg-white rounded-lg shadow-lg px-8 pt-8 h-fit"
+      class="lg:w-3/5 w-full text-sm pb-10 space-y-8 bg-white flex flex-col items-center  rounded-lg shadow-lg lg:px-2 pt-8 h-fit"
     >
-      <p class="font-bold md:text-left text-center">Send us a Message</p>
-      <div>
+      <p class="font-bold  w-full text-center">Send us a Message</p>
+      <div  class="flex md:flex-row md:flex-wrap items-center flex-col justify-evenly w-full px-6 md:px-0 space-y-5 md:space-y-0">
+
+      
+      <div class="flex flex-col md:w-2/5 md:pb-6 w-full">
         <label for="full_name" class="ml-3">Full Name *</label>
         <input
           type="text"
@@ -40,7 +43,7 @@
           class="border-2 w-full px-3 py-2 rounded-full"
         />
       </div>
-      <div>
+      <div class="flex flex-col md:w-2/5 md:pb-6 w-full">
         <label for="email" class="ml-3">Email *</label>
         <input
           type="text"
@@ -49,16 +52,27 @@
           class="border-2 w-full px-3 py-2 rounded-full"
         />
       </div>
-      <div>
+      <div class="flex flex-col md:w-2/5 md:pb-6 w-full">
         <label for="phone_number" class="ml-3">Phone Number *</label>
         <input
           type="text"
+          maxlength="11"
           name="phone_number"
           v-model="phone_number"
           class="border-2 w-full px-3 py-2 rounded-full"
         />
+      </div >
+      <div class="flex flex-col md:w-2/5 md:pb-6 w-full">
+        <label for="confirm_phone_number" class="ml-3">Confirm Phone Number *</label>
+        <input
+          type="text"
+          maxlength="11"
+          name="confirm_phone_number"
+          v-model="confirm_phone_number"
+          class="border-2 w-full px-3 py-2 rounded-full"
+        />
       </div>
-        <div>
+        <div class="flex flex-col md:w-2/5 md:pb-6 w-full">
         <label for="location" class="ml-3">Area: *</label>
         <select
           name="area"
@@ -70,7 +84,7 @@
               :key="branch.value" :value=branch.value>{{ branch.name }}</option>
         </select>
       </div>
-      <div class="mt-4">
+      <div class="flex flex-col md:w-2/5 md:pb-6 w-full">
         <label for="how_can_we_help" class="ml-3">How can we help ? *</label>
         <select
           name="how_can_we_help"
@@ -89,7 +103,7 @@
           <option class="text-gray-600 text-sm" value="general_enquiry">General Enquiry</option>
         </select>
       </div>
-      <div class="ml-3">
+      <div class="flex flex-col md:w-2/5 md:pb-6 w-full">
         <label>Preferred method of communication *</label>
         <div class="flex space-x-8 mt-3 text-gray-600 text-sm">
           <div class="flex items-center">
@@ -116,7 +130,8 @@
           </div>
         </div>
       </div>
-      <textarea
+      <div class="flex flex-col md:w-2/5 md:pb-6 w-full">
+        <textarea
         type="text"
         rows="4"
         placeholder="Message"
@@ -124,9 +139,12 @@
         name="message"
         class="border w-full px-3 py-2 rounded"
       ></textarea>
+      </div>
+    </div>
+      
       <button
         type="submit"
-        class="flex items-center justify-center space-x-3 bg-brand px-7 py-3 mx-0 rounded-lg font-bold justify-self-end text-white text-sm hover:shadow-lg"
+        class="flex items-center w-1/2 justify-center space-x-3 bg-brand px-7 py-3 mx-0 rounded-lg font-bold justify-self-end text-white text-sm hover:shadow-lg"
         :disabled="disabled()"
       >
         <loader v-if="loading" />Send
@@ -237,6 +255,7 @@ export default {
       area:"",
       how_can_we_help: "",
       phone_number: "",
+      confirm_phone_number:"", 
       preferred_method_of_communication: "",
       message: "",
       form_sent: false,
@@ -246,7 +265,7 @@ export default {
   methods: {
     disabled() {
       return (
-        !this.full_name || !this.phone_number || !this.email || !this.area || !this.how_can_we_help || !this.message
+        !this.full_name || !this.phone_number ||this.phone_number !== this.confirm_phone_number || !this.email || !this.area || !this.how_can_we_help || !this.message
       )
     },
     sendEmail() {

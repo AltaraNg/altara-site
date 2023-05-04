@@ -1,21 +1,18 @@
 <template>
   <div
-    class="flex items-start md:h-screen py-8 md:py-0 bg-brand25 justify-center md:px-32 relative"
+    class="flex items-start md:h-screen py-6 md:py-0 bg-brand25 justify-center md:px-32 relative"
   >
     <img :src="background" class="hidden md:block w-full" />
     <div
       class="md:absolute top-6 h-fit md:w-5/12 w-11/12 md:mx-0 md:pb-10 pb-8 opacity-90 bg-white md:py-12 py-6 rounded-lg shadow-2xl"
     >
-      <div class="mb-5">
-        <h1
-          class="text-center text-brand font-black leading-7 md:text-3xl text-lg"
-        >
+      <div class="mb-3">
+        <h1 class="text-center font-black md:text-3xl text-lg">
           Lets get started
-          <br />
-          <span class="font-normal md:text-sm text-xs"
-            >Create a new account</span
-          >
         </h1>
+        <p class="font-normal text-brand text-center md:text-sm text-xs">
+          Create a new account
+        </p>
       </div>
       <form class="space-y-6" @submit.prevent="sendEmail" method="POST">
         <div
@@ -51,25 +48,17 @@
             />
           </div>
           <div class="flex flex-col md:w-2/5 w-full">
-            <label for="location" class="mb-0.5 ml-2 text-sm md:text-base"
-              >Area: *</label
+            <label for="phone_number" class="mb-0.5 ml-2 text-sm"
+              >Confirm Phone Number: *</label
             >
-            <select
-              name="area"
-              v-model="area"
-              @change="checkPhone()"
+            <input
+              type="tel"
+              maxlength="11"
+              name="confirm_phone_number"
+              v-model="confirm_phone_number"
+              @input="checkPhone()"
               class="bg-white rounded-xs h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
-            >
-              <option value="default" class disabled>Area</option>
-              <option
-                class="text-sm"
-                v-for="branch in areas"
-                :key="branch.value"
-                :value="branch.value"
-              >
-                {{ branch.name }}
-              </option>
-            </select>
+            />
           </div>
         </div>
         <div
@@ -121,7 +110,7 @@
               class="bg-white rounded-xs h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
             />
           </div>
-          <div class="flex flex-col md:w-2/5 md:mb-6 w-full">
+          <div class="flex flex-col md:w-2/5 md:pb-6 w-full">
             <label for="repayment_duration" class="mb-0.5 ml-2 text-sm"
               >Repayment Duration: *</label
             >
@@ -153,7 +142,26 @@
               <option class="text-sm" value="Bimonthly">Bi-Monthly</option>
             </select>
           </div>
-          <div class="flex flex-col md:w-2/5 md:my-6 w-full pt-10">
+          <div class="flex flex-col md:w-2/5 md:mb-6 w-full">
+            <label for="location" class="mb-0.5 ml-2 text-sm">Area: *</label>
+            <select
+              name="area"
+              v-model="area"
+              @change="checkPhone()"
+              class="bg-white rounded-xs h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
+            >
+              <option value="default" class disabled>Area</option>
+              <option
+                class="text-sm"
+                v-for="branch in areas"
+                :key="branch.value"
+                :value="branch.value"
+              >
+                {{ branch.name }}
+              </option>
+            </select>
+          </div>
+          <div class="flex flex-col md:w-2/5 md:my-6 w-full pt-5">
             <button
               type="submit"
               :disabled="checkPhone()"
@@ -204,6 +212,7 @@ export default {
       loader: false,
       background,
       full_name: "",
+      confirm_phone_number:"",
       area: "",
       areas: [
         {
@@ -312,6 +321,7 @@ export default {
     checkPhone() {
       if (
         this.phone_number.toString().length != 11 ||
+        this.phone_number !== this.confirm_phone_number ||
         !this.phone_number.match(this.validRegex) ||
         !this.full_name ||
         !this.area ||
