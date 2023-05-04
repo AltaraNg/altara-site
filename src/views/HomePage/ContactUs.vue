@@ -286,6 +286,7 @@ export default {
       api.post(this.formURL, data, true).then(() => {
         this.full_name = '';
         this.phone_number = '';
+        this.confirm_phone_number = '';
         this.email = '';
         this.area = '';
         this.how_can_we_help = '';

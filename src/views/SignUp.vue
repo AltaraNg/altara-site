@@ -380,6 +380,7 @@ export default {
         .then(() => {
           this.full_name = "";
           this.phone_number = "";
+           this.confirm_phone_number = '';
           (this.area = ""), (this.services_you_are_interested_in = "");
           this.employment_status = "";
           this.further_details = "";
