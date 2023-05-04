@@ -52,7 +52,7 @@
           class="border-2 w-full px-3 py-2 rounded-full"
         />
       </div>
-      <div class="flex flex-col md:w-2/5 md:pb-6 w-full">
+      <div class="flex flex-col md:w-2/5 md:pb-6 w-full relative">
         <label for="phone_number" class="ml-3">Phone Number *</label>
         <input
           type="text"
@@ -61,8 +61,9 @@
           v-model="phone_number"
           class="border-2 w-full px-3 py-2 rounded-full"
         />
+        <p class="font-bold text-red-500 absolute pl-3 bottom-1.5" style="font-size: 11px;" v-show="phone_number.length !==11 && phone_number">Phone number must be 11 digits</p>
       </div >
-      <div class="flex flex-col md:w-2/5 md:pb-6 w-full">
+      <div class="flex flex-col md:w-2/5 md:pb-6 w-full relative">
         <label for="confirm_phone_number" class="ml-3">Confirm Phone Number *</label>
         <input
           type="text"
@@ -71,6 +72,7 @@
           v-model="confirm_phone_number"
           class="border-2 w-full px-3 py-2 rounded-full"
         />
+        <p class=" text-red-500 absolute font-bold  pl-3 bottom-1.5" style="font-size: 11px;" v-show="phone_number !==confirm_phone_number && confirm_phone_number">Confirm phone number does not match</p>
       </div>
         <div class="flex flex-col md:w-2/5 md:pb-6 w-full">
         <label for="location" class="ml-3">Area: *</label>

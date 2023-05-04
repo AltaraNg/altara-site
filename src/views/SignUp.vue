@@ -34,7 +34,7 @@
         <div
           class="flex md:flex-row flex-col justify-evenly items-center w-full px-6 md:px-0 space-y-5 md:space-y-0"
         >
-          <div class="flex flex-col md:w-2/5 w-full">
+          <div class="flex flex-col md:w-2/5 w-full relative">
             <label for="phone_number" class="mb-0.5 ml-2 text-sm"
               >Phone Number: *</label
             >
@@ -46,8 +46,9 @@
               @input="checkPhone()"
               class="bg-white rounded-xs h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
             />
+            <p class="font-bold text-red-500 absolute -bottom-4" style="font-size: 11px;" v-show="phone_number.length !==11 && phone_number">Phone number must be 11 digits</p>
           </div>
-          <div class="flex flex-col md:w-2/5 w-full">
+          <div class="flex flex-col md:w-2/5 w-full relative ">
             <label for="phone_number" class="mb-0.5 ml-2 text-sm"
               >Confirm Phone Number: *</label
             >
@@ -59,6 +60,7 @@
               @input="checkPhone()"
               class="bg-white rounded-xs h-10 md:text-base text-xs shadow-lg px-2 py-1 border border-brand"
             />
+            <p class=" text-red-500 absolute font-bold -bottom-4" style="font-size: 11px;" v-show="phone_number !==confirm_phone_number && confirm_phone_number">Confirm phone number does not match</p>
           </div>
         </div>
         <div
