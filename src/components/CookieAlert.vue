@@ -17,7 +17,7 @@ export default {
   methods: {
     AcceptCookie() {
     window.localStorage.setItem('acceptCookie', true)
-     window.location.reload()
+     this.$emit('acceptCookie')
     },
   },
 };
