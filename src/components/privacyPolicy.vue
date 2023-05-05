@@ -9,10 +9,10 @@
       <p> 
         We use cookies to improve your browsing experience on our website. By
         browsing on our website, you consent to our use of cookies in accordance
-        with our <span class="text-brand">privacy/Cookie policy</span>.
+        with our <span class="text-brand">Privacy/Cookie policy</span>.
       </p>
       <p>
-        The privacy policy discloses ways Altara gathers, uses, discloses, and
+        The Privacy policy discloses ways Altara gathers, uses, discloses, and
         manages all stakeholders’ data. It informs the stakeholders what
         specific information is collected, and whether it is kept confidential,
         shared with partners, or sold to others firms or enterprises. The
@@ -41,12 +41,12 @@
         The personal data we would collect and process, depending on the
         particular processing requirement, are under the following categories:
       </p>
-      <p>
-        identifying information;name,address, contact information;email address,
-        phone number, financial information;bank account number, bank
-        statement,employment information;employment status,job title,
-        salary,working days and demographic information;age,gender
-      </p>
+      <nav class="pl-6 list-outside space-y-2" style="list-style-type:disc">
+       <li>Identifying information (name,address, contact information,email address, phone number)</li>
+       <li>Financial information (bank account number, bank statement,employment information,employment status, job title, salary,working days)
+</li>
+       <li>Demographic information (age,gender)</li>
+      </nav>
       <heading
         class="pt-12"
         title="Why Do We Need the Data?"
@@ -181,7 +181,6 @@
       <p>Below are the details for each of these contacts:</p>
       <p>Address:<span>46 Raymond Njoku, Ikoyi,Lagos,Nigeria</span></p>
       <p>Email: <span> admin@altaracredit.com</span></p>
-      <p>Telephone: <span>+2349055493652</span></p>
       <heading
         class="pt-12"
         title="Privacy statement"
