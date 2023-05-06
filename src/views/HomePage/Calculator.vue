@@ -160,7 +160,7 @@
 <script>
 import { Apiservice } from "../../services/apiService";
 import { cashLoan } from "../../utilities/calculator";
-import CurrencyInput from "../general/currenyInput.vue";
+import CurrencyInput from "../../components/currenyInput.vue";
 
 export default {
   components: {

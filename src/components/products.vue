@@ -47,7 +47,7 @@
   </main>
 </template>
 <script>
-import "../../assets/css/style.css";
+import "../assets/css/style.css";
 export default {
   data() {
     return {

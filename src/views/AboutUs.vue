@@ -85,7 +85,7 @@
 </template>
 
 <script>
-import heading from "./general/heading.vue";
+import heading from "../components/heading";
 import innovation from '../assets/svgs/innovation.vue'
 import impact from '../assets/svgs/impact.vue'
 import scale from '../assets/svgs/scale.vue'

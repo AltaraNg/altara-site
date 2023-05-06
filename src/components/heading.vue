@@ -1,9 +1,9 @@
 <template>
-  <div class="flex items-center w-full justify-center">
-      <div class="border w-fit border-brand border-4 md:px-3 px-1 py-2 rounded-md">
+  <div class="flex items-center w-full " :class="justify">
+      <div class="border w-fit  border-brand border-4 md:px-3 px-1 py-2 rounded-md">
           <p class="text-gray-600 md:font-bold font-black" :class="fontSize">{{title}}</p>
       </div>
-      <hr class="bg-brand border" :class="width"/>
+      <hr class="bg-brand border  " :class="width"/>
   </div>
 </template>
 
@@ -20,6 +20,9 @@ export default {
         },
         width:{
             default:"md:w-5/6 w-4/6"
+        },
+         justify:{
+            default:"justify-center"
         }
     }
 }

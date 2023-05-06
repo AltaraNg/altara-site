@@ -3,38 +3,44 @@ const routes = [
   {
     path: "/",
     component: () =>
-      import(/*webpackChunkName: 'product'*/ "../components/HomePage"),
+      import(/*webpackChunkName: 'product'*/ "../views/HomePage"),
     name: "home",
   },
   {
     path: "/about-us",
     component: () =>
-      import(/*webpackChunkName: 'product'*/ "../components/AboutUs.vue"),
+      import(/*webpackChunkName: 'product'*/ "../views/AboutUs.vue"),
     name: "about_us",
   },
 
   {
     path: "/how-it-works",
     component: () =>
-      import(/*webpackChunkName: 'cart'*/ "../components/HowItWorks.vue"),
+      import(/*webpackChunkName: 'cart'*/ "../views/HowItWorks.vue"),
     name: "how_it_works",
   },
   {
     path: "/impact",
     component: () =>
-      import(/*webpackChunkName: 'checkout'*/ "../components/ImpactUs.vue"),
+      import(/*webpackChunkName: 'checkout'*/ "../views/ImpactUs.vue"),
     name: "impact",
+  },
+  {
+    path: "/privacy_policy",
+    component: () =>
+      import(/*webpackChunkName: 'checkout'*/ "../components/privacyPolicy.vue"),
+    name: "privacy_policy",
   },
   {
     path: "/careers",
     component: () =>
-      import(/*webpackChunkName: 'checkout'*/ "../components/CareerPage.vue"),
+      import(/*webpackChunkName: 'checkout'*/ "../views/CareerPage.vue"),
     name: "careers",
   },
   {
     path: "/signup",
     component: () =>
-      import(/*webpackChunkName: 'checkout'*/ "../components/SignUp.vue"),
+      import(/*webpackChunkName: 'checkout'*/ "../views/SignUp.vue"),
     name: "signup",
   },
 ];

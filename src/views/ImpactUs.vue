@@ -162,9 +162,9 @@
 </template>
 
 <script>
-import heading from "./general/heading.vue";
+import heading from "../components/heading.vue";
 import Vue3ChartJs from "@j-t-mcc/vue3-chartjs";
-import testimonial from "./general/testimonial.vue";
+import testimonial from "../components/testimonial.vue";
 import testimonial1 from "../assets/images/testimonial_1.png";
 import testimonial2 from "../assets/images/testimonial_2.png";
 import testimonial3 from "../assets/images/testimonial3.png";
