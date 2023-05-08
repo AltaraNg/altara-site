@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import testimonial from "../../assets/svgs/testimonial.vue";
+import testimonial from "../assets/svgs/testimonial";
 export default {
   components: {
     testimonial,

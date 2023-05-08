@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import close from "../../assets/svgs/close.vue";
+import close from "../assets/svgs/close.vue";
 export default {
   components: {
     close,

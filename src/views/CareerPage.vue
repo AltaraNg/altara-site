@@ -184,7 +184,7 @@
   </div>
 </template>
 <script>
-import Modal from "../components/general/modal.vue";
+import Modal from "../components/modal.vue";
 import { Apiservice } from "../services/apiService";
 import loaderVue from "../assets/svgs/loader.vue";
 import AWSS3UploadAshClient from "aws-s3-upload-ash";
