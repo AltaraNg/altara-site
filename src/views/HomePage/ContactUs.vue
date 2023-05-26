@@ -276,6 +276,7 @@ export default {
       var data = {
         full_name: this.full_name,
         phone_number: this.phone_number,
+        confirm_phone_number: this.confirm_phone_number,
         email: this.email,
         area:this.area,
         how_can_we_help: this.how_can_we_help,

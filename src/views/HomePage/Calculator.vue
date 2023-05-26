@@ -178,11 +178,11 @@ export default {
       disabled: true,
       baseURL: process.env.VUE_APP_URL,
       apiUrls: {
-        repaymentDuration: `${process.env.VUE_APP_URL}/api/repayment_duration`,
-        repaymentCycles: `${process.env.VUE_APP_URL}/api/repayment_cycle`,
-        downPaymentRates: `${process.env.VUE_APP_URL}/api/down_payment_rate`,
-        businessTypes: `${process.env.VUE_APP_URL}/api/business_type`,
-        getCalculation: `${process.env.VUE_APP_URL}/api/price_calculator`,
+        repaymentDuration: `${process.env.VUE_APP_URL}api/repayment_duration`,
+        repaymentCycles: `${process.env.VUE_APP_URL}api/repayment_cycle`,
+        downPaymentRates: `${process.env.VUE_APP_URL}api/down_payment_rate`,
+        businessTypes: `${process.env.VUE_APP_URL}api/business_type?limit=30`,
+        getCalculation: `${process.env.VUE_APP_URL}api/price_calculator`,
       },
       downPaymentRates: [],
       businessTypes: [],
@@ -277,7 +277,7 @@ export default {
           this.data.amount < 500000 &&
           this.data.collateral
         ) {
-          return item.slug == "ap_cash_loan-product";
+          return item.slug == "ap_cash_loan-collateral";
         } else if (
           this.data.amount >= 70000 &&
           this.data.amount <= 120000 &&
