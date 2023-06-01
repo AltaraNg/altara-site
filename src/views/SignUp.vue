@@ -355,6 +355,7 @@ export default {
       const eloan_data = {
         full_name: this.full_name,
         phone_number: this.phone_number,
+        confirm_phone_number: this.confirm_phone_number,
         area: this.area,
         services_you_are_interested_in: this.services_you_are_interested_in,
         further_details: this.data?.amount,
@@ -366,6 +367,7 @@ export default {
       const product_data = {
         full_name: this.full_name,
         phone_number: this.phone_number,
+        confirm_phone_number: this.confirm_phone_number,
         area: this.area,
         services_you_are_interested_in: this.services_you_are_interested_in,
         further_details: this.data?.product,
