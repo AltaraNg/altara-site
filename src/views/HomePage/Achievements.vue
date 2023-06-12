@@ -12,7 +12,7 @@
             class="md:text-4xl text-2xl text-black tracking-wider font-semibold text-center"
           >
             <span class="text-brand">92%</span> of applicants get approved for a
-            loan or products.
+            <!-- remove cashloan loan or --> products.
           </p>
           <div class="mt-6 flex justify-center">
             <router-link
