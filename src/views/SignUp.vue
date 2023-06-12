@@ -82,7 +82,7 @@
                 Services you are interested in?
               </option>
               <option class="text-sm" value="rent">Altara Rent</option>
-              <option class="text-sm" value="e_loan">Altara E-loan</option>
+              <!--remove cashloan <option class="text-sm" value="e_loan">Altara E-loan</option> -->
               <option class="text-sm" value="product">Altara Product</option>
             </select>
           </div>

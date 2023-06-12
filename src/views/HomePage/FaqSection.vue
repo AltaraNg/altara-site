@@ -44,10 +44,15 @@ export default {
   data() {
     return {
       faqs: [
+        // remove cashloan  delete  id=1 and use this when reverting{
+        //   id: 1,
+        //   question: "How do I go about getting a product or loan?",
+        //   answer: "You can fill in the enquiry form online and an agent will reach out to you. Next steps will involve getting your KYC documents, registering on our system speedy verification and you can pick up the product at our closest branch near you. If its a cash loan loan will be disbursed to you within 48 hours of passed verification.",
+        // },
         {
           id: 1,
-          question: "How do I go about getting a product or loan?",
-          answer: "You can fill in the enquiry form online and an agent will reach out to you. Next steps will involve getting your KYC documents, registering on our system speedy verification and you can pick up the product at our closest branch near you. If its a cash loan loan will be disbursed to you within 48 hours of passed verification.",
+          question: "How do I go about getting a product?",
+          answer: "You can fill in the enquiry form online and an agent will reach out to you. Next steps will involve getting your KYC documents, registering on our system speedy verification and you can pick up the product at our closest branch near you.",
         },
         {
           id: 2,
@@ -64,6 +69,7 @@ export default {
           question: "Where is Altara Located?",
           answer: "We currently have several branches across Oyo and Kwara including major cities such as Ibadan, Ogbomosho & Ilorin. We are growing quickly and expanding to more communities near you.",
         },
+        
 
       ],
     };

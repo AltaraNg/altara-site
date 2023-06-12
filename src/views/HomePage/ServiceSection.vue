@@ -52,7 +52,7 @@
         </p>
       </div>
     </div>
-    <div 
+    <!-- remove cashloan <div 
       class="
         flex flex-col-reverse
         lg:flex-row-reverse
@@ -102,11 +102,11 @@
           6-month, 9-month and 12-month payment plans of up to ₦120,000 as a first time customer.
         </p>
       </div>
-    </div>
+    </div> -->
     <div 
       class="
         flex flex-col-reverse
-        lg:flex-row
+        lg:flex-row-reverse
         w-full
         pt-10
         lg:pt-16
