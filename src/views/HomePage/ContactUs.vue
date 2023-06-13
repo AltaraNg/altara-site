@@ -95,7 +95,7 @@
           class="border w-full px-3 py-2 text-gray-600 rounded-full"
         >
           <option class="text-gray-600 text-sm" value="product">Need a product</option>
-          <option class="text-gray-600 text-sm" value="cash">Need a cash loan</option>
+         <!-- remove cashloan <option class="text-gray-600 text-sm" value="cash">Need a cash loan</option> --> 
           <option class="text-gray-600 text-sm" value="rent">Need a Rent Loan</option>
           <option class="text-gray-600 text-sm" value="payment_issue">Payment Issue</option>
           <option
