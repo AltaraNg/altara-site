@@ -143,7 +143,7 @@
             >Select what you’re interested in</b
           >
           <p class="text-center text-black md:text-sm text-xs">
-            Select what Product or Cash loan you are interested in
+            Select what Product <!-- remove cashloan or Cash--> loan you are interested in
           </p>
         </div>
         <div

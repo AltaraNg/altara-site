@@ -71,7 +71,7 @@
       </router-link>
     </div>
     <div class="w-full lg:w-1/2  lg:px-10 lg:pt-5 px-5 pt-5 ">
-      <img src="../../assets/images/banner2.png" class="h-full w-full lg:h-80 lg:w-auto "/>
+      <img src="../../assets/images/banner.png" class="h-full w-full lg:h-80 lg:w-auto "/>
     </div>
   </div>
 </template>
@@ -82,11 +82,3 @@ export default {
 };
 </script>
 
-<style>
-.banner3{
-   background-image: url("../../assets/images/banner3.png");
-  background-repeat: no-repeat;
-  /* background-attachment: fixed; */
-  background-size: cover;
-}
-</style>

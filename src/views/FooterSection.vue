@@ -22,9 +22,9 @@
         <a class="text-xs md:text-sm"
           ><span class="text-brand font-black">Altara </span>Product</a
         >
-        <a class="text-xs md:text-sm"
+        <!-- remove cashloan <a class="text-xs md:text-sm"
           ><span class="text-brand font-black">Altara </span>E-Loan</a
-        >
+        > -->
         <a class="text-xs md:text-sm"
           ><span class="text-brand font-black">Altara </span>Rent</a
         >
