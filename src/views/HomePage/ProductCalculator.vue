@@ -20,8 +20,8 @@
           <ProductsVue
             :name="product.name"
             :downpayment="formatAmount(product.actualDownpayment)"
-            :repayment="formatAmount(product.repayment / 6)"
-            :bi-monthly_repayment="formatAmount(product.repayment / 6 / 2)"
+            :repayment="formatAmount(product.repayment / 3)"
+            :bi-monthly_repayment="formatAmount(product.repayment / 3 /2)"
             :image="product.image"
           />
         </div>
@@ -97,7 +97,7 @@ export default {
         .then((res) => {
           this.repaymentDuration = JSON.parse(res?.data).data.data;
           this.data.repayment_duration_id = this.repaymentDuration.find(
-            (item) => item.name == "six_months"
+            (item) => item.name == "three_months"
           );
         })
         .catch((error) => {
@@ -165,6 +165,7 @@ export default {
         this.data.repayment = "Not Available";
         this.data.biMonthlyRepayent = "Not Available";
         this.data.total = 0;
+        
       }
     },
     formatAmount(amount) {
