@@ -20,8 +20,8 @@
           <ProductsVue
             :name="product.name"
             :downpayment="formatAmount(product.actualDownpayment)"
-            :repayment="formatAmount(product.repayment / 6)"
-            :bi-monthly_repayment="formatAmount(product.repayment / 6 / 2)"
+            :repayment="formatAmount(product.repayment / 3)"
+            :bi-monthly_repayment="formatAmount(product.repayment / 3 /2)"
             :image="product.image"
           />
         </div>
@@ -165,6 +165,7 @@ export default {
         this.data.repayment = "Not Available";
         this.data.biMonthlyRepayent = "Not Available";
         this.data.total = 0;
+        
       }
     },
     formatAmount(amount) {
