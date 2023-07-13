@@ -97,7 +97,7 @@ export default {
         .then((res) => {
           this.repaymentDuration = JSON.parse(res?.data).data.data;
           this.data.repayment_duration_id = this.repaymentDuration.find(
-            (item) => item.name == "six_months"
+            (item) => item.name == "three_months"
           );
         })
         .catch((error) => {
