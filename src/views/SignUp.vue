@@ -410,7 +410,7 @@ export default {
         if (this.data.product) {
           this.services_you_are_interested_in = "product";
           this.repayment_plan = this.data.biMonthly ? "Bimonthly" : "monthly";
-          this.repayment_duration = "six_months";
+          this.repayment_duration = "three_months";
         }
       }
     },
