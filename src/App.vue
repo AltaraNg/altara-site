@@ -1,10 +1,7 @@
 <template>
     <div class="flex flex-col min-h-screen">
         <div class=" " :class="acceptCookie ? '' : 'opacity-70 pointer-events-none'">
-            <!-- when cookie is not accepted reduce opacity and disable mouse/touch events on the website
-     except scroll
-    -->
-            <NavBar class="sticky top-0 fixed zIndex" />
+            <NavBar class="sticky top-0 zIndex" />
             <div class="flex-grow">
                 <router-view />
             </div>
