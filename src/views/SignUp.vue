@@ -302,6 +302,11 @@ export default {
                 ?.toFixed(2)
                 ?.toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+
+            // return `₦${amount
+            //     ?.toFixed(2)
+            //     ?.toString()
+            //     .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
         },
         checkService(product, loan, rent) {
             return this.services_you_are_interested_in == "product" ? product : this.services_you_are_interested_in == "e_loan" ? loan : rent;
