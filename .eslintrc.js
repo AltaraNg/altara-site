@@ -12,7 +12,7 @@ module.exports = {
     rules: {
         "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
         "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
-        "vue/multi-word-component-names": "warn",
+        "vue/multi-word-component-names": "off",
         "vue/no-mutating-props": "error",
         "vue/no-reserved-component-names": "warn",
     },
